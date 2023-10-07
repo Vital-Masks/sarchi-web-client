@@ -774,6 +774,13 @@ img {
   vertical-align: middle;
 }
 
+input[type="file"]{
+  height:50px;
+}
+
+input[type="file"]::-webkit-file-upload-button{
+  height:50px;
+}
 
 
 .cards {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
+import URL from '../../Components/utils.json';
 
 function Post() {
     const [errors, setErrors] = useState({});
@@ -22,7 +23,7 @@ function Post() {
         finalData.data = object;
         finalData = JSON.stringify(finalData);
 
-        const apiUrl = "http://157.230.236.88:1337/api/job-posts";
+        const apiUrl = URL.BASE_URL+"/api/job-posts";
 
         try {
             const response = await fetch(apiUrl, {

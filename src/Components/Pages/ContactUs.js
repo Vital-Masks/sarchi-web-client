@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
- 
+import URL from '../../Components/utils.json';
 
 function ContactUs() {
     const handleSubmit = async (e) => {
@@ -19,7 +19,7 @@ function ContactUs() {
         finalData=JSON.stringify(finalData);
         
         // Construct the API endpoint URL for your Strapi server
-        const apiUrl = "http://157.230.236.88:1337/api/contact-uses"; // Update with your API endpoint
+        const apiUrl = URL.BASE_URL+"/api/contact-uses"; // Update with your API endpoint
     
         try {
           // Make an HTTP POST request to Strapi API

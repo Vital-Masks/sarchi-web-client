@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
+import URL from '../../Components/utils.json';
 
 function Sectors() {
   const [consultantData, setConsultantData] = useState([]);
 
   useEffect(() => {
     // Fetch data from the Strapi API when the component mounts
-    axios.get('http://157.230.236.88:1337/api/consultancy-partners')
+    axios.get(URL.BASE_URL+'/api/consultancy-partners')
       .then((response) => {
         setConsultantData(response.data.data);
       })
@@ -31,7 +32,7 @@ function Sectors() {
       {Array.isArray(consultantData) && consultantData.length > 0 ? (
             consultantData.map((item, index) => (
         <div className="col-12 wow fadeInUp" data-wow-delay="0.1s" key={index}>
-        <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight: 400}}>{item.attributes.PartnersCategory}</p>
+        <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight: 400}}>{item.attributes.Partners_Category}</p>
           <p className="no-galle-road" style={{fontFamily:'Poppins'}}>{item.attributes.Description}
         </p>
         

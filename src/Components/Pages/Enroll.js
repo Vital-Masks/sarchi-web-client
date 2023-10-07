@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
- 
+import URL from '../../Components/utils.json';
 
 function Enroll() {
     const [formErrors, setFormErrors] = useState({});
@@ -75,7 +75,7 @@ function Enroll() {
       const isFormValid = validateForm(object);
   
       if (isFormValid) {
-        const apiUrl = "http://157.230.236.88:1337/api/applied-jobs";
+        const apiUrl = URL.BASE_URL+"/api/applied-jobs";
   
         try {
           const response = await fetch(apiUrl, {
@@ -90,6 +90,7 @@ function Enroll() {
           if (response.ok) {
             alert("Form submitted successfully!");
             e.target.reset();
+            window.location.href = 'http://localhost:3000/';
             setFormErrors({});
           } else {
             alert("Form submission failed. Please try again.");
@@ -189,7 +190,7 @@ function Enroll() {
         <div className="col-sm-6">
           <div className={`form-floating ${formErrors.MobileNo ? 'has-error' : ''}`}>
             <input
-              type="text"
+              type="tel"
               className="form-control"
               id="MobileNo"
               name="MobileNo"
@@ -257,7 +258,7 @@ function Enroll() {
           </div>
         </div>
         <div className="col-sm-12">
-          <label htmlFor="CoverLetter">Cover Letter</label>
+          
           <div className="form">
             <input
               type="file"
@@ -266,11 +267,12 @@ function Enroll() {
               name="CoverLetter"
               style={{ border: '1px solid' }}
             ></input>
+            <label htmlFor="CoverLetter">Cover Letter</label>
             {formErrors.CoverLetter && <div className="error-message">{formErrors.CoverLetter}</div>}
           </div>
         </div>
         <div className="col-sm-12">
-          <label htmlFor="Resume">Resume</label>
+          
           <div className="form">
             <input
               type="file"
@@ -279,6 +281,7 @@ function Enroll() {
               name="Resume"
               style={{ border: '1px solid' }}
             ></input>
+            <label htmlFor="Resume">Resume</label>
             {formErrors.Resume && <div className="error-message">{formErrors.Resume}</div>}
           </div>
         </div>

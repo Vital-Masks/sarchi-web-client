@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import URL from './utils.json';
 
 function Jobpost() {
   const [vacancyData, setVacancyData] = useState([]);
@@ -16,7 +17,7 @@ function Jobpost() {
 
   useEffect(() => {
     axios
-      .get('http://157.230.236.88:1337/api/post-job-vaccancies')
+      .get(URL.BASE_URL+'/api/post-job-vaccancies')
       .then((response) => {
         setVacancyData(response.data.data);
       })
@@ -28,9 +29,9 @@ function Jobpost() {
   const filterResults = () => {
     const filteredData = vacancyData.filter((item) => {
       return (
-        item.attributes.JobRole.includes(searchCriteria.searchQuery) &&
-        item.attributes.TypeOfJobs.includes(searchCriteria.jobType) &&
-        item.attributes.ExperienceLevels.includes(searchCriteria.experienceLevel) &&
+        item.attributes.Job_Role.includes(searchCriteria.searchQuery) &&
+        item.attributes.Type_Of_Jobs.includes(searchCriteria.jobType) &&
+        item.attributes.Experience_Levels.includes(searchCriteria.experienceLevel) &&
         (searchCriteria.salaryEstimate === '' ||
           (item.attributes.MinSalary >= parseInt(searchCriteria.salaryEstimate, 10) &&
             item.attributes.MaxSalary <= parseInt(searchCriteria.salaryEstimate, 10))) &&
@@ -79,11 +80,12 @@ function Jobpost() {
               </select>
               <select
                 name="experienceLevel"
-                className="search rounded-pill"
+                className="search"
                 value={searchCriteria.type}
                 onChange={handleExperienceChange}
+                style={{textAlign:'center'}}
               >
-                <option value="">Experience Level</option>
+                <option value="" >Experience Level</option>
                 <option value="Senior">Senior</option>
                 <option value="Associate">Associate</option>
                 <option value="Intern">Intern</option>
@@ -91,9 +93,10 @@ function Jobpost() {
               <input
                 type="text"
                 name="salaryEstimate"
-                className="search rounded-pill"
+                className="search"
                 placeholder="SalaryRange"
                 value={searchCriteria.salaryEstimate}
+                style={{textAlign:'center'}}
                 onChange={(e) =>
                   setSearchCriteria({ ...searchCriteria, salaryEstimate: e.target.value })
                 }
@@ -101,16 +104,18 @@ function Jobpost() {
               <input
                 type="text"
                 name="location"
-                className="search rounded-pill"
+                className="search"
                 placeholder="Location"
                 value={searchCriteria.location}
+                style={{textAlign:'center'}}
                 onChange={(e) => setSearchCriteria({ ...searchCriteria, location: e.target.value })}
               />
               <select
                 name="timing"
-                className="search rounded-pill"
+                className="search"
                 value={searchCriteria.timing}
                 onChange={handleTimingChange}
+                style={{textAlign:'center'}}
               >
                 <option value="">Select Timing</option>
                 <option value="Full Time">Full Time</option>
@@ -119,7 +124,8 @@ function Jobpost() {
               <input
                 type="text"
                 name="searchQuery"
-                className="search rounded-pill"
+                className="search"
+                style={{textAlign:'center'}}
                 placeholder="Job Role"
                 value={searchCriteria.searchQuery}
                 onChange={(e) =>
@@ -153,7 +159,7 @@ function Jobpost() {
             <div className="container py-3">
               <div className="row">
                 <div className="col-lg-8" style={{maxWidth:'1200px !important'}}>
-                  <h1 className="display-4 text-black" style={{marginLeft:'10px',fontSize:'25px',marginTop:'30px',textAlign:'left',fontFamily:'Alatsi'}}>{item.attributes.JobRole}</h1>
+                  <h1 className="display-4 text-black" style={{marginLeft:'10px',fontSize:'25px',marginTop:'30px',textAlign:'left',fontFamily:'Alatsi'}}>{item.attributes.Job_Role}</h1>
                   <div className="d-flex flex-wrap mb-3">
                     <p
                       className="search rounded-pill text-black py-2 mr-2 mb-2 text-center"
@@ -177,20 +183,20 @@ function Jobpost() {
                       className="search rounded-pill text-black py-2 mr-2 mb-2"
                       style={{marginLeft:'10px',fontSize:'17px',marginTop:'05px',background:'#f098ff',width:'100px',textAlign:'center',height:'40px'}}
                     >
-                      {item.attributes.ExperienceLevels}
+                      {item.attributes.Experience_Levels}
                     </p>
                     <p
                       className="search rounded-pill py-2 text-black mb-2"
                       style={{marginLeft:'10px',fontSize:'17px',marginTop:'05px',background:'#67b6ff',width:'100px',textAlign:'center',height:'40px'}}
                     >
-                      {item.attributes.TypeOfJobs}
+                      {item.attributes.Type_Of_Jobs}
                     </p>
                   </div>
                   <p
                     className="text-black"
                     style={{ fontSize: 20, fontWeight: 400, lineHeight: "1.5",fontFamily:'Poppins',marginLeft:'10px' }}
                   >
-                    {item.attributes.JobDescription}
+                    {item.attributes.Job_Description}
                   </p>
                 </div>
                 <div className="col-lg-4 text-center" >
@@ -217,7 +223,7 @@ function Jobpost() {
             <div className="container py-5">
               <div className="row">
                 <div className="col-lg-8">
-                  <h1 className="display-4 text-black" style={{textAlign: 'left',fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.JobRole}</h1>
+                  <h1 className="display-4 text-black" style={{textAlign: 'left',fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.Job_Role}</h1>
                   <div className="d-flex flex-wrap mb-3">
                     <p
                       className="search rounded-pill text-black py-1 mr-2 mb-2 text-center"
@@ -260,7 +266,7 @@ function Jobpost() {
                         marginLeft:'5px'
                       }}
                     >
-                      {item.attributes.ExperienceLevels}
+                      {item.attributes.Experience_Levels}
                     </p>
                     <p
                       className="search rounded-pill py-1 text-black mb-2"
@@ -271,7 +277,7 @@ function Jobpost() {
                         marginLeft:'5px'
                       }}
                     >
-                      {item.attributes.TypeOfJobs}
+                      {item.attributes.Type_Of_Jobs}
                     </p>
                   </div>
                   <p

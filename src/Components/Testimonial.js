@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import the carousel styles
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
+import URL from './utils.json';
 
 function Testimonial() {
   const [testimonialData, setTestimonialData] = useState([]);
@@ -9,7 +10,7 @@ function Testimonial() {
 
   useEffect(() => {
     axios
-      .get('http://157.230.236.88:1337/api/testimonials')
+      .get(URL.BASE_URL+'/api/testimonials')
       .then((response) => {
         setTestimonialData(response.data.data);
       })

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
- 
+import URL from '../../Components/utils.json';
 
 function Offshore() {
   
@@ -10,7 +10,7 @@ function Offshore() {
 
   useEffect(() => {
     // Fetch data from the Strapi API when the component mounts
-    axios.get('http://157.230.236.88:1337/api/offshire-it-partners')
+    axios.get(URL.BASE_URL+'/api/offshire-it-partners')
       .then((response) => {
         setOffshireData(response.data.data);
       })
@@ -32,7 +32,7 @@ function Offshore() {
       {Array.isArray(offshireData) && offshireData.length > 0 ? (
             offshireData.map((item, index) => (
         <div className="col-12 wow fadeInUp" data-wow-delay="0.1s" key={index}>
-        <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight:'bold'}}>{item.attributes.PartnersCategory}</p>
+        <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight:'bold'}}>{item.attributes.Partners_Category}</p>
           <p className="no-galle-road" style={{fontFamily:'Poppins'}}>{item.attributes.Description}
         </p>
         

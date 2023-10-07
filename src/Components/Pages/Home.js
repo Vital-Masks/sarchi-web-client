@@ -4,7 +4,6 @@ import Footer from '../../Components/Footer'
 import Service from '../../Components/Service'
 import Testimonial from '../../Components/Testimonial'
 import Banner from '../../Components/Banner'
-import Search from '../../Components/Search'
 import Jobpost from '../../Components/Jobpost'
 import HomeAbout from '../../Components/HomeAbout'
 

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
+import URL from '../../Components/utils.json';
 
 function AboutUs() {
   const [aboutContent, setAboutContent] = useState('');
 
   useEffect(() => {
-    fetch('http://157.230.236.88:1337/api/about-us')
+    fetch(URL.BASE_URL+'/api/about-us')
       .then((response) => response.json())
       .then((data) => {
         let items = data.data.attributes.Body;

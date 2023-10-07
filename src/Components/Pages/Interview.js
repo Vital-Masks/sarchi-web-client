@@ -17,7 +17,7 @@ function Interview() {
   useEffect(() => {
     // Fetch data from the Strapi API when the component mounts
     axios
-      .get('http://157.230.236.88:1337/api/news-and-interview-techniques?populate=*')
+      .get(URL.BASE_URL+'/api/news-and-interview-techniques?populate=*')
       .then((response) => {
         setInterviewData(response.data.data);
       })
@@ -58,14 +58,15 @@ function Interview() {
         </div>
       </div>
 
-      <div className="container search-container-interview py-3 mb-5 rounded-pill">
+      <div className="container search-container-interview py-3 mb-5" style={{borderRadius:'25px'}}>
         <form>
           <div className="wrapper">
-            <div className="search-container-2 rounded-pill">
+            <div className="search-container-2">
               <select
                 name="type"
                 className="search"
                 value={searchCriteria.type}
+                style={{textAlign:'center'}}
                 onChange={handleTypeChange}
               >
                 <option value="">Select Type</option>
@@ -78,6 +79,7 @@ function Interview() {
                 className="search"
                 placeholder="Practice"
                 value={searchCriteria.practice}
+                style={{textAlign:'center'}}
                 onChange={(e) =>
                   setSearchCriteria({ ...searchCriteria, practice: e.target.value })
                 }
@@ -87,6 +89,7 @@ function Interview() {
                 className="search"
                 placeholder="Industry"
                 value={searchCriteria.industry}
+                style={{textAlign:'center'}}
                 onChange={(e) =>
                   setSearchCriteria({ ...searchCriteria, industry: e.target.value })
                 }
@@ -105,7 +108,7 @@ function Interview() {
                 <li className="cards_item" key={index}>
                   <div className="card">
                     <div className="card_image">
-                    <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.formats.small.url} alt={item.attributes.Title}/>
+                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.small.url} alt={item.attributes.Title}/>
                     </div>
                     <div className="card_content">
                       <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'18px'}}>{item.attributes.Date}</h2>

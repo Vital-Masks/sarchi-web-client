@@ -9,7 +9,7 @@ function Discipline() {
 
   useEffect(() => {
     // Fetch data from the Strapi API when the component mounts
-    axios.get('http://157.230.236.88:1337/api/discipline-and-expertises?populate=*')
+    axios.get(URL.BASE_URL+'/api/discipline-and-expertises?populate=*')
       .then((response) => {
         setExpertiseData(response.data.data);
       })
@@ -33,7 +33,7 @@ function Discipline() {
               <li className="cards_item" key={index}>
                 <div className="card">
                   <div className="card_image">
-                    <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.formats.thumbnail.url} alt={item.attributes.ExpertiseName}/>
+                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.small.url} alt={item.attributes.ExpertiseName}/>
                   </div>
                   <div className="card_content">
                     <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.ExpertiseName}</h2>

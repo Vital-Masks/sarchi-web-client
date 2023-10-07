@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
 import axios from 'axios'; 
+import URL from '../../Components/utils.json';
 
 function Apply() {
   const { jobId } = useParams();
@@ -10,7 +11,7 @@ function Apply() {
 
   useEffect(() => {
     // Fetch job data using jobId
-    axios.get(`http://157.230.236.88:1337/api/post-job-vaccancies/${jobId}`)
+    axios.get(URL.BASE_URL+`/api/post-job-vaccancies/${jobId}`)
       .then((response) => {
         setJobData(response.data.data);
       })
@@ -22,6 +23,7 @@ function Apply() {
  
   const validateForm = (formData) => {
     const errors = {};
+    const mobileNumberRegex = /^[0-9]{10}$/
 
     if (!formData.JobRole) {
       errors.JobRole = 'Job Role is required';
@@ -46,8 +48,10 @@ function Apply() {
     }
 
     if (!formData.MobileNo) {
-      errors.MobileNo = 'Mobile Number is required';
-    }
+      errors.MobileNo = "Mobile Number is required";
+  } else if (!mobileNumberRegex.test(formData.MobileNo)) {
+      errors.MobileNo = "Invalid mobile number format. Please enter a 10-digit number.";
+  }
 
     if (!formData.VisaStatus) {
       errors.VisaStatus = 'Visa Status is required';
@@ -91,7 +95,7 @@ function Apply() {
     const isFormValid = validateForm(object);
 
     if (isFormValid) {
-      const apiUrl = "http://157.230.236.88:1337/api/applied-jobs";
+      const apiUrl = URL.BASE_URL+"/api/applied-jobs";
 
       try {
         const response = await fetch(apiUrl, {
@@ -106,7 +110,7 @@ function Apply() {
         if (response.ok) {
           alert("Form submitted successfully!");
           e.target.reset();
-          window.location.reload('http://localhost:3000/');
+          window.location.href = 'http://localhost:3000/';
           setFormErrors({});
         } else {
           alert("Form submission failed. Please try again.");
@@ -208,7 +212,7 @@ function Apply() {
         <div className="col-sm-6">
           <div className={`form-floating ${formErrors.MobileNo ? 'has-error' : ''}`}>
             <input
-              type="text"
+              type="tel"
               className="form-control"
               id="MobileNo"
               name="MobileNo"
@@ -268,7 +272,7 @@ function Apply() {
               className="form-control"
               id="NoticePeriod"
               name="NoticePeriod"
-              placeholder="Notice Period"
+              placeholder="Notice Period (In Months)"
               style={{ border: '1px solid' }}
             ></input>
             <label htmlFor="NoticePeriod">Notice Period</label>
@@ -276,7 +280,7 @@ function Apply() {
           </div>
         </div>
         <div className="col-sm-12">
-          <label htmlFor="CoverLetter">Cover Letter</label>
+          
           <div className="form">
             <input
               type="file"
@@ -285,19 +289,21 @@ function Apply() {
               name="CoverLetter"
               style={{ border: '1px solid' }}
             ></input>
+            <label htmlFor="CoverLetter">Cover Letter</label>
             {formErrors.CoverLetter && <div className="error-message">{formErrors.CoverLetter}</div>}
           </div>
         </div>
         <div className="col-sm-12">
-          <label htmlFor="Resume">Resume</label>
+          
           <div className="form">
             <input
               type="file"
               className={`form-control ${formErrors.Resume ? 'has-error' : ''}`}
               id="Resume"
               name="Resume"
-              style={{ border: '1px solid' }}
+              style={{ border: '1px solid'}}
             ></input>
+            <label htmlFor="Resume">Resume</label>
             {formErrors.Resume && <div className="error-message">{formErrors.Resume}</div>}
           </div>
         </div>

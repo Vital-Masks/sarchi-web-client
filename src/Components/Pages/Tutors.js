@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../../Components/Header'
-import Footer from '../../Components/Footer'
+import Footer from '../../Components/Footer';
+import URL from '../../Components/utils.json';
  
 
 function Tutor() {
@@ -9,7 +10,7 @@ function Tutor() {
 
   useEffect(() => {
     // Fetch data from the Strapi API when the component mounts
-    axios.get('http://157.230.236.88:1337/api/tutors')
+    axios.get(URL.BASE_URL+'/api/tutors')
       .then((response) => {
         setTutorData(response.data.data);
       })
@@ -31,12 +32,12 @@ function Tutor() {
       {Array.isArray(tutorData) && tutorData.length > 0 ? (
             tutorData.map((item, index) => (
         <div className="col-12 wow fadeInUp" data-wow-delay="0.1s" key={index}>
-        <h2 style={{fontWeight:'bold',fontFamily:'Poppins'}}>{item.attributes.TutorName}</h2>
-        <p style={{color:'#878787',fontSize:'24px',fontFamily:'Poppins'}}>{item.attributes.TutorDesignation}</p>
+        <h2 style={{fontWeight:'bold',fontFamily:'Poppins'}}>{item.attributes.Tutor_Name}</h2>
+        <p style={{color:'#878787',fontSize:'24px',fontFamily:'Poppins'}}>{item.attributes.Tutor_Designation}</p>
           <p className="no-galle-road"> 
           {item.attributes.Description}
         </p>
-        <p style={{color:'#878787',fontSize:'24px',fontFamily:'Alatsi'}}>Companies Trained By {item.attributes.TutorName}</p>
+        <p style={{color:'#878787',fontSize:'24px',fontFamily:'Alatsi'}}>Companies Trained By {item.attributes.Tutor_Name}:</p>
         <div className="rectangle" style={{backgroundColor: '#14141433',border: '0.5px solid',borderColor: '#707070',height: '2px',opacity: 0.5}}/>
         </div>
         ))
