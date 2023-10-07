@@ -33,8 +33,8 @@ function Jobpost() {
         item.attributes.Type_Of_Jobs.includes(searchCriteria.jobType) &&
         item.attributes.Experience_Levels.includes(searchCriteria.experienceLevel) &&
         (searchCriteria.salaryEstimate === '' ||
-          (item.attributes.MinSalary >= parseInt(searchCriteria.salaryEstimate, 10) &&
-            item.attributes.MaxSalary <= parseInt(searchCriteria.salaryEstimate, 10))) &&
+          (item.attributes.Min_Salary >= parseInt(searchCriteria.salaryEstimate, 10) &&
+            item.attributes.Max_Salary <= parseInt(searchCriteria.salaryEstimate, 10))) &&
         item.attributes.Location.includes(searchCriteria.location) &&
         item.attributes.Timings.includes(searchCriteria.permanent)
       );
@@ -171,7 +171,7 @@ function Jobpost() {
                       className="search rounded-pill text-black py-2 mr-2 mb-2"
                       style={{marginLeft:'10px',fontSize:'17px',marginTop:'05px',background:'#9effe2',width:'100px',textAlign:'center',height:'40px'}}
                     >
-                      {item.attributes.MinSalary}K$-{item.attributes.MaxSalary}K$
+                      {item.attributes.Min_Salary}K$-{item.attributes.Max_Salary}K$
                     </p>
                     <p
                       className="search rounded-pill py-2 text-black mr-2 mb-2"
