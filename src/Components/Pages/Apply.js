@@ -108,6 +108,24 @@ function Apply() {
           },
         });
 
+      //   const fileUploadUrl = URL.BASE_URL + "/api/upload";
+
+      // const fileUploadResponse = await fetch(fileUploadUrl, {
+      //   mode: 'no-cors',
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "multipart/form-data",
+      //     "Accept": "application/json",
+      //     "type": "formData"
+      //   },
+      //   body: formData, // This will include the files for "Cover_Letter" and "Resume"
+      // });
+
+      // if (!fileUploadResponse.ok) {
+      //   alert("File upload failed. Please try again.");
+      //   return;
+      // }
+
         if (response.ok) {
           alert("Form submitted successfully!");
           e.target.reset();
