@@ -38,7 +38,7 @@ function Post() {
             if (response.ok) {
                 alert("Form submitted successfully!");
                 e.target.reset();
-                window.location.reload();
+                window.location.href = 'http://localhost:3000/';
             } else {
                 alert("Form submission failed. Please try again.");
             }
@@ -51,23 +51,24 @@ function Post() {
 
     const validateForm = (form) => {
         const errors = {};
-        const mobileNumber = form.MobileNo.value;
-        const mobileNumberRegex = /^[0-9]{10}$/
+        const mobileNumber = form.Mobile_No.value;
+        const mobileNumberRegex = /^(?:\+\d{1,3}\s?)?[0-9]{10}$/;
 
-        if (!form.JobRole.value) {
-            errors.JobRole = "Job Role is required";
+
+        if (!form.Job_Role.value) {
+            errors.Job_Role = "Job Role is required";
         }
 
-        if (!form.JobType.value) {
-            errors.JobType = "Job Type is required";
+        if (!form.Job_Type.value) {
+            errors.Job_Type = "Job Type is required";
         }
 
-        if (!form.FirstName.value) {
-            errors.FirstName = "First Name is required";
+        if (!form.First_Name.value) {
+            errors.First_Name = "First Name is required";
         }
 
-        if (!form.LastName.value) {
-            errors.LastName = "Last Name is required";
+        if (!form.Last_Name.value) {
+            errors.Last_Name = "Last Name is required";
         }
 
         if (!form.Email.value) {
@@ -77,37 +78,37 @@ function Post() {
         }
 
         if (!mobileNumber) {
-            errors.MobileNo = "Mobile Number is required";
+            errors.Mobile_No = "Mobile Number is required";
         } else if (!mobileNumberRegex.test(mobileNumber)) {
-            errors.MobileNo = "Invalid mobile number format. Please enter a 10-digit number.";
+            errors.Mobile_No = "Invalid mobile number format. Please enter a 10-digit number.";
         }
 
-        if (!form.CompanyName.value) {
-            errors.CompanyName = "Company Name is required";
+        if (!form.Company_Name.value) {
+            errors.Company_Name = "Company Name is required";
         }
 
-        if (!form.CompanyWebsite.value) {
-            errors.CompanyWebsite = "Company Website is required";
+        if (!form.Company_Website.value) {
+            errors.Company_Website = "Company Website is required";
         }
 
-        if (!form.JobLocation.value) {
-            errors.JobLocation = "Location is required";
+        if (!form.Job_Location.value) {
+            errors.Job_Location = "Location is required";
         }
 
         if (!form.Salary.value) {
             errors.Salary = "Salary is required";
         }
 
-        if (!form.JobDescription.value) {
-            errors.JobDescription = "Job Description is required";
+        if (!form.Job_Description.value) {
+            errors.Job_Description = "Job Description is required";
         }
 
         if (!form.Responsibilities.value) {
             errors.Responsibilities = "Responsibilities are required";
         }
 
-        if (!form.Benefits.value) {
-            errors.Benefits = "Benefits are required";
+        if (!form.Beneifts.value) {
+            errors.Beneifts = "Beneifts are required";
         }
 
         return errors;
@@ -135,56 +136,56 @@ function Post() {
                                     <div className="form-floating">
                                         <input
                                             type="text"
-                                            className={`form-control ${errors.JobRole ? 'is-invalid' : ''}`}
-                                            id="JobRole"
-                                            name="JobRole"
+                                            className={`form-control ${errors.Job_Role ? 'is-invalid' : ''}`}
+                                            id="Job_Role"
+                                            name="Job_Role"
                                             placeholder="Job Role"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="JobRole">Job Role</label>
-                                        {errors.JobRole && <div className="invalid-feedback">{errors.JobRole}</div>}
+                                        <label htmlFor="Job_Role">Job Role</label>
+                                        {errors.Job_Role && <div className="invalid-feedback">{errors.Job_Role}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-floating">
                                         <input
                                             type="text"
-                                            className={`form-control ${errors.JobType ? 'is-invalid' : ''}`}
-                                            id="JobType"
-                                            name="JobType"
+                                            className={`form-control ${errors.Job_Type ? 'is-invalid' : ''}`}
+                                            id="Job_Type"
+                                            name="Job_Type"
                                             placeholder="Job Type"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="JobType">Job Type</label>
-                                        {errors.JobType && <div className="invalid-feedback">{errors.JobType}</div>}
+                                        <label htmlFor="Job_Type">Job Type</label>
+                                        {errors.Job_Type && <div className="invalid-feedback">{errors.Job_Type}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-floating">
                                         <input
                                             type="text"
-                                            className={`form-control ${errors.FirstName ? 'is-invalid' : ''}`}
-                                            id="FirstName"
-                                            name="FirstName"
+                                            className={`form-control ${errors.First_Name ? 'is-invalid' : ''}`}
+                                            id="First_Name"
+                                            name="First_Name"
                                             placeholder="First Name"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="FirstName">First Name</label>
-                                        {errors.FirstName && <div className="invalid-feedback">{errors.FirstName}</div>}
+                                        <label htmlFor="First_Name">First Name</label>
+                                        {errors.First_Name && <div className="invalid-feedback">{errors.First_Name}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-floating">
                                         <input
                                             type="text"
-                                            className={`form-control ${errors.LastName ? 'is-invalid' : ''}`}
-                                            id="LastName"
-                                            name="LastName"
+                                            className={`form-control ${errors.Last_Name ? 'is-invalid' : ''}`}
+                                            id="Last_Name"
+                                            name="Last_Name"
                                             placeholder="Last Name"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="LastName">Last Name</label>
-                                        {errors.LastName && <div className="invalid-feedback">{errors.LastName}</div>}
+                                        <label htmlFor="Last_Name">Last Name</label>
+                                        {errors.Last_Name && <div className="invalid-feedback">{errors.Last_Name}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
@@ -205,56 +206,56 @@ function Post() {
                                     <div className="form-floating">
                                         <input
                                             type="tel"
-                                            className={`form-control ${errors.MobileNo ? 'is-invalid' : ''}`}
-                                            id="MobileNo"
-                                            name="MobileNo"
+                                            className={`form-control ${errors.Mobile_No ? 'is-invalid' : ''}`}
+                                            id="Mobile_No"
+                                            name="Mobile_No"
                                             placeholder="Mobile Number with Country Code"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="MobileNo">Mobile Number</label>
-                                        {errors.MobileNo && <div className="invalid-feedback">{errors.MobileNo}</div>}
+                                        <label htmlFor="Mobile_No">Mobile Number (With Country Code)</label>
+                                        {errors.Mobile_No && <div className="invalid-feedback">{errors.Mobile_No}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-floating">
                                         <input
                                             type="text"
-                                            className={`form-control ${errors.CompanyName ? 'is-invalid' : ''}`}
-                                            id="CompanyName"
-                                            name="CompanyName"
+                                            className={`form-control ${errors.Company_Name ? 'is-invalid' : ''}`}
+                                            id="Company_Name"
+                                            name="Company_Name"
                                             placeholder="Company Name"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="CompanyName">Company Name</label>
-                                        {errors.CompanyName && <div className="invalid-feedback">{errors.CompanyName}</div>}
+                                        <label htmlFor="Company_Name">Company Name</label>
+                                        {errors.Company_Name && <div className="invalid-feedback">{errors.Company_Name}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-floating">
                                         <input
                                             type="text"
-                                            className={`form-control ${errors.CompanyWebsite ? 'is-invalid' : ''}`}
-                                            id="CompanyWebsite"
-                                            name="CompanyWebsite"
+                                            className={`form-control ${errors.Company_Website ? 'is-invalid' : ''}`}
+                                            id="Company_Website"
+                                            name="Company_Website"
                                             placeholder="Company Website"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="CompanyWebsite">Company Website</label>
-                                        {errors.CompanyWebsite && <div className="invalid-feedback">{errors.CompanyWebsite}</div>}
+                                        <label htmlFor="Company_Website">Company Website</label>
+                                        {errors.Company_Website && <div className="invalid-feedback">{errors.Company_Website}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-floating">
                                         <input
                                             type="text"
-                                            className={`form-control ${errors.JobLocation ? 'is-invalid' : ''}`}
-                                            id="JobLocation"
-                                            name="JobLocation"
+                                            className={`form-control ${errors.Job_Location ? 'is-invalid' : ''}`}
+                                            id="Job_Location"
+                                            name="Job_Location"
                                             placeholder="Location"
                                             style={{ border: '1px solid' }}
                                         />
-                                        <label htmlFor="JobLocation">Location</label>
-                                        {errors.JobLocation && <div className="invalid-feedback">{errors.JobLocation}</div>}
+                                        <label htmlFor="Job_Location">Location</label>
+                                        {errors.Job_Location && <div className="invalid-feedback">{errors.Job_Location}</div>}
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
@@ -274,14 +275,14 @@ function Post() {
                                 <div className="col-12">
                                     <div className="form-floating">
                                         <textarea
-                                            className={`form-control ${errors.JobDescription ? 'is-invalid' : ''}`}
+                                            className={`form-control ${errors.Job_Description ? 'is-invalid' : ''}`}
                                             placeholder="Job Description"
-                                            id="JobDescription"
-                                            name="JobDescription"
+                                            id="Job_Description"
+                                            name="Job_Description"
                                             style={{ height: 130 + 'px', border: '1px solid' }}
                                         ></textarea>
-                                        <label htmlFor="JobDescription">Job Description</label>
-                                        {errors.JobDescription && <div className="invalid-feedback">{errors.JobDescription}</div>}
+                                        <label htmlFor="Job_Description">Job Description</label>
+                                        {errors.Job_Description && <div className="invalid-feedback">{errors.Job_Description}</div>}
                                     </div>
                                 </div>
                                 <div className="col-12">
@@ -300,14 +301,14 @@ function Post() {
                                 <div className="col-12">
                                     <div className="form-floating">
                                         <textarea
-                                            className={`form-control ${errors.Benefits ? 'is-invalid' : ''}`}
-                                            placeholder="Benefits"
-                                            id="Benefits"
-                                            name="Benefits"
+                                            className={`form-control ${errors.Beneifts ? 'is-invalid' : ''}`}
+                                            placeholder="Beneifts"
+                                            id="Beneifts"
+                                            name="Beneifts"
                                             style={{ height: 130 + 'px', border: '1px solid' }}
                                         ></textarea>
-                                        <label htmlFor="Benefits">Benefits</label>
-                                        {errors.Benefits && <div className="invalid-feedback">{errors.Benefits}</div>}
+                                        <label htmlFor="Beneifts">Beneifts</label>
+                                        {errors.Beneifts && <div className="invalid-feedback">{errors.Beneifts}</div>}
                                     </div>
                                 </div>
                                 <div className="col-12 text-center">

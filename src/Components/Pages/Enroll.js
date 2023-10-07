@@ -8,21 +8,23 @@ function Enroll() {
  
     const validateForm = (formData) => {
       const errors = {};
+      const mobileNumberRegex = /^(?:\+\d{1,3}\s?)?[0-9]{10}$/;
+
   
-      if (!formData.JobRole) {
-        errors.JobRole = 'Job Role is required';
+      if (!formData.Job_Role) {
+        errors.Job_Role = 'Job Role is required';
       }
   
-      if (!formData.JobType) {
-        errors.JobType = 'Job Type is required';
+      if (!formData.Job_Type) {
+        errors.Job_Type = 'Job Type is required';
       }
   
-      if (!formData.FirstName) {
-        errors.FirstName = 'First Name is required';
+      if (!formData.First_Name) {
+        errors.First_Name = 'First Name is required';
       }
   
-      if (!formData.LastName) {
-        errors.LastName = 'Last Name is required';
+      if (!formData.Last_Name) {
+        errors.Last_Name = 'Last Name is required';
       }
   
       if (!formData.Email) {
@@ -31,24 +33,26 @@ function Enroll() {
         errors.Email = 'Invalid email format';
       }
   
-      if (!formData.MobileNo) {
-        errors.MobileNo = 'Mobile Number is required';
+      if (!formData.Mobile_No) {
+        errors.Mobile_No = "Mobile Number is required";
+    } else if (!mobileNumberRegex.test(formData.Mobile_No)) {
+        errors.Mobile_No = "Invalid mobile number format. Please enter a 10-digit number.";
+    }
+  
+      if (!formData.Visa_Status) {
+        errors.Visa_Status = 'Visa Status is required';
       }
   
-      if (!formData.VisaStatus) {
-        errors.VisaStatus = 'Visa Status is required';
+      if (!formData.Github_URL) {
+        errors.Github_URL = 'Github URL is required';
       }
   
-      if (!formData.GithubURL) {
-        errors.GithubURL = 'Github URL is required';
+      if (!formData.LinkedIn_URL) {
+        errors.LinkedIn_URL = 'LinkedIn URL is required';
       }
   
-      if (!formData.LimkedInURL) {
-        errors.LimkedInURL = 'LinkedIn URL is required';
-      }
-  
-      if (!formData.NoticePeriod) {
-        errors.NoticePeriod = 'Notice Period is required';
+      if (!formData.Notice_Period) {
+        errors.Notice_Period = 'Notice Period is required';
       }
   
       setFormErrors(errors);
@@ -118,59 +122,59 @@ function Enroll() {
                 <div className="wow fadeInUp" data-wow-delay="0.5s">
                 <form className="row g-3" onSubmit={handleSubmit}>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.JobRole ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.Job_Role ? 'has-error' : ''}`}>
             <input
               type="text"
               className="form-control"
-              id="JobRole"
-              name="JobRole"
+              id="Job_Role"
+              name="Job_Role"
               placeholder="Expected Job Role"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="JobRole">Expected Job Role</label>
-            {formErrors.JobRole && <div className="error-message">{formErrors.JobRole}</div>}
+            <label htmlFor="Job_Role">Expected Job Role</label>
+            {formErrors.Job_Role && <div className="error-message">{formErrors.Job_Role}</div>}
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.JobType ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.Job_Type ? 'has-error' : ''}`}>
             <input
               type="text"
               className="form-control"
-              id="JobType"
-              name="JobType"
+              id="Job_Type"
+              name="Job_Type"
               placeholder="Expected Job Type"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="JobType">Expected Job Type</label>
-            {formErrors.JobType && <div className="error-message">{formErrors.JobType}</div>}
+            <label htmlFor="Job_Type">Expected Job Type</label>
+            {formErrors.Job_Type && <div className="error-message">{formErrors.Job_Type}</div>}
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.FirstName ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.First_Name ? 'has-error' : ''}`}>
             <input
               type="text"
               className="form-control"
-              id="FirstName"
-              name="FirstName"
+              id="First_Name"
+              name="First_Name"
               placeholder="First Name"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="FirstName">First Name</label>
-            {formErrors.FirstName && <div className="error-message">{formErrors.FirstName}</div>}
+            <label htmlFor="First_Name">First Name</label>
+            {formErrors.First_Name && <div className="error-message">{formErrors.First_Name}</div>}
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.LastName ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.Last_Name ? 'has-error' : ''}`}>
             <input
               type="text"
               className="form-control"
-              id="LastName"
-              name="LastName"
+              id="Last_Name"
+              name="Last_Name"
               placeholder="Last Name"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="LastName">Last Name</label>
-            {formErrors.LastName && <div className="error-message">{formErrors.LastName}</div>}
+            <label htmlFor="Last_Name">Last Name</label>
+            {formErrors.Last_Name && <div className="error-message">{formErrors.Last_Name}</div>}
           </div>
         </div>
         <div className="col-sm-6">
@@ -188,73 +192,73 @@ function Enroll() {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.MobileNo ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.Mobile_No ? 'has-error' : ''}`}>
             <input
               type="tel"
               className="form-control"
-              id="MobileNo"
-              name="MobileNo"
+              id="Mobile_No"
+              name="Mobile_No"
               placeholder="Your mobile number with country code"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="MobileNo">Mobile Number</label>
-            {formErrors.MobileNo && <div className="error-message">{formErrors.MobileNo}</div>}
+            <label htmlFor="Mobile_No">Mobile Number (With Country Code)</label>
+            {formErrors.Mobile_No && <div className="error-message">{formErrors.Mobile_No}</div>}
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.VisaStatus ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.Visa_Status ? 'has-error' : ''}`}>
             <input
               type="text"
               className="form-control"
-              id="VisaStatus"
-              name="VisaStatus"
+              id="Visa_Status"
+              name="Visa_Status"
               placeholder="Visa Status"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="VisaStatus">Visa Status</label>
-            {formErrors.VisaStatus && <div className="error-message">{formErrors.VisaStatus}</div>}
+            <label htmlFor="Visa_Status">Visa Status</label>
+            {formErrors.Visa_Status && <div className="error-message">{formErrors.Visa_Status}</div>}
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.GithubURL ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.Github_URL ? 'has-error' : ''}`}>
             <input
               type="text"
               className="form-control"
-              id="GithubURL"
-              name="GithubURL"
+              id="Github_URL"
+              name="Github_URL"
               placeholder="Portfolio/Github URL"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="GithubURL">Portfolio/Github URL</label>
-            {formErrors.GithubURL && <div className="error-message">{formErrors.GithubURL}</div>}
+            <label htmlFor="Github_URL">Portfolio/Github URL</label>
+            {formErrors.Github_URL && <div className="error-message">{formErrors.Github_URL}</div>}
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.LimkedInURL ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.LinkedIn_URL ? 'has-error' : ''}`}>
             <input
               type="text"
               className="form-control"
-              id="LimkedInURL"
-              name="LimkedInURL"
+              id="LinkedIn_URL"
+              name="LinkedIn_URL"
               placeholder="LinkedIn URL"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="LimkedInURL">LinkedIn URL</label>
-            {formErrors.LimkedInURL && <div className="error-message">{formErrors.LimkedInURL}</div>}
+            <label htmlFor="LinkedIn_URL">LinkedIn URL</label>
+            {formErrors.LinkedIn_URL && <div className="error-message">{formErrors.LinkedIn_URL}</div>}
           </div>
         </div>
         <div className="col-sm-6">
-          <div className={`form-floating ${formErrors.NoticePeriod ? 'has-error' : ''}`}>
+          <div className={`form-floating ${formErrors.Notice_Period ? 'has-error' : ''}`}>
             <input
               type="number"
               className="form-control"
-              id="NoticePeriod"
-              name="NoticePeriod"
+              id="Notice_Period"
+              name="Notice_Period"
               placeholder="Notice Period"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="NoticePeriod">Notice Period</label>
-            {formErrors.NoticePeriod && <div className="error-message">{formErrors.NoticePeriod}</div>}
+            <label htmlFor="Notice_Period">Notice Period (In Months)</label>
+            {formErrors.Notice_Period && <div className="error-message">{formErrors.Notice_Period}</div>}
           </div>
         </div>
         <div className="col-sm-12">
@@ -262,13 +266,13 @@ function Enroll() {
           <div className="form">
             <input
               type="file"
-              className={`form-control ${formErrors.CoverLetter ? 'has-error' : ''}`}
-              id="CoverLetter"
-              name="CoverLetter"
+              className={`form-control ${formErrors.Cover_Letter ? 'has-error' : ''}`}
+              id="Cover_Letter"
+              name="Cover_Letter"
               style={{ border: '1px solid' }}
             ></input>
-            <label htmlFor="CoverLetter">Cover Letter</label>
-            {formErrors.CoverLetter && <div className="error-message">{formErrors.CoverLetter}</div>}
+            <label htmlFor="Cover_Letter">Cover Letter</label>
+            {formErrors.Cover_Letter && <div className="error-message">{formErrors.Cover_Letter}</div>}
           </div>
         </div>
         <div className="col-sm-12">
