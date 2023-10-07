@@ -129,7 +129,7 @@ function Apply() {
         if (response.ok) {
           alert("Form submitted successfully!");
           e.target.reset();
-          window.location.href = 'http://157.230.236.88:3000/';
+          window.location.href = 'https://satchiuk.com/';
           setFormErrors({});
         } else {
           alert("Form submission failed. Please try again.");
