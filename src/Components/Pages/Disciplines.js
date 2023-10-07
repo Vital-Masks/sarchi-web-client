@@ -33,10 +33,10 @@ function Discipline() {
               <li className="cards_item" key={index}>
                 <div className="card">
                   <div className="card_image">
-                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.small.url} alt={item.attributes.ExpertiseName}/>
+                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.small.url} alt={item.attributes.Expertise_Name}/>
                   </div>
                   <div className="card_content">
-                    <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.ExpertiseName}</h2>
+                    <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.Expertise_Name}</h2>
                     <p className="card_text" style={{fontFamily:'Poppins',fontSize:'20px'}}>{item.attributes.Description}</p>
                   </div>
                 </div>
