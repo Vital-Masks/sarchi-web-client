@@ -38,7 +38,7 @@ function Post() {
             if (response.ok) {
                 alert("Form submitted successfully!");
                 e.target.reset();
-                window.location.href = 'http://localhost:3000/';
+                window.location.href = 'http://157.230.236.88:3000/';
             } else {
                 alert("Form submission failed. Please try again.");
             }
