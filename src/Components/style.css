@@ -56,7 +56,7 @@
 }
 
 .copyright-style .container{
-  max-width: 1800px !important;
+  max-width: 1700px !important;
 }
 
 .rectangle-22 {
@@ -792,7 +792,6 @@ input[type="file"]::-webkit-file-upload-button{
   list-style: none;
   margin: 0;
   padding: 0;
-  
   border-radius: 50px;
 }
 
