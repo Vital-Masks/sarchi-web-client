@@ -35,7 +35,7 @@ function Sectors() {
               <li className="cards_item" key={index}>
                 <div className="card">
                   <div className="card_image">
-                      <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.formats.small.url} style={{height:'275px',width:'400px',display:'flex',maxWidth:'100%'}} alt={item.attributes.Sector_Name}/>
+                      <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.formats.small.url} alt={item.attributes.Sector_Name}/>
                   </div>
                   <div className="card_content">
                     <h2 className="card_title">{item.attributes.Sector_Name}</h2>
