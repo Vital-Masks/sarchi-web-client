@@ -79,7 +79,7 @@ function Enroll() {
       const isFormValid = validateForm(object);
   
       if (isFormValid) {
-        const apiUrl = URL.BASE_URL+"/api/applied-jobs";
+        const apiUrl = URL.BASE_URL+"/api/seeking-jobs";
   
         try {
           const response = await fetch(apiUrl, {
