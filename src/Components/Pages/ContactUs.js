@@ -19,7 +19,7 @@ function ContactUs() {
         finalData=JSON.stringify(finalData);
         
         // Construct the API endpoint URL for your Strapi server
-        const apiUrl = URL.BASE_URL+"/api/contact-uses"; // Update with your API endpoint
+        const apiUrl = URL.BASE_URL+"/api/feedback-inquiries"; // Update with your API endpoint
     
         try {
           // Make an HTTP POST request to Strapi API
