@@ -108,15 +108,17 @@ function Interview() {
                 <li className="cards_item" key={index}>
                   <div className="card">
                     <div className="card_image">
-                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.small.url} alt={item.attributes.Title}/>
+                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.thumbnail.url} style={{height:'325px',width:'500px'}} alt={item.attributes.Title}/>
                     </div>
                     <div className="card_content">
                       <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'18px'}}>{item.attributes.Date}</h2>
-                      <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.Title}</h2>
-                      <p className="card_text"style={{fontFamily:'Poppins',fontSize:'20px'}}>{item.attributes.Body}</p>
+                      <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.Title}</h2><br/>
+                      <a href={`/blog/${item.id}`}  className="btn py-2 rounded-pill text-white" type="submit" style={{background:'#111727'}}>View More</a>
                     </div>
-                  </div>
+                  </div>  
                 </li>
+
+                
               ))
             ) : (
               <p>No Results Found</p>
@@ -127,13 +129,15 @@ function Interview() {
                 <li className="cards_item" key={index}>
                   <div className="card">
                     <div className="card_image">
-                    <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.formats.small.url} alt={item.attributes.Title}/>
+                    <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.formats.thumbnail.url} style={{height:'325px',width:'500px'}} alt={item.attributes.Title}/>
                     </div>
                     <div className="card_content">
                       <h2 className="card_title">{item.attributes.Date}</h2>
-                      <h2 className="card_title">{item.attributes.Title}</h2>
-                      <p className="card_text">{item.attributes.Body}</p>
-                    </div>
+                      <h2 className="card_title">{item.attributes.Title}</h2><br/>
+                      
+                        <a href={`/blog/${item.id}`}  className="btn py-2 rounded-pill text-white" type="submit" style={{background:'#111727'}}>View More</a>
+                       
+                      </div>
                   </div>
                 </li>
               ))

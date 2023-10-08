@@ -12,6 +12,7 @@ import Apply from './Components/Pages/Apply'
 import Tutor from './Components/Pages/Tutors'
 import Discipline from './Components/Pages/Disciplines'
 import Consultant from './Components/Pages/Consultants'
+import Blog from './Components/Pages/Blog'
 import './App.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path='/tutors' element={<Tutor/>}/>
             <Route path='/offshire-it-partners' element={<Offshire/>}/>
             <Route path='/job/:jobId' element={<Job/>}/>
+            <Route path='/blog/:blogId' element={<Blog/>}/>
           </Routes>
         </Router>       
       </header>
