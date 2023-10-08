@@ -72,7 +72,6 @@ function Interview() {
                 <option value="">Select Type</option>
                 <option value="Article">Article</option>
                 <option value="Video">Video</option>
-                <option value="Link">Link</option>
               </select>
               <input
                 type="text"
@@ -108,7 +107,7 @@ function Interview() {
                 <li className="cards_item" key={index}>
                   <div className="card">
                     <div className="card_image">
-                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.thumbnail.url} style={{height:'325px',width:'500px'}} alt={item.attributes.Title}/>
+                    <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.url} style={{height:'325px',width:'500px'}} alt={item.attributes.Title}/>
                     </div>
                     <div className="card_content">
                       <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'18px'}}>{item.attributes.Date}</h2>
@@ -129,7 +128,7 @@ function Interview() {
                 <li className="cards_item" key={index}>
                   <div className="card">
                     <div className="card_image">
-                    <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.formats.thumbnail.url} style={{height:'325px',width:'500px'}} alt={item.attributes.Title}/>
+                    <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.url} style={{height:'325px',width:'500px'}} alt={item.attributes.Title}/>
                     </div>
                     <div className="card_content">
                       <h2 className="card_title">{item.attributes.Date}</h2>

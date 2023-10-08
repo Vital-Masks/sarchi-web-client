@@ -25,7 +25,7 @@ function Service() {
               <li className="cards_item" key={index}>
                 <div className="card">
                   <div className="card_image">
-                  <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.formats.small.url} alt={item.attributes.Expertise_Name}/>
+                  <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.url}  style={{height:'325px',width:'500px'}} alt={item.attributes.Expertise_Name}/>
                   </div>
                   <div className="card_content">
                     <h2 className="card_title">{item.attributes.Expertise_Name}</h2>

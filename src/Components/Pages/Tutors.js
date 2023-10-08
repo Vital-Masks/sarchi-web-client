@@ -10,7 +10,7 @@ function Tutor() {
 
   useEffect(() => {
     // Fetch data from the Strapi API when the component mounts
-    axios.get(URL.BASE_URL+'/api/tutors')
+    axios.get(URL.BASE_URL+'/api/tutors?populate=*')
       .then((response) => {
         setTutorData(response.data.data);
       })
@@ -37,7 +37,30 @@ function Tutor() {
           <p className="no-galle-road"> 
           {item.attributes.Description}
         </p>
-        <p style={{color:'#878787',fontSize:'24px',fontFamily:'Alatsi'}}>Companies Trained By {item.attributes.Tutor_Name}:</p>
+        <div className="container">
+        <div className='row'>
+        <div className='col-md-5 py-3'>
+        <div className="col-md-12 mb-2">
+            <p style={{color:'#878787',fontSize:'24px',fontFamily:'Alatsi'}}>Companies Trained By {item.attributes.Tutor_Name}:</p>
+            </div>
+        </div>
+        <div className="col-md-7 py-3">
+        <div className="col-md-12 mb-2">  
+                      {Array.isArray(item.attributes.Company_Trained.data) &&
+                        item.attributes.Company_Trained.data.length > 0 ? (
+                          item.attributes.Company_Trained.data.map((company, companyIndex) => (
+                            <img
+                              key={companyIndex}
+                              src={URL.BASE_URL+company.attributes.url}
+                              style={{ height: '100px', width: '200px' }}
+                              alt={item.attributes.Tutor_Name}
+                            />
+                          ))
+                        ) : (
+                          <p style={{color:'#878787',fontSize:'24px',fontFamily:'Alatsi'}}>No companies trained by {item.attributes.Tutor_Name} available.</p>
+                        )}
+        </div></div>
+        </div></div>
         <div className="rectangle" style={{backgroundColor: '#14141433',border: '0.5px solid',borderColor: '#707070',height: '2px',opacity: 0.5}}/>
         </div>
         ))
