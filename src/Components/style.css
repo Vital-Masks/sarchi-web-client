@@ -46,6 +46,9 @@
 
 }
 
+.offshore{
+  max-width: 1800px !important;
+}
 
 
 .footer-style .container{
@@ -833,6 +836,7 @@ input[type="file"]::-webkit-file-upload-button{
   letter-spacing: 1px;
   text-transform: capitalize;
   margin: 0px;
+  font-size: 25px;
 }
 
 .card_text {
@@ -840,6 +844,7 @@ input[type="file"]::-webkit-file-upload-button{
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;    
+  font-size: 18px;
   font-weight: 400;
 }
 .made_by{
@@ -906,7 +911,7 @@ input[type="file"]::-webkit-file-upload-button{
 }
 
 .about-header .container{
-  max-width: 1600px !important;
+  max-width: 1700px !important;
 }
 
 .home-about-header{
@@ -924,9 +929,14 @@ input[type="file"]::-webkit-file-upload-button{
   max-width: 1600px !important;
 }
 
-.about-us.container-fluid{
-  max-width: 1600px !important;
+.about-us.container.p{
+  max-width: 1800px !important;
 }
+
+.tutor{
+  width: 80vw;
+}
+
 
 .info-box {
   border-bottom: 2px solid black;
@@ -1019,10 +1029,10 @@ input[type="file"]::-webkit-file-upload-button{
 }
 
 .search-container-header{
-  max-width: 1600px !important;
+  max-width: 1700px !important;
 }
 .search-container-interview{
-  max-width: 1600px !important;
+  max-width: 1700px !important;
 }
 
 .search-container {
@@ -1047,6 +1057,7 @@ input[type="file"]::-webkit-file-upload-button{
   margin: 0 10px;
   border: 1px solid #666;
   border-radius: 5px;
+  padding-left: 10px;
   height: 40px;
   max-width: auto;
 }
@@ -1054,6 +1065,12 @@ input[type="file"]::-webkit-file-upload-button{
 .search-container select {
   margin: 0 10px;
   border: 1px solid #666;
+  padding-left: 10px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+background-position: 100%;
+background-repeat: no-repeat;
+  -webkit-appearance: none;
+  appearance: none;
   border-radius: 5px;
   height: 40px;
   max-width: auto;
@@ -1063,6 +1080,7 @@ input[type="file"]::-webkit-file-upload-button{
   margin: 0 10px;
   border: 1px solid #666;
   border-radius: 5px;
+  padding-left: 10px;
   height: 40px;
   max-width: auto;
 }
@@ -1070,6 +1088,12 @@ input[type="file"]::-webkit-file-upload-button{
 .search-container-2 select {
   margin: 0 10px;
   border: 1px solid #666;
+  padding-left: 10px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+background-position: 100%;
+background-repeat: no-repeat;
+  -webkit-appearance: none;
+  appearance: none;
   border-radius: 5px;
   height: 40px;
   max-width: auto;
@@ -1266,9 +1290,7 @@ input[type="file"]::-webkit-file-upload-button{
   width: auto;
 }
 
-.job.container {
-  max-width: 1700px !important;
-}
+
 
 .card-container{
   max-width: 1700px !important;

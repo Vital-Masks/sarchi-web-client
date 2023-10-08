@@ -19,7 +19,7 @@ function Service() {
     <div className="container-fluid">
     <h1 className="display-6 mb-4" style={{fontFamily:'Alatsi'}}>SERVICES WE OFFER</h1>
       <div className="main mb-5">
-        <ul className="cards"> 
+        <ul className="cards mb-5"> 
           {Array.isArray(expertiseData) && expertiseData.length > 0 ? (
             expertiseData.map((item, index) => (
               <li className="cards_item" key={index}>
@@ -28,8 +28,8 @@ function Service() {
                   <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.url}  style={{height:'325px',width:'500px'}} alt={item.attributes.Expertise_Name}/>
                   </div>
                   <div className="card_content">
-                    <h2 className="card_title">{item.attributes.Expertise_Name}</h2>
-                    <p className="card_text">{item.attributes.Description}</p>
+                    <h2 className="card_title py-3" >{item.attributes.Expertise_Name.toUpperCase()}</h2>
+                    <p className="card_text" style={{fontFamily:'Poppins'}}>{item.attributes.Description}</p>
                   </div>
                 </div>
               </li>
@@ -39,7 +39,7 @@ function Service() {
           )}
         </ul>
   <div className="col-12 text-center">
-                            <a href="/disciplines" className="btn py-2 rounded-pill text-white" type="submit" style={{background:'#111727'}}>View More</a>
+                            <a href="/disciplines" className="btn py-2 rounded-pill text-white" type="submit" style={{background:'#111727',height:'40px'}}>View More</a>
                         </div></div></div>
 
     </>

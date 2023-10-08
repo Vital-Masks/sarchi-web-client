@@ -84,7 +84,6 @@ function Vacancies() {
                 className="search"
                 value={searchCriteria.type}
                 onChange={handleTypeChange}
-                style={{textAlign:'center'}}
               >
                 <option value="" >Select Type</option>
                 <option value="Permanent">Permanent</option>
@@ -95,7 +94,6 @@ function Vacancies() {
                 className="search"
                 value={searchCriteria.type}
                 onChange={handleExperienceChange}
-                style={{textAlign:'center'}}
               >
                 <option value="" >Experience Level</option>
                 <option value="Senior">Senior</option>
@@ -108,7 +106,6 @@ function Vacancies() {
                 className="search"
                 placeholder="SalaryRange"
                 value={searchCriteria.salaryEstimate}
-                style={{textAlign:'center'}}
                 onChange={(e) =>
                   setSearchCriteria({ ...searchCriteria, salaryEstimate: e.target.value })
                 }
@@ -119,7 +116,6 @@ function Vacancies() {
                 className="search"
                 placeholder="Location"
                 value={searchCriteria.location}
-                style={{textAlign:'center'}}
                 onChange={(e) => setSearchCriteria({ ...searchCriteria, location: e.target.value })}
               />
               <select
@@ -127,7 +123,6 @@ function Vacancies() {
                 className="search"
                 value={searchCriteria.timing}
                 onChange={handleTimingChange}
-                style={{textAlign:'center'}}
               >
                 <option value="">Select Timing</option>
                 <option value="Full Time">Full Time</option>
@@ -137,7 +132,6 @@ function Vacancies() {
                 type="text"
                 name="searchQuery"
                 className="search"
-                style={{textAlign:'center'}}
                 placeholder="Job Role"
                 value={searchCriteria.searchQuery}
                 onChange={(e) =>
@@ -172,7 +166,7 @@ function Vacancies() {
                      <div className="container py-3">
                      <div className="row">
                      <div className="col-lg-12">
-                           <h1 className="display-4 text-black" style={{marginLeft:'10px',fontSize:'25px',marginTop:'30px',textAlign:'left',fontFamily:'Alatsi'}}>{item.attributes.Job_Role}</h1>
+                           <h1 className="display-4 text-black" style={{marginLeft:'10px',fontSize:'25px',marginTop:'30px',textAlign:'left',fontFamily:'Alatsi'}}>{item.attributes.Job_Role.toUpperCase()}</h1>
                            <div className="d-flex flex-wrap mb-2">
                               <p className="search rounded-pill text-black mr-2 mb-2 py-1" style={{marginLeft:'10px',fontSize:'15px',marginTop:'05px',background:'#ebff9d',width:'100px',textAlign:'center'}}>{item.attributes.Location}</p>
                               <p className="search rounded-pill text-black mr-2 mb-2 py-1" style={{marginLeft:'10px',fontSize:'15px',marginTop:'05px',background:'#9effe2',width:'100px',textAlign:'center'}} name='salaryRange'>{item.attributes.Min_Salary}K$-{item.attributes.Max_Salary}K$</p>

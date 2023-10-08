@@ -66,7 +66,6 @@ function Interview() {
                 name="type"
                 className="search"
                 value={searchCriteria.type}
-                style={{textAlign:'center'}}
                 onChange={handleTypeChange}
               >
                 <option value="">Select Type</option>
@@ -78,7 +77,6 @@ function Interview() {
                 className="search"
                 placeholder="Practice"
                 value={searchCriteria.practice}
-                style={{textAlign:'center'}}
                 onChange={(e) =>
                   setSearchCriteria({ ...searchCriteria, practice: e.target.value })
                 }
@@ -88,7 +86,6 @@ function Interview() {
                 className="search"
                 placeholder="Industry"
                 value={searchCriteria.industry}
-                style={{textAlign:'center'}}
                 onChange={(e) =>
                   setSearchCriteria({ ...searchCriteria, industry: e.target.value })
                 }
@@ -110,8 +107,8 @@ function Interview() {
                     <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.url} style={{height:'325px',width:'500px'}} alt={item.attributes.Title}/>
                     </div>
                     <div className="card_content">
-                      <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'18px'}}>{item.attributes.Date}</h2>
-                      <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.Title}</h2><br/>
+                      <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'18px',float:'left'}}>{item.attributes.Date}</h2><br></br>
+                      <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px',float:'left'}}>{item.attributes.Title.toUpperCase()}</h2><br></br><br/>
                       <a href={`/blog/${item.id}`}  className="btn py-2 rounded-pill text-white" type="submit" style={{background:'#111727'}}>View More</a>
                     </div>
                   </div>  

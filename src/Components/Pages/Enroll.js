@@ -94,7 +94,7 @@ function Enroll() {
           if (response.ok) {
             alert("Form submitted successfully!");
             e.target.reset();
-            window.location.href = 'http://157.230.236.88:3000/';
+            window.location.href = 'http://157.230.236.88:3000//';
             setFormErrors({});
           } else {
             alert("Form submission failed. Please try again.");
@@ -261,37 +261,53 @@ function Enroll() {
             {formErrors.Notice_Period && <div className="error-message">{formErrors.Notice_Period}</div>}
           </div>
         </div>
-        <div className="col-sm-12">
           
-          <div className="form">
-            <input
-              type="file"
-              className={`form-control ${formErrors.Cover_Letter ? 'has-error' : ''}`}
-              id="Cover_Letter"
-              name="Cover_Letter"
-              style={{ border: '1px solid' }}
-            ></input>
-            <label htmlFor="Cover_Letter">Cover Letter</label>
-            {formErrors.Cover_Letter && <div className="error-message">{formErrors.Cover_Letter}</div>}
-          </div>
-        </div>
-        <div className="col-sm-12">
-          
-          <div className="form">
-            <input
-              type="file"
-              className={`form-control ${formErrors.Resume ? 'has-error' : ''}`}
-              id="Resume"
-              name="Resume"
-              style={{ border: '1px solid' }}
-            ></input>
-            <label htmlFor="Resume">Resume</label>
-            {formErrors.Resume && <div className="error-message">{formErrors.Resume}</div>}
-          </div>
-        </div>
-        <div className="col-12 text-center">
-          <button className="btn py-2 rounded-pill text-white" type="submit" style={{ background: '#111727' }}>Apply for Job</button>
-        </div>
+        <div className="col-sm-6">
+                    
+                    <label className='mb-3' htmlFor="Cover_Letter">Cover Letter</label>
+                      <div className="form">
+                        <input
+                          type="file"
+                          className={`form-control ${
+                            formErrors.Cover_Letter ? 'has-error' : ''
+                          }`}
+                          id="Cover_Letter"
+                          name="Cover_Letter"
+                          style={{ border: '1px solid' }}
+                        ></input>
+                        {formErrors.Cover_Letter && (
+                          <div className="error-message">
+                            {formErrors.Cover_Letter}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-sm-6">
+                      
+                    <label className='mb-3' htmlFor="Resume">Resume</label>
+                      <div className="form">
+                        <input
+                          type="file"
+                          className={`form-control ${
+                            formErrors.Resume ? 'has-error' : ''
+                          }`}
+                          id="Resume"
+                          name="Resume"
+                          style={{ border: '1px solid' }}
+                        ></input>
+                        {formErrors.Resume && (
+                          <div className="error-message">{formErrors.Resume}</div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-12 text-center py-5">
+                      <button
+                        className="btn py-2 rounded-pill text-white"
+                        type="submit"
+                        style={{ background: '#111727',height:'50px' }}
+                      >
+                        Apply for Job
+                      </button></div>
       </form>
                    
                 </div>

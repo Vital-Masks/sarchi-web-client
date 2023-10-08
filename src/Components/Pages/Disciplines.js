@@ -36,8 +36,8 @@ function Discipline() {
                     <img src={URL.BASE_URL+item.attributes.Ref_Media.data.attributes.url}  style={{height:'325px',width:'500px'}} alt={item.attributes.Expertise_Name}/>
                   </div>
                   <div className="card_content">
-                    <h2 className="card_title" style={{fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.Expertise_Name}</h2>
-                    <p className="card_text" style={{fontFamily:'Poppins',fontSize:'20px'}}>{item.attributes.Description}</p>
+                    <h2 className="card_title py-3" style={{fontFamily:'Alatsi'}}>{item.attributes.Expertise_Name.toUpperCase()}</h2>
+                    <p className="card_text" style={{fontFamily:'Poppins'}}>{item.attributes.Description}</p>
                   </div>
                 </div>
               </li>

@@ -188,7 +188,7 @@ function Apply() {
               className="display-2 py-5 text-white"
               style={{ fontFamily: 'Alatsi' }}
             >
-              {jobData.attributes.Job_Role}
+              {jobData.attributes.Job_Role.toUpperCase()}
             </h1>
           </div>
         </div>
@@ -423,7 +423,9 @@ function Apply() {
                       )}
                     </div>
                   </div>
-                  <div className="col-sm-12">
+                  <div className="col-sm-6">
+                    
+                  <label className='mb-3' htmlFor="Cover_Letter">Cover Letter</label>
                     <div className="form">
                       <input
                         type="file"
@@ -434,7 +436,6 @@ function Apply() {
                         name="Cover_Letter"
                         style={{ border: '1px solid' }}
                       ></input>
-                      <label htmlFor="Cover_Letter">Cover Letter</label>
                       {formErrors.Cover_Letter && (
                         <div className="error-message">
                           {formErrors.Cover_Letter}
@@ -442,7 +443,9 @@ function Apply() {
                       )}
                     </div>
                   </div>
-                  <div className="col-sm-12">
+                  <div className="col-sm-6">
+                    
+                  <label className='mb-3' htmlFor="Resume">Resume</label>
                     <div className="form">
                       <input
                         type="file"
@@ -453,17 +456,16 @@ function Apply() {
                         name="Resume"
                         style={{ border: '1px solid' }}
                       ></input>
-                      <label htmlFor="Resume">Resume</label>
                       {formErrors.Resume && (
                         <div className="error-message">{formErrors.Resume}</div>
                       )}
                     </div>
                   </div>
-                  <div className="col-12 text-center">
+                  <div className="col-12 text-center py-5">
                     <button
                       className="btn py-2 rounded-pill text-white"
                       type="submit"
-                      style={{ background: '#111727' }}
+                      style={{ background: '#111727',height:'50px' }}
                     >
                       Apply for Job
                     </button>

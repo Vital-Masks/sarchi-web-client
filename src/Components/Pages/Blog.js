@@ -49,7 +49,7 @@ function Blog() {
         {/* <img src={URL.BASE_URL+blogData.attributes.Ref_Media.data.attributes.url} style={{height:'325px',width:'500px'}} alt={blogData.attributes.Title}/> */}
         <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight: 400}}>{blogData.attributes.Title}</p>
         <div className="py-2" >
-        <img src={URL.BASE_URL+blogData.attributes.Ref_Media.data.attributes.url} style={{height:'500px',width:'500px',marginBottom:'5px'}} alt={blogData.attributes.Title}/>
+        <img src={URL.BASE_URL+blogData.attributes.Ref_Media.data.attributes.url} style={{height:'400px',maxHeight:'100%', maxWidth:'auto',marginBottom:'5px'}} alt={blogData.attributes.Title}/>
         </div>
           <p className="no-galle-road"> 
           {blogData.attributes.Body}

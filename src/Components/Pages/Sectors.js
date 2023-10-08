@@ -38,7 +38,7 @@ function Sectors() {
                       <img src={URL.BASE_URL+item.attributes.RefMedia.data.attributes.url} style={{height:'325px',width:'500px'}}  alt={item.attributes.Sector_Name}/>
                   </div>
                   <div className="card_content">
-                    <h2 className="card_title">{item.attributes.Sector_Name}</h2>
+                    <h2 className="card_title py-3">{item.attributes.Sector_Name.toUpperCase()}</h2>
                     <p className="card_text">{item.attributes.Description}</p>
                   </div>
                 </div>
