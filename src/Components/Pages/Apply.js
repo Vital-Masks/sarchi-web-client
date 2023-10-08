@@ -86,65 +86,65 @@ function Apply() {
     console.log(e);
     // Convert form data to an object
     const formData = new FormData(e.target);
-    const fileApiUrl = URL.BASE_URL + "/api/upload";
-       const fileUploadResponse = await fetch(fileApiUrl, {
-        mode: 'no-cors',
-        method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Accept": "application/json",
-          "type": "formData"
-        },
-        body: formData, 
-      });
-      console.log(fileUploadResponse)
+    // const fileApiUrl = URL.BASE_URL + "/api/upload";
+    //    const fileUploadResponse = await fetch(fileApiUrl, {
+    //     mode: 'no-cors',
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //       "Accept": "application/json",
+    //       "type": "formData"
+    //     },
+    //     body: formData, 
+    //   });
+    //   console.log(fileUploadResponse)
       
-      if (!fileUploadResponse.ok) {
-        alert("File upload failed. Please try again.");
-        return;
-      }
-
-
-    // var object = {};
-    // formData.forEach((value, key) => (object[key] = value));
-
-
-
-    // var finalData = {};
-    // finalData.data = object;
-    // finalData = JSON.stringify(finalData);
-
-
-  
-    // // Validate the form
-    // const isFormValid = validateForm(object);
-  
-    // if (isFormValid) {
-    //   const apiUrl = URL.BASE_URL + "/api/applied-jobs";
-  
-    //   try {
-    //     // Send a POST request using axios
-    //     const response = await axios.post(apiUrl, finalData, {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Accept: "application/json",
-    //       },
-    //     });
-  
-    //     if (response.status === 200) {
-    //       alert("Form submitted successfully!");
-    //       e.target.reset();
-    //       window.location.href = 'http://localhost:3000/';
-    //       setFormErrors({});
-    //     } else {
-    //       alert("Form submission failed. Please try again.");
-    //     }
-    //   } catch (error) {
-    //     console.error("An error occurred:", error);
-    //     alert("Form submission failed. Please try again later.");
-    //     console.log(error);
+    //   if (!fileUploadResponse.ok) {
+    //     alert("File upload failed. Please try again.");
+    //     return;
     //   }
-    // }
+
+
+    var object = {};
+    formData.forEach((value, key) => (object[key] = value));
+
+
+
+    var finalData = {};
+    finalData.data = object;
+    finalData = JSON.stringify(finalData);
+
+
+  
+    // Validate the form
+    const isFormValid = validateForm(object);
+  
+    if (isFormValid) {
+      const apiUrl = URL.BASE_URL + "/api/applied-jobs";
+  
+      try {
+        // Send a POST request using axios
+        const response = await axios.post(apiUrl, finalData, {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+  
+        if (response.status === 200) {
+          alert("Form submitted successfully!");
+          e.target.reset();
+          window.location.href = 'http://localhost:3000/';
+          setFormErrors({});
+        } else {
+          alert("Form submission failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+        alert("Form submission failed. Please try again later.");
+        console.log(error);
+      }
+    }
   };
   return (
     <>
