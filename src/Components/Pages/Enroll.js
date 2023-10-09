@@ -2,10 +2,11 @@ import React, { useState }  from 'react';
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
 import URL from '../../Components/utils.json';
-
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 function Enroll() {
     const [formErrors, setFormErrors] = useState({});
- 
+    const history= useNavigate();
     const validateForm = (formData) => {
       const errors = {};
       const mobileNumberRegex = /^(?:\+\d{1,3}\s?)?[0-9]{10}$/;
@@ -77,7 +78,7 @@ function Enroll() {
   
       // Validate the form
       const isFormValid = validateForm(object);
-  
+      
       if (isFormValid) {
         const apiUrl = URL.BASE_URL+"/api/seeking-jobs";
   
@@ -92,16 +93,32 @@ function Enroll() {
           });
   
           if (response.ok) {
-            alert("Form submitted successfully!");
+            Swal.fire({
+              icon: 'success',
+              title: 'Applied!',
+              text: `Applied Successfully.`,
+              showConfirmButton: false,
+              timer: 1500
+          });
             e.target.reset();
-            window.location.href = 'http://157.230.236.88:3000/';
+            history('/')
             setFormErrors({});
           } else {
-            alert("Form submission failed. Please try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed!',
+              text: 'Form Submission Failed',
+              showConfirmButton: true
+          });
           }
         } catch (error) {
           console.error("An error occurred:", error);
-          alert("Form submission failed. Please try again later.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed!',
+            text: 'Form Submission Failed',
+            showConfirmButton: true
+        });
           console.log(error);
         }
       }
@@ -261,37 +278,53 @@ function Enroll() {
             {formErrors.Notice_Period && <div className="error-message">{formErrors.Notice_Period}</div>}
           </div>
         </div>
-        <div className="col-sm-12">
           
-          <div className="form">
-            <input
-              type="file"
-              className={`form-control ${formErrors.Cover_Letter ? 'has-error' : ''}`}
-              id="Cover_Letter"
-              name="Cover_Letter"
-              style={{ border: '1px solid' }}
-            ></input>
-            <label htmlFor="Cover_Letter">Cover Letter</label>
-            {formErrors.Cover_Letter && <div className="error-message">{formErrors.Cover_Letter}</div>}
-          </div>
-        </div>
-        <div className="col-sm-12">
-          
-          <div className="form">
-            <input
-              type="file"
-              className={`form-control ${formErrors.Resume ? 'has-error' : ''}`}
-              id="Resume"
-              name="Resume"
-              style={{ border: '1px solid' }}
-            ></input>
-            <label htmlFor="Resume">Resume</label>
-            {formErrors.Resume && <div className="error-message">{formErrors.Resume}</div>}
-          </div>
-        </div>
-        <div className="col-12 text-center">
-          <button className="btn py-2 rounded-pill text-white" type="submit" style={{ background: '#111727' }}>Apply for Job</button>
-        </div>
+        <div className="col-sm-6">
+                    
+                    <label className='mb-3' htmlFor="Cover_Letter">Cover Letter</label>
+                      <div className="form">
+                        <input
+                          type="file"
+                          className={`form-control ${
+                            formErrors.Cover_Letter ? 'has-error' : ''
+                          }`}
+                          id="Cover_Letter"
+                          name="Cover_Letter"
+                          style={{ border: '1px solid' }}
+                        ></input>
+                        {formErrors.Cover_Letter && (
+                          <div className="error-message">
+                            {formErrors.Cover_Letter}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-sm-6">
+                      
+                    <label className='mb-3' htmlFor="Resume">Resume</label>
+                      <div className="form">
+                        <input
+                          type="file"
+                          className={`form-control ${
+                            formErrors.Resume ? 'has-error' : ''
+                          }`}
+                          id="Resume"
+                          name="Resume"
+                          style={{ border: '1px solid' }}
+                        ></input>
+                        {formErrors.Resume && (
+                          <div className="error-message">{formErrors.Resume}</div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="col-12 text-center py-5">
+                      <button
+                        className="btn py-2 rounded-pill text-white"
+                        type="submit"
+                        style={{ background: '#111727',height:'50px' }}
+                      >
+                        Apply for Job
+                      </button></div>
       </form>
                    
                 </div>

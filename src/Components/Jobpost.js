@@ -72,7 +72,7 @@ function Jobpost() {
                 className="search"
                 value={searchCriteria.type}
                 onChange={handleTypeChange}
-                style={{textAlign:'center'}}
+                // style={{textAlign:'center'}}
               >
                 <option value="" >Select Type</option>
                 <option value="Permanent">Permanent</option>
@@ -83,7 +83,6 @@ function Jobpost() {
                 className="search"
                 value={searchCriteria.type}
                 onChange={handleExperienceChange}
-                style={{textAlign:'center'}}
               >
                 <option value="" >Experience Level</option>
                 <option value="Senior">Senior</option>
@@ -96,7 +95,6 @@ function Jobpost() {
                 className="search"
                 placeholder="SalaryRange"
                 value={searchCriteria.salaryEstimate}
-                style={{textAlign:'center'}}
                 onChange={(e) =>
                   setSearchCriteria({ ...searchCriteria, salaryEstimate: e.target.value })
                 }
@@ -107,7 +105,6 @@ function Jobpost() {
                 className="search"
                 placeholder="Location"
                 value={searchCriteria.location}
-                style={{textAlign:'center'}}
                 onChange={(e) => setSearchCriteria({ ...searchCriteria, location: e.target.value })}
               />
               <select
@@ -115,7 +112,6 @@ function Jobpost() {
                 className="search"
                 value={searchCriteria.timing}
                 onChange={handleTimingChange}
-                style={{textAlign:'center'}}
               >
                 <option value="">Select Timing</option>
                 <option value="Full Time">Full Time</option>
@@ -125,7 +121,6 @@ function Jobpost() {
                 type="text"
                 name="searchQuery"
                 className="search"
-                style={{textAlign:'center'}}
                 placeholder="Job Role"
                 value={searchCriteria.searchQuery}
                 onChange={(e) =>
@@ -147,19 +142,18 @@ function Jobpost() {
         </form>
       </div>
       
-    <div className="job text-black wow fadeIn">
+    <div className="job-post-container text-black wow fadeIn">
   <div className="container">
     <div className="row">
 
     {searchResultsVisible ? (
               filteredVacancyData.map((item, index) => (
-      <div className="col-md-12" key={index}>
-        <div className="box mt-4">
+        <div className="box mt-4" key={index}>
           <div className="rectangle">
-            <div className="container py-3">
+            <div className="container py-2">
               <div className="row">
-                <div className="col-lg-8" style={{maxWidth:'1200px !important'}}>
-                  <h1 className="display-4 text-black" style={{marginLeft:'10px',fontSize:'25px',marginTop:'30px',textAlign:'left',fontFamily:'Alatsi'}}>{item.attributes.Job_Role}</h1>
+                <div className="col-md-10">
+                  <h1 className="display-4 text-black" style={{marginLeft:'10px',fontSize:'25px',marginTop:'30px',textAlign:'left',fontFamily:'Alatsi'}}>{item.attributes.Job_Role.toUpperCase()}</h1>
                   <div className="d-flex flex-wrap mb-3">
                     <p
                       className="search rounded-pill text-black py-2 mr-2 mb-2 text-center"
@@ -199,7 +193,7 @@ function Jobpost() {
                     {item.attributes.Job_Description}
                   </p>
                 </div>
-                <div className="col-lg-4 text-center" >
+                <div className="col-md-2 mb-3 text-center" >
                 <a
               href={`/job/${item.id}`} // Fixed the link to use `item.id`
               className="btn btn-dark btn-lg rounded-pill mt-4"
@@ -212,15 +206,13 @@ function Jobpost() {
             </div>
           </div>
         </div>
-      </div>
        ))
        
        ) : (
          vacancyData.map((item, index) => (
-          <div className="col-md-12" key={index}>
-        <div className="box mt-4">
+        <div className="box mt-4" key={index}>
           <div className="rectangle">
-            <div className="container py-5">
+            <div className="container py-2">
               <div className="row">
                 <div className="col-lg-8">
                   <h1 className="display-4 text-black" style={{textAlign: 'left',fontFamily:'Alatsi',fontSize:'30px'}}>{item.attributes.Job_Role}</h1>
@@ -300,7 +292,6 @@ function Jobpost() {
             </div>
           </div>
         </div>
-      </div>
       ))
       )}
 

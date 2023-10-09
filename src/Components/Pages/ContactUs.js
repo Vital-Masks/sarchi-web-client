@@ -3,8 +3,12 @@ import axios from 'axios';
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
 import URL from '../../Components/utils.json';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function ContactUs() {
+  const history= useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -33,14 +37,30 @@ function ContactUs() {
           });
     
           if (response.ok) {
-            alert("Form submitted successfully!");
+            Swal.fire({
+              icon: 'success',
+              title: 'Submitted!',
+              text: `Submitted Successfully.`,
+              showConfirmButton: false,
+              timer: 2000
+          });
             e.target.reset(); // Reset the form after successful submission
           } else {
-            alert("Form submission failed. Please try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed!',
+              text: 'Form Submission Failed',
+              showConfirmButton: true
+          });
           }
         } catch (error) {
           console.error("An error occurred:", error);
-          alert("Form submission failed. Please try again later.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed!',
+            text: 'Form Submission Failed',
+            showConfirmButton: true
+        });
           console.log(error);
         }
       };
@@ -63,10 +83,10 @@ function ContactUs() {
         <div className="container py-2">
           <div className="row">
             <div className="col-md-6 py-2">
-              <span className=" text-center" style={{fontFamily:'Alatsi',fontSize:'25px',fontWeight:'300'}}>Email : info@satchiuk.com | consultant@satchiuk.com</span>
+              <span className=" text-center" style={{fontFamily:'Alatsi',fontSize:'25px',fontWeight:'300'}}>Email : info@satchiuk.com / consultant@satchiuk.com</span>
             </div>
             <div className="col-md-6 py-2">
-              <span className="text-center" style={{fontFamily:'Alatsi',fontSize:'25px',fontWeight:'300'}}>Phone : +44 02037 325 1388 | +44 07596 519 6045</span>
+              <span className="text-center" style={{fontFamily:'Alatsi',fontSize:'25px',fontWeight:'300'}}>Phone : +44 02037 325 1388 / +44 07596 519 6045</span>
             </div>
           </div>
         </div>
@@ -97,14 +117,14 @@ function ContactUs() {
                                 <label for="mobile">Telephone</label>
                             </div>
                         </div>
-                        <div className="col-12">
+                        <div className="col-12 mb-3">
                             <div className="form-floating">
                                 <textarea className="form-control" name="Message" placeholder="Leave a message here" id="message" style={{height: 130+'px', border: '1px solid'}}></textarea>
                                 <label for="message">Message</label>
                             </div>
                         </div>
                         <div className="col-12 text-center">
-                            <button className="btn py-2 rounded-pill text-white" type="submit" style={{background:'#111727'}}>Send Form</button>
+                            <button className="btn py-2 rounded-pill text-white" type="submit" style={{background:'#111727',height:'50px'}}>Send Form</button>
                         </div>
                     </form>
            

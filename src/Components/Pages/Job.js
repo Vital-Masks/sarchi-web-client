@@ -24,16 +24,16 @@ function Job() {
     <>
       <Header />
       {jobData && (
-        <div className="container-fluid page-header py-5 mb-3 wow fadeIn" data-wow-delay="0.1s">
-          <div className="container text-center py-3">
+        <div className="container-fluid job-page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+          <div className="container py-3 text-center ">
             <h1 className="display-2 py-2 text-white" style={{fontFamily:'Alatsi'}}>
-              {jobData.attributes.Job_Role}
+              {jobData.attributes.Job_Role.toUpperCase()}
             </h1>
           </div>
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                <div className="d-flex flex-wrap mb-2" style={{fontFamily:'Poppins'}}>
+                <div className="d-flex flex-wrap mb-4" style={{fontFamily:'Poppins'}}>
                   <p
                     className="search rounded-pill text-black mr-2 mb-2 py-2"
                     style={{

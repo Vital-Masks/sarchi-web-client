@@ -26,7 +26,7 @@ function Tutor() {
             <h1 className="display-2 py-5 text-white" style={{fontFamily:'Alatsi'}}>TUTORS</h1>
         </div>
     </div>
-      <div className="container-xxl py-5">
+      <div className="tutor py-5 mb-5">
     <div className="container">
       <div className="row g-5">
       {Array.isArray(tutorData) && tutorData.length > 0 ? (
@@ -41,7 +41,7 @@ function Tutor() {
         <div className='row'>
         <div className='col-md-5 py-3'>
         <div className="col-md-12 mb-2">
-            <p style={{color:'#878787',fontSize:'24px',fontFamily:'Alatsi'}}>Companies Trained By {item.attributes.Tutor_Name}:</p>
+            <p style={{color:'#878787',fontSize:'24px',fontFamily:'Alatsi',marginLeft:'-45px'}}>Companies Trained By {item.attributes.Tutor_Name}:</p>
             </div>
         </div>
         <div className="col-md-7 py-3">

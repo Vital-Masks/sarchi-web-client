@@ -46,7 +46,7 @@ function Header() {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse" >
-          <div className="ms-auto navbar-nav" style={{marginLeft:'20px'}}>
+          <div className="ms-auto navbar-nav" >
             <a href="/" className="nav-item nav-link text-white active"> 
               Home
             </a>

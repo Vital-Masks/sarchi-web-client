@@ -23,10 +23,10 @@ function Offshore() {
       <Header />
       <div className="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div className="container text-center py-5">
-            <h1 className="display-2 py-5 text-white" style={{fontFamily:'Alatsi'}}>OFFSHIRE IT PARTNERS</h1>
+            <h1 className="display-2 py-5 text-white" style={{fontFamily:'Alatsi'}}>OFFSHORE IT PARTNERS</h1>
         </div>
     </div>
-      <div className="container-xxl py-5">
+      <div className="offshore container-xxl py-5">
     <div className="container">
       <div className="row g-5">
       {Array.isArray(offshireData) && offshireData.length > 0 ? (
