@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import URL from '../../Components/utils.json';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function Post() {
     const [errors, setErrors] = useState({});
+    const history= useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,15 +39,31 @@ function Post() {
             });
 
             if (response.ok) {
-                alert("Form submitted successfully!");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Posted!',
+                    text: `Job Posted Successfully.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 e.target.reset();
-                window.location.href = 'http://157.230.236.88:3000/';
+                history('/')
             } else {
-                alert("Form submission failed. Please try again.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed!',
+                    text: 'Form Submission Failed',
+                    showConfirmButton: true
+                });
             }
         } catch (error) {
             console.error("An error occurred:", error);
-            alert("Form submission failed. Please try again later.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed!',
+                text: 'Form Submission Failed',
+                showConfirmButton: true
+            });
             console.log(error);
         }
     };

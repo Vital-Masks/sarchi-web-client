@@ -3,8 +3,12 @@ import axios from 'axios';
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
 import URL from '../../Components/utils.json';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function ContactUs() {
+  const history= useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -33,14 +37,30 @@ function ContactUs() {
           });
     
           if (response.ok) {
-            alert("Form submitted successfully!");
+            Swal.fire({
+              icon: 'success',
+              title: 'Submitted!',
+              text: `Submitted Successfully.`,
+              showConfirmButton: false,
+              timer: 2000
+          });
             e.target.reset(); // Reset the form after successful submission
           } else {
-            alert("Form submission failed. Please try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed!',
+              text: 'Form Submission Failed',
+              showConfirmButton: true
+          });
           }
         } catch (error) {
           console.error("An error occurred:", error);
-          alert("Form submission failed. Please try again later.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed!',
+            text: 'Form Submission Failed',
+            showConfirmButton: true
+        });
           console.log(error);
         }
       };

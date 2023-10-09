@@ -23,6 +23,7 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "stream": "^0.0.2",
+    "sweetalert2": "^11.7.32",
     "web-vitals": "^2.1.4"
   },
   "browser": {

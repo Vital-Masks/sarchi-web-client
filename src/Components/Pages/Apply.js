@@ -4,10 +4,13 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import axios from 'axios';
 import URL from '../../Components/utils.json';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function Apply() {
   const { jobId } = useParams();
   const [jobData, setJobData] = useState(null);
+  const history= useNavigate();
 
   useEffect(() => {
     // Fetch job data using jobId
@@ -166,11 +169,21 @@ function Apply() {
           //   setFormErrors({});
           // }
         } else {
-          alert('Form submission failed. Please try again.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed!',
+            text: 'Form Submission Failed',
+            showConfirmButton: true
+        });
         }
       } catch (error) {
         console.error('An error occurred:', error);
-        alert('Form submission failed. Please try again later.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed!',
+          text: 'Form Submission Failed',
+          showConfirmButton: true
+      });
         console.log(error);
       }
     }
