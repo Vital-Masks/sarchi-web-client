@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../../Components/Header'
-import Footer from '../../Components/Footer'
-import Service from '../../Components/Service'
-import Testimonial from '../../Components/Testimonial'
-import Banner from '../../Components/Banner'
-import Jobpost from '../../Components/Jobpost'
-import HomeAbout from '../../Components/HomeAbout'
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Service from '../../Components/Service';
+import Testimonial from '../../Components/Testimonial';
+import Banner from '../../Components/Banner';
+import Jobpost from '../../Components/Jobpost';
+import HomeAbout from '../../Components/HomeAbout';
 
 function Home() {
   return (
@@ -14,8 +14,8 @@ function Home() {
       <Banner />
       <Jobpost />
       <HomeAbout />
-      <Service/>
-      <Testimonial/>
+      <Service />
+      <Testimonial />
       <Footer />
     </>
   );
