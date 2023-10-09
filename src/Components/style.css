@@ -38,9 +38,20 @@
 
 .header .container {
   max-width: 1700px !important;
+  padding: 0 30px;
 }
+
 .header-2 .container {
   max-width: 1700px !important;
+  padding: 0 30px;
+}
+
+.header-2 img {
+  width: 200px;
+}
+
+.header-2 a {
+  font-size: 1.15rem !important;
 }
 
 .offshore {
