@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 function Apply() {
   const { jobId } = useParams();
   const [jobData, setJobData] = useState(null);
-  const history= useNavigate();
+  const history = useNavigate();
 
   useEffect(() => {
     // Fetch job data using jobId
@@ -122,30 +122,13 @@ function Apply() {
           // formData2.append('field', 'CoverLetter');
           formData2.append('files', FILE);
 
-          // let config = {
-          //   mode: 'no-cors',
-          //   method: 'post',
-          //   maxBodyLength: Infinity,
-          //   url: URL.BASE_URL + '/api/upload',
-          //   headers: {
-          //     'Content-Type': 'multipart/form-data',
-          //     Accept: 'application/json',
-          //     type: 'formData',
-          //   },
-          //   data: formData2,
-          // };
+          console.log('>>', formData2.get('files'));
 
-          const response2 = await axios.post(
-            URL.BASE_URL + '/api/upload',
-            formData2,
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                type: 'formData',
-              },
-            }
-          );
+          await axios.post(URL.BASE_URL + '/api/upload', formData2, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
 
           // const fileApiUrl = URL.BASE_URL + '/api/upload';
           // const fileUploadResponse = await fetch(fileApiUrl, {
@@ -173,8 +156,8 @@ function Apply() {
             icon: 'error',
             title: 'Failed!',
             text: 'Form Submission Failed',
-            showConfirmButton: true
-        });
+            showConfirmButton: true,
+          });
         }
       } catch (error) {
         console.error('An error occurred:', error);
@@ -182,8 +165,8 @@ function Apply() {
           icon: 'error',
           title: 'Failed!',
           text: 'Form Submission Failed',
-          showConfirmButton: true
-      });
+          showConfirmButton: true,
+        });
         console.log(error);
       }
     }
@@ -437,8 +420,9 @@ function Apply() {
                     </div>
                   </div>
                   <div className="col-sm-6">
-                    
-                  <label className='mb-3' htmlFor="Cover_Letter">Cover Letter</label>
+                    <label className="mb-3" htmlFor="Cover_Letter">
+                      Cover Letter
+                    </label>
                     <div className="form">
                       <input
                         type="file"
@@ -457,8 +441,9 @@ function Apply() {
                     </div>
                   </div>
                   <div className="col-sm-6">
-                    
-                  <label className='mb-3' htmlFor="Resume">Resume</label>
+                    <label className="mb-3" htmlFor="Resume">
+                      Resume
+                    </label>
                     <div className="form">
                       <input
                         type="file"
@@ -478,7 +463,7 @@ function Apply() {
                     <button
                       className="btn py-2 rounded-pill text-white"
                       type="submit"
-                      style={{ background: '#111727',height:'50px' }}
+                      style={{ background: '#111727', height: '50px' }}
                     >
                       Apply for Job
                     </button>

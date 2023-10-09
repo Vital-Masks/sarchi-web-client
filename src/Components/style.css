@@ -4,7 +4,6 @@
   overflow: hidden;
   position: relative;
   width: 1920px;
-  
 }
 
 .logoImage {
@@ -19,19 +18,19 @@
 }
 
 .word-2 {
-  margin-top:75px; 
+  margin-top: 75px;
   color: #9b9b9b;
   font-family: 'Poppins', Helvetica;
   font-size: 24px;
   font-weight: 400;
-  left:482px;
+  left: 482px;
   letter-spacing: 0;
   line-height: 30px;
-  text-align: 'center'
+  text-align: 'center';
 }
 
-.header{
-  background:'white';
+.header {
+  background: 'white';
   font-size: 21px;
   line-height: 30px;
   font-family: 'Poppins';
@@ -39,21 +38,20 @@
 
 .header .container {
   max-width: 1700px !important;
-
 }
 .header-2 .container {
   max-width: 1700px !important;
 }
 
-.offshore{
+.offshore {
   max-width: 1800px !important;
 }
 
-.footer-style .container{
+.footer-style .container {
   max-width: 1800px !important;
 }
 
-.copyright-style .container{
+.copyright-style .container {
   max-width: 1700px !important;
 }
 
@@ -72,7 +70,7 @@
 /*** Navbar ***/
 .sticky-top {
   top: -100px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .navbar .navbar-nav .nav-link {
@@ -92,49 +90,47 @@
 
 .navbar .dropdown-toggle::after {
   border: none;
-  content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  content: '\f107';
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   vertical-align: middle;
   margin-left: 8px;
 }
 
 @media (max-width: 991.98px) {
-  .navbar .navbar-nav .nav-link  {
-      margin-right: 0;
-      padding: 10px 0;
+  .navbar .navbar-nav .nav-link {
+    margin-right: 0;
+    padding: 10px 0;
   }
 
   .navbar .navbar-nav {
-      margin-top: 15px;
-      border-top: 1px solid #EEEEEE;
+    margin-top: 15px;
+    border-top: 1px solid #eeeeee;
   }
-
 }
 
 @media (min-width: 992px) {
-  
   .navbar .nav-item .dropdown-menu {
-      display: block;
-      border: none;
-      margin-top: 0;
-      top: 150%;
-      opacity: 0;
-      visibility: hidden;
-      transition: .5s;
+    display: block;
+    border: none;
+    margin-top: 0;
+    top: 150%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
   }
 
   .navbar .nav-item:hover .dropdown-menu {
-      top: 100%;
-      visibility: visible;
-      transition: .5s;
-      opacity: 1;
+    top: 100%;
+    visibility: visible;
+    transition: 0.5s;
+    opacity: 1;
   }
 }
 
 /*** Footer ***/
 .footer {
-  color: #B0B9AE;
+  color: #b0b9ae;
 }
 
 .footer .btn.btn-link {
@@ -142,16 +138,16 @@
   margin-bottom: 5px;
   padding: 0;
   text-align: left;
-  color: #B0B9AE;
+  color: #b0b9ae;
   font-weight: normal;
   text-transform: capitalize;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .footer .btn.btn-link::before {
   position: relative;
-  content: "\f105";
-  font-family: "Font Awesome 5 Free";
+  content: '\f105';
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   margin-right: 10px;
 }
@@ -163,7 +159,7 @@
 }
 
 .copyright {
-  color: #B0B9AE;
+  color: #b0b9ae;
 }
 
 .copyright {
@@ -174,9 +170,7 @@
   color: var(--primary) !important;
 }
 
-
 /*** About Us ***/
-
 
 .home .div-2 {
   background-color: #ffffff;
@@ -206,7 +200,7 @@
 
 .CONCERTS-near-you {
   color: #ffffff;
-  font-family: "Alatsi", Helvetica;
+  font-family: 'Alatsi', Helvetica;
   font-size: 60px;
   font-weight: 400;
   left: 838px;
@@ -240,7 +234,7 @@
 .login {
   -webkit-text-stroke: 1px #707070;
   color: #ffffff;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 24px;
   font-weight: 500;
   left: 1405px;
@@ -255,7 +249,7 @@
 .login-2 {
   -webkit-text-stroke: 1px #707070;
   color: #ffffff;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 24px;
   font-weight: 500;
   left: 1667px;
@@ -269,7 +263,7 @@
 
 .text-wrapper-2 {
   color: #479bff;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 24px;
   font-weight: 400;
   left: 488px;
@@ -283,7 +277,7 @@
 
 .sports {
   color: #e4e4e4;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 24px;
   font-weight: 400;
   left: 1244px;
@@ -368,7 +362,7 @@
 
 .endless {
   color: #e4e4e4;
-  font-family: "Alatsi", Helvetica;
+  font-family: 'Alatsi', Helvetica;
   font-size: 60px;
   font-weight: 400;
   left: 144px;
@@ -392,7 +386,7 @@
 
 .BOOK-NOW {
   color: #040404;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 24px;
   font-weight: 600;
   left: 1592px;
@@ -406,7 +400,7 @@
 
 .copyrights-all {
   color: #ffffff;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 18px;
   font-weight: 400;
   left: 80px;
@@ -420,7 +414,7 @@
 
 .follow-us {
   color: #ffffff;
-  font-family: "Agency FB-Bold", Helvetica;
+  font-family: 'Agency FB-Bold', Helvetica;
   font-size: 22px;
   font-weight: 700;
   left: 1622px;
@@ -493,12 +487,11 @@
 
 .no-galle-road {
   color: #0a0d14;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 21px;
   font-weight: 300;
   letter-spacing: 0;
 }
-
 
 .overlap-5 {
   background-color: #ececec;
@@ -567,7 +560,7 @@
 
 .CONCERTS-near-you-2 {
   color: #0a0d14;
-  font-family: "Alatsi", Helvetica;
+  font-family: 'Alatsi', Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 22px;
@@ -620,7 +613,7 @@
 
 .p {
   color: #0a0d14;
-  font-family: "Alatsi", Helvetica;
+  font-family: 'Alatsi', Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 47px;
@@ -642,7 +635,7 @@
 
 .CONCERTS-near-you-3 {
   color: #0a0d14;
-  font-family: "Alatsi", Helvetica;
+  font-family: 'Alatsi', Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 16px;
@@ -665,7 +658,7 @@
 
 .no-galle-road-2 {
   color: #464646;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 21px;
   font-weight: 400;
   left: 1625px;
@@ -679,7 +672,7 @@
 
 .no-galle-road-3 {
   color: #464646;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 21px;
   font-weight: 400;
   left: 1349px;
@@ -693,7 +686,7 @@
 
 .no-galle-road-4 {
   color: #464646;
-  font-family: "Poppins", Helvetica;
+  font-family: 'Poppins', Helvetica;
   font-size: 21px;
   font-weight: 400;
   left: 113px;
@@ -741,9 +734,6 @@
   width: 36px;
 }
 
-
-
-
 /** New **/
 /* Font */
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
@@ -755,18 +745,16 @@
   box-sizing: border-box;
 }
 
-
-
-.main{
+.main {
   margin: 0 auto;
   margin-top: 2em;
   max-width: 1600px !important;
 }
 
 h1 {
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
 }
 
 img {
@@ -775,14 +763,13 @@ img {
   vertical-align: middle;
 }
 
-input[type="file"]{
-  height:50px;
+input[type='file'] {
+  height: 50px;
 }
 
-input[type="file"]::-webkit-file-upload-button{
-  height:50px;
+input[type='file']::-webkit-file-upload-button {
+  height: 50px;
 }
-
 
 .cards {
   display: flex;
@@ -820,10 +807,10 @@ input[type="file"]::-webkit-file-upload-button{
 
 .card_content {
   padding: 1rem;
-  background:  #d9d9d94c;
+  background: #d9d9d94c;
   text-align: center;
-  min-height:100%;
-  height:auto;
+  min-height: 100%;
+  height: auto;
 }
 
 .card_title {
@@ -840,11 +827,11 @@ input[type="file"]::-webkit-file-upload-button{
   color: #000000;
   font-size: 0.875rem;
   line-height: 1.5;
-  margin-bottom: 1.25rem;    
+  margin-bottom: 1.25rem;
   font-size: 18px;
   font-weight: 400;
 }
-.made_by{
+.made_by {
   font-weight: 400;
   font-size: 13px;
   margin-top: 35px;
@@ -859,7 +846,7 @@ input[type="file"]::-webkit-file-upload-button{
   bottom: 0;
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, .1);
+  background: rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 
@@ -879,20 +866,22 @@ input[type="file"]::-webkit-file-upload-button{
 
 @media (max-width: 768px) {
   #header-carousel .carousel-item {
-      position: relative;
-      min-height: 450px;
+    position: relative;
+    min-height: 450px;
   }
-  
+
   #header-carousel .carousel-item img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
 .page-header {
-  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)), url('https://c.animaapp.com/svCZZfgz/img/image-2.png') center center no-repeat;
+  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)),
+    url('https://c.animaapp.com/svCZZfgz/img/image-2.png') center center
+      no-repeat;
   background-size: cover;
   height: 367px;
   object-fit: cover;
@@ -900,7 +889,9 @@ input[type="file"]::-webkit-file-upload-button{
 }
 
 .job-page-header {
-  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)), url('https://c.animaapp.com/svCZZfgz/img/image-2.png') center center no-repeat;
+  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)),
+    url('https://c.animaapp.com/svCZZfgz/img/image-2.png') center center
+      no-repeat;
   background-size: cover;
   height: 367px;
   object-fit: cover;
@@ -908,40 +899,38 @@ input[type="file"]::-webkit-file-upload-button{
 }
 
 .about-header {
-  background: rgba(217, 217, 217, 0.30);
+  background: rgba(217, 217, 217, 0.3);
   min-height: 140px;
   display: flex;
-	flex-direction: column;
-  
+  flex-direction: column;
 }
 
-.about-header .container{
+.about-header .container {
   max-width: 1700px !important;
 }
 
-.home-about-header{
-  background: rgba(217, 217, 217, 0.30);
+.home-about-header {
+  background: rgba(217, 217, 217, 0.3);
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   height: auto;
 }
 
-.home-about-header .container{
+.home-about-header .container {
   max-width: 1600px !important;
 }
 
-.testimonials-container.container{
+.testimonials-container.container {
   max-width: 1600px !important;
 }
 
-.about-us.container.p{
+.about-us.container.p {
   max-width: 1800px !important;
 }
 
-.tutor{
+.tutor {
   width: 80vw;
 }
-
 
 .info-box {
   border-bottom: 2px solid black;
@@ -956,7 +945,7 @@ input[type="file"]::-webkit-file-upload-button{
   display: block;
 }
 
-.page-header .breadcrumb-item+.breadcrumb-item::before {
+.page-header .breadcrumb-item + .breadcrumb-item::before {
   color: var(--light);
 }
 
@@ -967,14 +956,18 @@ input[type="file"]::-webkit-file-upload-button{
 }
 
 .page-footer {
-  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)), url('https://c.animaapp.com/svCZZfgz/img/nopath---copy--2-.png') center center no-repeat;
+  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)),
+    url('https://c.animaapp.com/svCZZfgz/img/nopath---copy--2-.png') center
+      center no-repeat;
   background-size: cover;
   object-fit: cover;
   overflow: hidden;
 }
 
 .container-fluid.page-banner {
-  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)), url('https://c.animaapp.com/ScwGJKWM/img/image-1.png') center center no-repeat; 
+  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)),
+    url('https://c.animaapp.com/ScwGJKWM/img/image-1.png') center center
+      no-repeat;
   background-size: cover;
   object-fit: cover;
   height: 800px;
@@ -984,7 +977,6 @@ input[type="file"]::-webkit-file-upload-button{
   text-align: center;
   padding: 0;
   margin-bottom: 5rem;
- 
 }
 
 .banner-container {
@@ -999,28 +991,23 @@ input[type="file"]::-webkit-file-upload-button{
   line-height: 1.2;
 }
 
-
 /* Responsive styles for smaller screens */
 @media (max-width: 767px) {
-
   .page-banner h1 {
     font-size: 50px; /* Adjust the font size as needed for smaller screens */
     margin-top: 20px; /* Adjust the margin-top as needed for smaller screens */
   }
 
-  .job-page-header{
+  .job-page-header {
     height: 550px;
   }
-
 }
-
 
 /**Search**/
 /* Large screens */
 .search-container-header {
   display: flex;
   flex-direction: column;
-  width: 900px;
   background: #d9d9d94c;
   margin: 0 auto;
   padding: 16px;
@@ -1037,10 +1024,7 @@ input[type="file"]::-webkit-file-upload-button{
   margin: 18px 0;
 }
 
-.search-container-header{
-  max-width: 1700px !important;
-}
-.search-container-interview{
+.search-container-interview {
   max-width: 1700px !important;
 }
 
@@ -1076,8 +1060,8 @@ input[type="file"]::-webkit-file-upload-button{
   border: 1px solid #666;
   padding-left: 10px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
-background-position: 100%;
-background-repeat: no-repeat;
+  background-position: 100%;
+  background-repeat: no-repeat;
   -webkit-appearance: none;
   appearance: none;
   border-radius: 5px;
@@ -1099,8 +1083,8 @@ background-repeat: no-repeat;
   border: 1px solid #666;
   padding-left: 10px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
-background-position: 100%;
-background-repeat: no-repeat;
+  background-position: 100%;
+  background-repeat: no-repeat;
   -webkit-appearance: none;
   appearance: none;
   border-radius: 5px;
@@ -1120,26 +1104,21 @@ background-repeat: no-repeat;
   flex: 1 1 auto;
 }
 
-
 /* Responsive mobile screens */
 @media all AND (max-width: 700px) {
   .search-container-header {
     background-color: #fff;
-    
   }
   .search-container-interview {
     background-color: #fff;
-    
   }
   .search-container {
     flex-direction: column;
     align-items: stretch;
-    
   }
   .search-container-2 {
     flex-direction: column;
     align-items: stretch;
-    
   }
 
   .search-container input {
@@ -1161,9 +1140,7 @@ background-repeat: no-repeat;
     margin: 4px 0;
     max-width: none;
   }
-
 }
-
 
 /* .search-container-header {
   flex-direction: column;
@@ -1294,14 +1271,11 @@ background-repeat: no-repeat;
     align-self: auto;
 } */
 
-
 .box {
   width: auto;
 }
 
-
-
-.card-container{
+.card-container {
   max-width: 1700px !important;
 }
 
@@ -1324,9 +1298,7 @@ background-repeat: no-repeat;
   align-items: flex-start;
 }
 
-
 /**home-about**/
-
 
 .rectangle-75 {
   background-color: #d9d9d94c;
@@ -1344,7 +1316,7 @@ background-repeat: no-repeat;
 
 .rectangle-75 .label-75 .CONCERTS-near-you-75 {
   color: #0a0d14;
-  font-family: "Alatsi-Regular", Helvetica;
+  font-family: 'Alatsi-Regular', Helvetica;
   font-size: 50px;
   font-weight: 400;
   left: 142px;
@@ -1362,7 +1334,7 @@ background-repeat: no-repeat;
 
 .para .no-galle-road-75 {
   color: #242424;
-  font-family: "Poppins-Light", Helvetica;
+  font-family: 'Poppins-Light', Helvetica;
   font-size: 21px;
   font-weight: 300;
   left: 142px;
@@ -1518,7 +1490,7 @@ background-repeat: no-repeat;
 
 .label-77 .CONCERTS-near-you-77 {
   color: #0a0d14;
-  font-family: "Alatsi-Regular", Helvetica;
+  font-family: 'Alatsi-Regular', Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 1365px;
@@ -1537,7 +1509,7 @@ background-repeat: no-repeat;
 
 .label-78 .CONCERTS-near-you-78 {
   color: #0a0d14;
-  font-family: "Alatsi-Regular", Helvetica;
+  font-family: 'Alatsi-Regular', Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 1365px;
@@ -1556,7 +1528,7 @@ background-repeat: no-repeat;
 
 .label-79 .CONCERTS-near-you-79 {
   color: #0a0d14;
-  font-family: "Alatsi-Regular", Helvetica;
+  font-family: 'Alatsi-Regular', Helvetica;
   font-size: 30px;
   font-weight: 400;
   left: 1365px;
@@ -1569,15 +1541,14 @@ background-repeat: no-repeat;
 }
 
 .home-header {
-  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)), url('https://c.animaapp.com/ScwGJKWM/img/image-9.png') center center no-repeat;
+  background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(8, 8, 8, 0.8)),
+    url('https://c.animaapp.com/ScwGJKWM/img/image-9.png') center center
+      no-repeat;
   background-size: cover;
   height: 584px;
   object-fit: cover;
   overflow: hidden;
 }
-
-
-
 
 /**Testimonial**/
 /* Update CSS to display 3 testimonials and highlight the center one */
@@ -1590,7 +1561,6 @@ background-repeat: no-repeat;
   flex-direction: column;
   align-items: center; /* Center-align testimonials */
 }
-
 
 .testimonials {
   display: flex;
@@ -1614,7 +1584,7 @@ background-repeat: no-repeat;
 }
 
 a.nav-link.text-white.active:hover {
-  color: #489CFF !important;
+  color: #489cff !important;
 }
 
 .testimonial h3 {
@@ -1645,7 +1615,8 @@ a.nav-link.text-white.active:hover {
   }
 }
 
-
-
-
-
+.custom-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
