@@ -3,8 +3,8 @@ import React from 'react';
 function HomeAbout() {
   return (
     <>
-      <div className="container-fluid home-about-header py-3 wow fadeIn">
-        <div className="custom-container py-3 mb-3">
+      <div className="custom-container home-about-header py-3 wow fadeIn">
+        <div className="py-3 mb-3">
           <div className="row">
             <div className="col-lg-8">
               <div className="col-md-12 py-5 mb-5">
@@ -67,7 +67,7 @@ function HomeAbout() {
           </div>
         </div>
       </div>
-      <div className="col-12">
+      <div className=" col-12">
         <div
           className="container-fluid home-header py-5 wow fadeIn"
           data-wow-delay="0.1s"

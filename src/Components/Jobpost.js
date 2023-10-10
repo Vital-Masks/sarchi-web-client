@@ -69,86 +69,87 @@ function Jobpost() {
     setSearchCriteria({ ...searchCriteria, timing: event.target.value });
   };
   return (
-    <>
-      <div
-        className="search-container-header py-3 mb-3"
-        style={{ borderRadius: '25px' }}
-      >
-        <form>
-          <div className="wrapper">
-            <div className="search-container ">
-              <select
-                name="jobType"
-                className="search"
-                value={searchCriteria.type}
-                onChange={handleTypeChange}
-                // style={{textAlign:'center'}}
-              >
-                <option value="">Select Type</option>
-                <option value="Permanent">Permanent</option>
-                <option value="Contract">Contract</option>
-              </select>
-              <select
-                name="experienceLevel"
-                className="search"
-                value={searchCriteria.type}
-                onChange={handleExperienceChange}
-              >
-                <option value="">Experience Level</option>
-                <option value="Senior">Senior</option>
-                <option value="Associate">Associate</option>
-                <option value="Intern">Intern</option>
-              </select>
-              <input
-                type="text"
-                name="salaryEstimate"
-                className="search"
-                placeholder="SalaryRange"
-                value={searchCriteria.salaryEstimate}
-                onChange={(e) =>
-                  setSearchCriteria({
-                    ...searchCriteria,
-                    salaryEstimate: e.target.value,
-                  })
-                }
-              />
-              <input
-                type="text"
-                name="location"
-                className="search"
-                placeholder="Location"
-                value={searchCriteria.location}
-                onChange={(e) =>
-                  setSearchCriteria({
-                    ...searchCriteria,
-                    location: e.target.value,
-                  })
-                }
-              />
-              <select
-                name="timing"
-                className="search"
-                value={searchCriteria.timing}
-                onChange={handleTimingChange}
-              >
-                <option value="">Select Timing</option>
-                <option value="Full Time">Full Time</option>
-                <option value="Part Time">Part Time</option>
-              </select>
-              <input
-                type="text"
-                name="searchQuery"
-                className="search"
-                placeholder="Job Role"
-                value={searchCriteria.searchQuery}
-                onChange={(e) =>
-                  setSearchCriteria({
-                    ...searchCriteria,
-                    searchQuery: e.target.value,
-                  })
-                }
-              />
-              {/* <div className="search-container rounded-pill">
+    <div>
+      <div className="custom-container">
+        <div
+          className="search-container-header py-3 mb-3"
+          style={{ borderRadius: '25px' }}
+        >
+          <form>
+            <div className="wrapper">
+              <div className="search-container ">
+                <select
+                  name="jobType"
+                  className="search"
+                  value={searchCriteria.type}
+                  onChange={handleTypeChange}
+                  // style={{textAlign:'center'}}
+                >
+                  <option value="">Select Type</option>
+                  <option value="Permanent">Permanent</option>
+                  <option value="Contract">Contract</option>
+                </select>
+                <select
+                  name="experienceLevel"
+                  className="search"
+                  value={searchCriteria.type}
+                  onChange={handleExperienceChange}
+                >
+                  <option value="">Experience Level</option>
+                  <option value="Senior">Senior</option>
+                  <option value="Associate">Associate</option>
+                  <option value="Intern">Intern</option>
+                </select>
+                <input
+                  type="text"
+                  name="salaryEstimate"
+                  className="search"
+                  placeholder="SalaryRange"
+                  value={searchCriteria.salaryEstimate}
+                  onChange={(e) =>
+                    setSearchCriteria({
+                      ...searchCriteria,
+                      salaryEstimate: e.target.value,
+                    })
+                  }
+                />
+                <input
+                  type="text"
+                  name="location"
+                  className="search"
+                  placeholder="Location"
+                  value={searchCriteria.location}
+                  onChange={(e) =>
+                    setSearchCriteria({
+                      ...searchCriteria,
+                      location: e.target.value,
+                    })
+                  }
+                />
+                <select
+                  name="timing"
+                  className="search"
+                  value={searchCriteria.timing}
+                  onChange={handleTimingChange}
+                >
+                  <option value="">Select Timing</option>
+                  <option value="Full Time">Full Time</option>
+                  <option value="Part Time">Part Time</option>
+                </select>
+                <input
+                  type="text"
+                  name="searchQuery"
+                  className="search"
+                  placeholder="Job Role"
+                  value={searchCriteria.searchQuery}
+                  onChange={(e) =>
+                    setSearchCriteria({
+                      ...searchCriteria,
+                      searchQuery: e.target.value,
+                    })
+                  }
+                />
+                {/* <div className="search-container rounded-pill">
                 <button
                   type="button"
                   className="rounded-pill py-2 px-3 text-white text-center"
@@ -158,13 +159,14 @@ function Jobpost() {
                   SEARCH
                 </button>
               </div> */}
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
-      <div className="job-post text-black wow fadeIn">
-        <div className="container">
+      <div className="custom-container">
+        <div className="job-post text-black wow fadeIn">
           <div className="row">
             {searchResultsVisible
               ? filteredVacancyData.map((item, index) => (
@@ -398,7 +400,7 @@ function Jobpost() {
           View More
         </a>
       </div>
-    </>
+    </div>
   );
 }
 

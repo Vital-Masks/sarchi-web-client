@@ -916,10 +916,6 @@ input[type='file']::-webkit-file-upload-button {
   flex-direction: column;
 }
 
-.about-header .container {
-  max-width: 1700px !important;
-}
-
 .home-about-header {
   background: rgba(217, 217, 217, 0.3);
   display: flex;
@@ -1022,7 +1018,7 @@ input[type='file']::-webkit-file-upload-button {
   background: #d9d9d94c;
   margin: 0 auto;
   padding: 16px;
-  max-width: 1300px !important;
+  /* max-width: 1300px !important; */
 }
 .search-container-interview {
   display: flex;
@@ -1628,7 +1624,7 @@ a.nav-link.text-white.active:hover {
 }
 
 .custom-container {
-  max-width: 1700px !important;
+  max-width: 1800px !important;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 30px;
 }
