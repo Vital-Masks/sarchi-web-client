@@ -18,7 +18,7 @@ function Service() {
   return (
     <>
       <div className="custom-container">
-        <h1 className="display-6 mb-4" style={{ fontFamily: 'Alatsi' }}>
+        <h1 className="display-6 py-5" style={{ fontFamily: 'Alatsi' }}>
           SERVICES WE OFFER
         </h1>
         <div className="main mb-5">

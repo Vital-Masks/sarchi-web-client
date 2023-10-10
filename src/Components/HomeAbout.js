@@ -3,8 +3,8 @@ import React from 'react';
 function HomeAbout() {
   return (
     <>
-      <div className="custom-container home-about-header py-3 wow fadeIn">
-        <div className="py-3 mb-3">
+      <div className="home-about-header py-3 wow fadeIn">
+        <div className="container py-3 mb-3">
           <div className="row">
             <div className="col-lg-8">
               <div className="col-md-12 py-5 mb-5">
@@ -75,22 +75,22 @@ function HomeAbout() {
           <div className="container text-center py-5"></div>
         </div>
       </div>
-      <div className="about-header py-3 mb-5 wow fadeIn">
-        <div className="container">
+      <div className="about-header  py-3 wow fadeIn">
+        <div className="" style={{ padding: '0 50px' }}>
           <div className="row">
             <div className="col-md-4 py-3">
               <span className="info-box text-center">
-                DISCOVER NEW OPPORTUNITIES
+                50 + EMPLOYEES WORLDWIDE
               </span>
             </div>
             <div className="col-md-4 py-3">
               <span className="info-box text-center">
-                GET INVITED TO APPLY TO JOBS
+                12 + YEARS OF EXPERIENCE
               </span>
             </div>
             <div className="col-md-4 py-3">
               <span className="info-box text-center">
-                SAVE TIME WITH 1-CLICK APPLY
+                98% SATISFIED CLIENTS
               </span>
             </div>
           </div>

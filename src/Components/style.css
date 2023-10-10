@@ -924,11 +924,11 @@ input[type='file']::-webkit-file-upload-button {
 }
 
 .home-about-header .container {
-  max-width: 1600px !important;
+  max-width: 1700px !important;
 }
 
 .testimonials-container.container {
-  max-width: 1600px !important;
+  max-width: 1800px !important;
 }
 
 .about-us.container.p {
@@ -1018,7 +1018,6 @@ input[type='file']::-webkit-file-upload-button {
   background: #d9d9d94c;
   margin: 0 auto;
   padding: 16px;
-  /* max-width: 1300px !important; */
 }
 .search-container-interview {
   display: flex;
@@ -1628,3 +1627,10 @@ a.nav-link.text-white.active:hover {
   margin: 0 auto;
   padding: 0 30px;
 }
+
+.custom-search-container {
+  max-width: 1800px !important;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+

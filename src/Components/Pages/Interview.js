@@ -113,7 +113,7 @@ function Interview() {
         </div>
       </div>
 
-      <div className=" mb-5" style={{ padding: '0 30px' }}>
+      <div className="custom-container mb-5" >
         <ul className="cards">
           {showFilteredData ? (
             filteredInterviewData.length > 0 ? (
