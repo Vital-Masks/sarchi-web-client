@@ -75,8 +75,8 @@ function HomeAbout() {
           <div className="container text-center py-5"></div>
         </div>
       </div>
-      <div className="container-fluid about-header py-3 mb-5 wow fadeIn">
-        <div className="custom-container">
+      <div className="about-header py-3 mb-5 wow fadeIn">
+        <div className="container">
           <div className="row">
             <div className="col-md-4 py-3">
               <span className="info-box text-center">

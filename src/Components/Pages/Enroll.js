@@ -3,6 +3,7 @@ import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
 import URL from '../../Components/utils.json';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 function Enroll() {
     const [formErrors, setFormErrors] = useState({});
@@ -68,31 +69,49 @@ function Enroll() {
     const handleSubmit = async (e) => {
       e.preventDefault();
   
+      // Convert form data to an object
       const formData = new FormData(e.target);
+  
       var object = {};
       formData.forEach((value, key) => (object[key] = value));
-      console.log(object);
+  
       var finalData = {};
       finalData.data = object;
       finalData = JSON.stringify(finalData);
   
       // Validate the form
       const isFormValid = validateForm(object);
-      
+  
       if (isFormValid) {
-        const apiUrl = URL.BASE_URL+"/api/seeking-jobs";
+        const apiUrl = URL.BASE_URL + '/api/seeking-jobs';
   
         try {
-          const response = await fetch(apiUrl, {
-            method: "POST",
-            body: finalData,
+          // Send a POST request using axios
+          const response = await axios.post(apiUrl, finalData, {
             headers: {
               'Content-Type': 'application/json',
-              Accept: 'application/json'
+              Accept: 'application/json',
             },
           });
   
-          if (response.ok) {
+          if (response.status === 200) {
+            const FORM_ID = response.data.data.id;
+            const FILE = e.target.Resume.files[0];
+            console.log('file ', FILE);
+            const formData2 = new FormData();
+  
+            formData2.append('ref', 'api::applied-job.applied-job');
+            formData2.append('refId', FORM_ID);
+            // formData2.append('field', 'CoverLetter');
+            formData2.append('files', FILE);
+  
+            console.log('>>', formData2.get('files'));
+  
+            await axios.post(URL.BASE_URL + '/api/upload', formData2, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            })
             Swal.fire({
               icon: 'success',
               title: 'Applied!',
@@ -108,17 +127,17 @@ function Enroll() {
               icon: 'error',
               title: 'Failed!',
               text: 'Form Submission Failed',
-              showConfirmButton: true
-          });
+              showConfirmButton: true,
+            });
           }
         } catch (error) {
-          console.error("An error occurred:", error);
+          console.error('An error occurred:', error);
           Swal.fire({
             icon: 'error',
             title: 'Failed!',
             text: 'Form Submission Failed',
-            showConfirmButton: true
-        });
+            showConfirmButton: true,
+          });
           console.log(error);
         }
       }
@@ -281,7 +300,7 @@ function Enroll() {
           
         <div className="col-sm-6">
                     
-                    <label className='mb-3' htmlFor="Cover_Letter">Cover Letter</label>
+                    <label className='mb-3' htmlFor="Cover_Letter">Cover Letter (Max: 2mb)</label>
                       <div className="form">
                         <input
                           type="file"
@@ -301,7 +320,7 @@ function Enroll() {
                     </div>
                     <div className="col-sm-6">
                       
-                    <label className='mb-3' htmlFor="Resume">Resume</label>
+                    <label className='mb-3' htmlFor="Resume">Resume (Max: 2mb)</label>
                       <div className="form">
                         <input
                           type="file"

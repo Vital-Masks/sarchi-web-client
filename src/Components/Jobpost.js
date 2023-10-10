@@ -71,7 +71,7 @@ function Jobpost() {
   return (
     <>
       <div
-        className="custom-container search-container-header py-3 mb-3"
+        className="search-container-header py-3 mb-3"
         style={{ borderRadius: '25px' }}
       >
         <form>
@@ -163,8 +163,8 @@ function Jobpost() {
         </form>
       </div>
 
-      <div className="custom-container job-post-container text-black wow fadeIn">
-        <div className="">
+      <div className="job-post text-black wow fadeIn">
+        <div className="container">
           <div className="row">
             {searchResultsVisible
               ? filteredVacancyData.map((item, index) => (

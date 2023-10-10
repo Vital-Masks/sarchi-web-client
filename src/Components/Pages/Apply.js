@@ -128,29 +128,17 @@ function Apply() {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
-          });
-
-          // const fileApiUrl = URL.BASE_URL + '/api/upload';
-          // const fileUploadResponse = await fetch(fileApiUrl, {
-          //   mode: 'no-cors',
-          //   method: 'POST',
-          //   headers: {
-          //     'Content-Type': 'multipart/form-data',
-          //     Accept: 'application/json',
-          //     type: 'formData',
-          //   },
-          //   body: formData2,
-          // });
-
-          // if (!fileUploadResponse.ok) {
-          //   alert('File upload failed. Please try again.');
-          //   return;
-          // } else {
-          //   alert('Form submitted successfully!');
-          //   e.target.reset();
-          //   window.location.href = 'http://localhost:3000/';
-          //   setFormErrors({});
-          // }
+          })
+          Swal.fire({
+            icon: 'success',
+            title: 'Applied!',
+            text: `Applied Successfully.`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+          e.target.reset();
+          history('/')
+          setFormErrors({});
         } else {
           Swal.fire({
             icon: 'error',
@@ -421,7 +409,7 @@ function Apply() {
                   </div>
                   <div className="col-sm-6">
                     <label className="mb-3" htmlFor="Cover_Letter">
-                      Cover Letter
+                      Cover Letter(Max: 2mb)
                     </label>
                     <div className="form">
                       <input
@@ -442,7 +430,7 @@ function Apply() {
                   </div>
                   <div className="col-sm-6">
                     <label className="mb-3" htmlFor="Resume">
-                      Resume
+                      Resume (Max: 2mb)
                     </label>
                     <div className="form">
                       <input
