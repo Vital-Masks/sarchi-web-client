@@ -6,18 +6,18 @@ function Footer() {
   return (
     <>
       {/* Footer Start */}
-      <div className="footer-style page-footer py-5 wow fadeIn">
+      <div className="footer-style page-footer wow fadeIn">
         <div className="custom-container py-5">
           <div className="row">
             <div className="col-sm-8">
               <h1
-                className="display-2 py-2 text-white"
-                style={{ fontSize: '55px', fontFamily: 'Alatsi' }}
+                className="display-2 py-5 text-white"
+                style={{ fontSize: '35px', fontFamily: 'Alatsi' }}
               >
                 HERE TO HELP YOUR EVERY BUSINESS NEED
               </h1>
             </div>
-            <div className="col-sm-4 py-3 text-center">
+            <div className="col-sm-4 py-5 text-center">
               <a
                 href="/contact"
                 className="btn py-2 rounded-pill text-black"
