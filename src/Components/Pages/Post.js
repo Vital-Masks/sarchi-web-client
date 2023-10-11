@@ -154,7 +154,7 @@ function Post() {
           </h1>
         </div>
       </div>
-      <div className="custom-container py-5">
+      <div className="container py-5">
         <div className="">
           <div className="row g-5">
             <div className="wow fadeInUp" data-wow-delay="0.5s">

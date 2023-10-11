@@ -81,7 +81,7 @@ function ContactUs() {
         </div>
       </div>
       <div className=" py-5">
-        <div className="custom-container">
+        <div className="container">
           <div className="row g-5">
             <div className="wow fadeInUp" data-wow-delay="0.5s">
               <form className="row g-3" onSubmit={handleSubmit}>
