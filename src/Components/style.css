@@ -936,7 +936,9 @@ input[type='file']::-webkit-file-upload-button {
 }
 
 .tutor {
-  width: 80vw;
+  max-width: 1800px !important;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 .info-box {

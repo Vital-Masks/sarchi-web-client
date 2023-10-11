@@ -57,7 +57,7 @@ function Tutor() {
                     {item.attributes.Tutor_Designation}
                   </p>
                   <p className="no-galle-road">{item.attributes.Description}</p>
-                  <div className="container">
+                  <div className="custom-container">
                     <div className="row">
                       <div className="col-md-5 py-3">
                         <div className="col-md-12 mb-2">
@@ -66,7 +66,7 @@ function Tutor() {
                               color: '#878787',
                               fontSize: '24px',
                               fontFamily: 'Alatsi',
-                              marginLeft: '-45px',
+                              marginLeft: '-30px',
                             }}
                           >
                             Companies Trained By {item.attributes.Tutor_Name}:
