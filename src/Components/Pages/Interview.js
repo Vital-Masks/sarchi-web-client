@@ -146,7 +146,11 @@ function Interview() {
                       >
                         {item.attributes.Date}
                       </h2>
-                      <br></br>
+                      <br/>
+                      {item.attributes.Types === 'Article' ? (
+                      <a
+                      href={`/blog/${item.id}`}
+                    >
                       <h2
                         className="card_title"
                         style={{
@@ -158,26 +162,23 @@ function Interview() {
                       >
                       {item.attributes.Title.toUpperCase()}
                       </h2>
-                      <br></br>
-                      <br/>
-                      {item.attributes.Types === 'Article' ? (
-                      <a
-                      href={`/blog/${item.id}`}
-                      className="btn py-2 rounded-pill text-white"
-                      type="submit"
-                      style={{ background: '#111727',float:'left'}}
-                    >
-                      View More
                     </a>
                     ) : (
                       <a
                         href={item.attributes.Ref_Link}
-                        className="btn py-2 rounded-pill text-white"
-                      type="submit"
                       target='blank'
-                      style={{ background: '#111727',float:'left' }}
                       >
-                        View More
+                        <h2
+                        className="card_title"
+                        style={{
+                          fontFamily: 'Alatsi',
+                          fontSize: '30px',
+                          float: 'left',
+                          fotWeight:800,
+                        }}
+                      >
+                      {item.attributes.Title.toUpperCase()}
+                      </h2>
                       </a>
                     )}
                     </div>
@@ -203,27 +204,39 @@ function Interview() {
                   </div>
                   <div className="card_content">
                     <h2 className="card_title">{item.attributes.Date}</h2>
-                    <h2 className="card_title">{item.attributes.Title}</h2>
-                    <br />
-
+                    <br/>
                     {item.attributes.Types === 'Article' ? (
                       <a
                       href={`/blog/${item.id}`}
-                      className="btn py-2 rounded-pill text-white"
-                      type="submit"
-                      style={{ background: '#111727',float:'left' }}
                     >
-                      View More
+                      <h2
+                        className="card_title"
+                        style={{
+                          fontFamily: 'Alatsi',
+                          fontSize: '30px',
+                          float: 'left',
+                          fotWeight:800,
+                        }}
+                      >
+                      {item.attributes.Title.toUpperCase()}
+                      </h2>
                     </a>
                     ) : (
                       <a
                         href={item.attributes.Ref_Link}
-                        target='blank'
-                        className="btn py-2 rounded-pill text-white"
-                      type="submit"
-                      style={{ background: '#111727',float:'left' }}
+                      target='blank'
                       >
-                        View More
+                        <h2
+                        className="card_title"
+                        style={{
+                          fontFamily: 'Alatsi',
+                          fontSize: '30px',
+                          float: 'left',
+                          fotWeight:800,
+                        }}
+                      >
+                      {item.attributes.Title.toUpperCase()}
+                      </h2>
                       </a>
                     )}
                   </div>
