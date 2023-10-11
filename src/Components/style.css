@@ -1579,8 +1579,7 @@ input[type='file']::-webkit-file-upload-button {
 .testimonial {
   width: 100%; /* Display 3 testimonials at once */
   border-radius: 20px;
-  padding: 20px;
-  width: 1250px !important;
+  width: 100% !important;
   position: relative;
   margin: 0 10px; /* Add margin between testimonials */
 }
