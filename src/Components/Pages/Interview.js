@@ -117,8 +117,8 @@ function Interview() {
         </div>
       </div>
 
-      <div className="custom-container mb-5" >
-        <ul className="cards">
+      <div className="main mb-5" >
+        <ul className="cards mb-5">
           {showFilteredData ? (
             filteredInterviewData.length > 0 ? (
               filteredInterviewData.map((item, index) => (
