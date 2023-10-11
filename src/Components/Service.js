@@ -24,7 +24,7 @@ function Service() {
         <div className="main mb-5">
           <ul className="cards mb-5">
             {Array.isArray(expertiseData) && expertiseData.length > 0 ? (
-              expertiseData.map((item, index) => (
+              expertiseData.slice(0, 6).map((item, index) => (
                 <li className="cards_item" key={index}>
                   <div className="card">
                     <div className="card_image">

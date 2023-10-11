@@ -172,7 +172,7 @@ function Jobpost() {
           
           <div className="row">
             {searchResultsVisible
-              ? filteredVacancyData.map((item, index) => (
+              ? filteredVacancyData.slice(0, 6).map((item, index) => (
                   <div className="col-md-6" key={index}>
                     <div className="box mt-4">
                       <div className="rectangle">
@@ -292,7 +292,7 @@ function Jobpost() {
                     </div>
                   </div>
                 ))
-              : vacancyData.map((item, index) => (
+              : vacancyData.slice(0, 6).map((item, index) => (
                   <div className="col-md-6" key={index}>
                     <div className="box mt-4">
                       <div className="rectangle">
