@@ -35,8 +35,8 @@ function Sectors() {
           </h1>
         </div>
       </div>
-      <div className="custom-container mb-5">
-        <ul className="cards">
+      <div className="main py-5 mb-5">
+        <ul className="cards mb-5">
           {Array.isArray(sectorData) && sectorData.length > 0 ? (
             sectorData.map((item, index) => (
               <li className="cards_item" key={index}>
