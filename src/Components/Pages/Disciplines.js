@@ -35,8 +35,9 @@ function Discipline() {
           </h1>
         </div>
       </div>
-      <div className="custom-container mb-5">
-        <ul className="cards">
+      <div className="custom-container">
+      <div className="main mb-5">
+        <ul className="cards mb-5">
           {Array.isArray(expertiseData) && expertiseData.length > 0 ? (
             expertiseData.map((item, index) => (
               <li className="cards_item" key={index}>
@@ -69,6 +70,7 @@ function Discipline() {
             <p>No data available</p>
           )}
         </ul>
+      </div>
       </div>
       <Footer />
     </>
