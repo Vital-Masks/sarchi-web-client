@@ -827,7 +827,6 @@ input[type='file']::-webkit-file-upload-button {
 .card_title {
   color: #000000;
   font-size: 1.1rem;
-  font-weight: 700;
   letter-spacing: 1px;
   text-transform: capitalize;
   margin: 0px;
@@ -840,7 +839,7 @@ input[type='file']::-webkit-file-upload-button {
   line-height: 1.5;
   margin-bottom: 1.25rem;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 100;
 }
 .made_by {
   font-weight: 400;

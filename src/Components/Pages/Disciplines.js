@@ -35,7 +35,7 @@ function Discipline() {
           </h1>
         </div>
       </div>
-      <div className="custom-container">
+      <div className="custom-container py-5">
       <div className="main mb-5">
         <ul className="cards mb-5">
           {Array.isArray(expertiseData) && expertiseData.length > 0 ? (

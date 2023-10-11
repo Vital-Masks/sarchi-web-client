@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Link } from 'react';
 import axios from 'axios';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
@@ -18,6 +18,27 @@ function Tutor() {
         console.error('Error fetching data:', error);
       });
   }, []);
+
+  function downloadFile(e, fileUrl) {
+    e.preventDefault(); // Prevent the default behavior of the anchor tag
+  
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.target = "_blank"; // Open the link in a new tab to trigger the download
+    link.setAttribute('download', true); // Set the download attribute to trigger the download
+  
+    // Simulate a click event to trigger the download
+    if (document.createEvent) {
+      const event = document.createEvent("MouseEvents");
+      event.initEvent("click", true, true);
+      link.dispatchEvent(event);
+    } else {
+      link.click();
+    }
+  }
+  
+
+
   return (
     <>
       <Header />
@@ -57,24 +78,18 @@ function Tutor() {
                     {item.attributes.Tutor_Designation}
                   </p>
                   <p className="no-galle-road">{item.attributes.Description}</p>
-                  <div className="custom-container">
-                    <div className="row">
-                      <div className="col-md-5 py-3">
-                        <div className="col-md-12 mb-2">
+                  <div className="mb-2">
+                   
                           <p
                             style={{
                               color: '#878787',
                               fontSize: '24px',
-                              fontFamily: 'Alatsi',
-                              marginLeft: '-30px',
+                              fontFamily: 'Alatsi'
                             }}
                           >
                             Companies Trained By {item.attributes.Tutor_Name}:
                           </p>
-                        </div>
-                      </div>
-                      <div className="col-md-7 py-3">
-                        <div className="col-md-12 mb-2">
+                        <div>
                           {Array.isArray(
                             item.attributes.Company_Trained.data
                           ) &&
@@ -84,7 +99,7 @@ function Tutor() {
                                 <img
                                   key={companyIndex}
                                   src={URL.BASE_URL + company.attributes.url}
-                                  style={{ height: '100px', width: '200px' }}
+                                  style={{ height: '100px', width: '200px',margin:'10px'}}
                                   alt={item.attributes.Tutor_Name}
                                 />
                               )
@@ -101,10 +116,40 @@ function Tutor() {
                               {item.attributes.Tutor_Name} available.
                             </p>
                           )}
+                          </div>
+                          <div className="py-5">
+                          {Array.isArray(
+                            item.attributes.Ref_Media.data
+                          ) &&
+                          item.attributes.Ref_Media.data.length > 0 ? (
+                            item.attributes.Ref_Media.data.map(
+                              (media, mediaIndex) => (
+                                <a
+                                  href={URL.BASE_URL + media.attributes.url}
+                                  key={mediaIndex}
+                                  className="rounded-pill py-3 px-3 text-white"
+                                  style={{ background: '#111727', border: '2px solid white',margin:'10px',height:'50px' }}
+                                  onClick={(e) => downloadFile(e, URL.BASE_URL + media.attributes.url)}
+                                >
+                                  Download Guide
+                                </a>                             
+                              )
+                            )
+                          ) : (
+                            
+                            <p
+                              style={{
+                                color: '#878787',
+                                fontSize: '24px',
+                                fontFamily: 'Alatsi',
+                              }}
+                            >
+                              No companies trained by{' '}
+                              {item.attributes.Tutor_Name} available.
+                            </p>
+                          )}
                         </div>
                       </div>
-                    </div>
-                  </div>
                   <div
                     className="rectangle"
                     style={{

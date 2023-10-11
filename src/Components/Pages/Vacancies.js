@@ -10,7 +10,7 @@ function Vacancies() {
   const [searchCriteria, setSearchCriteria] = useState({
     jobType: '',
     experienceLevel: '',
-    salaryEstimate: '',
+    minSalary: '',
     location: '',
     timing: '',
     searchQuery: '',
@@ -29,21 +29,23 @@ function Vacancies() {
   }, []);
 
   const filterResults = () => {
+    const minSalary = searchCriteria.minSalary; // No need to convert to lowercase
+
     const filteredData = vacancyData.filter((item) => {
-      return (
-        item.attributes.Job_Role.includes(searchCriteria.searchQuery) &&
-        item.attributes.Type_Of_Jobs.includes(searchCriteria.jobType) &&
-        item.attributes.Experience_Levels.includes(
-          searchCriteria.experienceLevel
-        ) &&
-        (searchCriteria.salaryEstimate === '' ||
-          (item.attributes.Min_Salary >=
-            parseInt(searchCriteria.salaryEstimate, 10) &&
-            item.attributes.Max_Salary <=
-              parseInt(searchCriteria.salaryEstimate, 10))) &&
-        item.attributes.Location.includes(searchCriteria.location) &&
-        item.attributes.Timings.includes(searchCriteria.timing)
-      );
+      const searchQuery = searchCriteria.searchQuery.toLowerCase();
+      const jobType = searchCriteria.jobType.toLowerCase();
+      const experienceLevel = searchCriteria.experienceLevel.toLowerCase();
+      const location = searchCriteria.location.toLowerCase();
+      const timing = searchCriteria.timing.toLowerCase();
+  
+      const jobRoleMatch = item.attributes.Job_Role.toLowerCase().includes(searchQuery);
+      const typeOfJobsMatch = item.attributes.Type_Of_Jobs.toLowerCase().includes(jobType);
+      const experienceLevelsMatch = item.attributes.Experience_Levels.toLowerCase().includes(experienceLevel);
+      const minSalaryMatch = item.attributes.Min_Salary >= minSalary; // Numeric comparison
+      const locationMatch = item.attributes.Location.toLowerCase().includes(location);
+      const timingsMatch = item.attributes.Timings.toLowerCase().includes(timing);
+  
+      return jobRoleMatch && typeOfJobsMatch && experienceLevelsMatch && minSalaryMatch && locationMatch && timingsMatch;
     });
 
     setFilteredVacancyData(filteredData);

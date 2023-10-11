@@ -58,7 +58,7 @@ function Service() {
           <div className="col-12 text-center">
             <a
               href="/disciplines"
-              className="btn py-2 rounded-pill text-white"
+              className="btn py-2 mb-5 rounded-pill text-white"
               type="submit"
               style={{ background: '#111727', height: '40px' }}
             >

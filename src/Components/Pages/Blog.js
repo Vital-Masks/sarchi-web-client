@@ -43,29 +43,28 @@ function Blog() {
         </div>
       )}
       {blogData && (
-        <div className="container-xxl py-5">
-          <div className="container">
-            <div className="row g-5">
+        <div className="custom-container py-5">
+          
               <div className="col-12 wow fadeInUp" data-wow-delay="0.1s">
                 <p
                   style={{
                     color: '#1e1e1e',
                     fontFamily: '"Alatsi-Regular", Helvetica',
-                    fontSize: '30px',
-                    fontWeight: 400,
+                    fontSize: '40px',
+                    fontWeight: 700,
                   }}
                 >
                   {blogData.attributes.Title}
                 </p>
-                <p className="no-galle-road">{blogData.attributes.Date} </p>
-                <p className="no-galle-road">
+                <p className="no-galle-road">Posted Date : {blogData.attributes.Date} <br/>
+                
                   Industry : {blogData.attributes.Industry} | Practice :{' '}
                   {blogData.attributes.Practice}
                 </p>
 
                 {/* <img src={URL.BASE_URL+blogData.attributes.Ref_Media.data.attributes.url} style={{height:'325px',width:'500px'}} alt={blogData.attributes.Title}/> */}
 
-                <div className="py-2">
+                {/* <div className="py-2">
                   <img
                     src={
                       URL.BASE_URL +
@@ -79,12 +78,11 @@ function Blog() {
                     }}
                     alt={blogData.attributes.Title}
                   />
-                </div>
+                </div> */}
                 <p className="no-galle-road">{blogData.attributes.Body}</p>
                 <br></br>
               </div>
-            </div>
-          </div>
+            
         </div>
       )}
       <Footer />

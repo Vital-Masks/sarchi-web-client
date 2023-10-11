@@ -28,13 +28,17 @@ function Interview() {
 
   const filterResults = () => {
     const filteredData = interviewData.filter((item) => {
+      const typeMatch = item.attributes.Types.toLowerCase().includes(searchCriteria.type.toLowerCase());
+      const practiceMatch = item.attributes.Practice.toLowerCase().includes(searchCriteria.practice.toLowerCase());
+      const industryMatch = item.attributes.Industry.toLowerCase().includes(searchCriteria.industry.toLowerCase());
+    
       return (
-        (searchCriteria.type === '' ||
-          item.attributes.Types === searchCriteria.type) &&
-        item.attributes.Practice.includes(searchCriteria.practice) &&
-        item.attributes.Industry.includes(searchCriteria.industry)
+        (searchCriteria.type === '' || typeMatch) &&
+        practiceMatch &&
+        industryMatch
       );
     });
+    
 
     setFilteredInterviewData(filteredData);
     setShowFilteredData(true);
@@ -135,6 +139,7 @@ function Interview() {
                         className="card_title"
                         style={{
                           fontFamily: 'Alatsi',
+                          fotWeight:100,
                           fontSize: '18px',
                           float: 'left',
                         }}
@@ -148,20 +153,33 @@ function Interview() {
                           fontFamily: 'Alatsi',
                           fontSize: '30px',
                           float: 'left',
+                          fotWeight:800,
                         }}
                       >
-                        {item.attributes.Title.toUpperCase()}
+                      {item.attributes.Title.toUpperCase()}
                       </h2>
                       <br></br>
-                      <br />
+                      <br/>
+                      {item.attributes.Types === 'Article' ? (
                       <a
-                        href={`/blog/${item.id}`}
+                      href={`/blog/${item.id}`}
+                      className="btn py-2 rounded-pill text-white"
+                      type="submit"
+                      style={{ background: '#111727',float:'left'}}
+                    >
+                      View More
+                    </a>
+                    ) : (
+                      <a
+                        href={item.attributes.Ref_Link}
                         className="btn py-2 rounded-pill text-white"
-                        type="submit"
-                        style={{ background: '#111727' }}
+                      type="submit"
+                      target='blank'
+                      style={{ background: '#111727',float:'left' }}
                       >
                         View More
                       </a>
+                    )}
                     </div>
                   </div>
                 </li>
@@ -188,14 +206,26 @@ function Interview() {
                     <h2 className="card_title">{item.attributes.Title}</h2>
                     <br />
 
-                    <a
+                    {item.attributes.Types === 'Article' ? (
+                      <a
                       href={`/blog/${item.id}`}
                       className="btn py-2 rounded-pill text-white"
                       type="submit"
-                      style={{ background: '#111727' }}
+                      style={{ background: '#111727',float:'left' }}
                     >
                       View More
                     </a>
+                    ) : (
+                      <a
+                        href={item.attributes.Ref_Link}
+                        target='blank'
+                        className="btn py-2 rounded-pill text-white"
+                      type="submit"
+                      style={{ background: '#111727',float:'left' }}
+                      >
+                        View More
+                      </a>
+                    )}
                   </div>
                 </div>
               </li>
