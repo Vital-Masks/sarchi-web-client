@@ -134,7 +134,7 @@ function Interview() {
                         alt={item.attributes.Title}
                       />
                     </div>
-                    <div className="card_content">
+                    <div className="card_content mb-3">
                       {/* <h2
                         className="card_title"
                         style={{
