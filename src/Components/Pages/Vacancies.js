@@ -183,9 +183,7 @@ function Vacancies() {
       </div>
       <div className="container-fluid text-black mb-5 wow fadeIn">
         <div className="custom-container">
-          <h1 className="display-6 mb-4" style={{ fontFamily: 'Alatsi' }}>
-            Results Found
-          </h1>
+          
           <div className="row">
             {searchResultsVisible
               ? filteredVacancyData.map((item, index) => (
