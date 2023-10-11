@@ -122,9 +122,8 @@ function Job() {
         </div>
       )}
       {jobData && (
-    <div className="container-xxl py-5">
-    <div className="container">
-      <div className="row g-5">
+    <div className="custom-container py-5">
+  
         <div className="col-12 wow fadeInUp" data-wow-delay="0.1s">
         <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight: 400}}>JOB DESCRIPTION</p>
           <p className="no-galle-road"> 
@@ -141,8 +140,7 @@ function Job() {
         </div>
         
             </div>
-        </div>
-        </div> )}
+         )}
       <Footer />
     </>
   );
