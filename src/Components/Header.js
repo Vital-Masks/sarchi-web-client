@@ -50,7 +50,7 @@ function Header() {
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <div className="ms-auto navbar-nav">
-                <a href="/" className="nav-item nav-link text-white active">
+                <a href="/" className="nav-item nav-link text-white">
                   Home
                 </a>
                 <div className="nav-item dropdown">
