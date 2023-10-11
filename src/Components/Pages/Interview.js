@@ -135,7 +135,7 @@ function Interview() {
                       />
                     </div>
                     <div className="card_content">
-                      <h2
+                      {/* <h2
                         className="card_title"
                         style={{
                           fontFamily: 'Alatsi',
@@ -145,7 +145,7 @@ function Interview() {
                         }}
                       >
                         {item.attributes.Date}
-                      </h2>
+                      </h2> */}
                       <br/>
                       {item.attributes.Types === 'Article' ? (
                       <a
