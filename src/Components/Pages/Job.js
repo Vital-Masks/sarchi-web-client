@@ -9,6 +9,12 @@ function Job() {
   const { jobId } = useParams();
   const [jobData, setJobData] = useState(null);
 
+  const currencySymbols = {
+    USD: '$',
+    EUR: '€',
+    GBP: '£',
+  };
+
   useEffect(() => {
     // Fetch job data using jobId
     axios.get(URL.BASE_URL+`/api/post-job-vaccancies/${jobId}`)
@@ -65,7 +71,8 @@ function Job() {
                       textAlign: 'center',
                     }}
                   >
-                    {jobData.attributes.Min_Salary}K$ - {jobData.attributes.Max_Salary}K$
+                    {(jobData.attributes.Min_Salary)/1000}K{currencySymbols[jobData.attributes.Currency]}-
+                                  {(jobData.attributes.Max_Salary)/1000}K{currencySymbols[jobData.attributes.Currency]}
                   </p>
                   <p
                     className="search rounded-pill text-black mr-2 mb-2 py-2"

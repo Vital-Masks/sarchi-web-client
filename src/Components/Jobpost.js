@@ -354,8 +354,8 @@ function Jobpost() {
                                   }}
                                   name="salaryRange"
                                 >
-                                  {item.attributes.Min_Salary}K$-
-                                  {item.attributes.Max_Salary}K$
+                                  {(item.attributes.Min_Salary)/1000}K{currencySymbols[item.attributes.Currency]}-
+                                  {(item.attributes.Max_Salary)/1000}K{currencySymbols[item.attributes.Currency]}
                                 </p>
                                 <p
                                   className="search rounded-pill text-black mr-2 mb-2 py-1"
@@ -398,17 +398,17 @@ function Jobpost() {
                                 </p>
                               </div>
                               <p
-                                className="text-black"
-                                style={{
-                                  marginLeft: '10px',
-                                  fontSize: '18px',
-                                  textAlign: 'left',
-                                  fontWeight: '400',
-                                  lineHeight: '30px',
-                                }}
-                              >
-                                {item.attributes.Job_Description}
-                              </p>
+      className="text-black"
+      style={{
+        marginLeft: '10px',
+        fontSize: '18px',
+        textAlign: 'left',
+        fontWeight: '400',
+        lineHeight: '30px',
+      }}
+    >
+      {limitWords(item.attributes.Job_Description, 50)}
+    </p>
                               <div
                                 className="col-12 mb-5 text-left"
                                 style={{ marginLeft: '10px' }}

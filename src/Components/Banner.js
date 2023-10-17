@@ -8,8 +8,8 @@ function Banner() {
         <h1 className="display-1 text-white" >FIND THE JOB THAT</h1>
         <h1 className="display-1 text-white">FITS YOUR LIFE!</h1>
         <p className="word-2">
-          Resume-Library is a true performance-based job board. Enjoy custom hiring<br/> products and access to up to
-          10,000 new resume registrations daily, with no<br/> subscriptions or user licences.
+        Welcome to Satchi Recruitment, where we're dedicated to saving clients' time<br/> by connecting
+        them with the perfect candidates effortlessly.<br/>
         </p>
         </div></div>
     </div>
