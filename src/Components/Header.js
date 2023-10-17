@@ -10,10 +10,10 @@ function Header() {
         <div className="container py-4">
           <div className="d-flex align-items-center">
             <div ms-auto d-flex align-items-left>
-              <small className="ms-4" style={{color: '#464646'}}>
+              {/* <small className="ms-4" style={{color: '#464646'}}>
                 <i className="fa fa-map-marker-alt me-3" />
                 79 Stone Cellar Road,London,UK.
-              </small>
+              </small> */}
             </div>
             <div className="ms-auto d-flex align-items-center">
   <small className="ms-4">
