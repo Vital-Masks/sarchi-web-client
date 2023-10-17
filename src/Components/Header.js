@@ -10,22 +10,27 @@ function Header() {
         <div className="container py-4">
           <div className="d-flex align-items-center">
             <div ms-auto d-flex align-items-left>
-              <small className="ms-4">
+              <small className="ms-4" style={{color: '#464646'}}>
                 <i className="fa fa-map-marker-alt me-3" />
                 79 Stone Cellar Road,London,UK.
               </small>
             </div>
             <div className="ms-auto d-flex align-items-center">
-              <small className="ms-4">
-                <i className="fa fa-phone-alt me-3" />
-                +44 0203 325 1388
-              </small>
-              <div className="rectangle-22" />
-              <small className="ms-4">
-                <i className="fa fa-envelope me-3" />
-                info@satchiuk.com
-              </small>
-            </div>
+  <small className="ms-4">
+    <a href="tel:+44203251388" style={{color: '#464646'}}>
+      <i className="fa fa-phone-alt me-3" />
+      +44 0203 325 1388
+    </a>
+  </small>
+  <div className="rectangle-22" />
+  <small className="ms-4">
+    <a href="mailto:info@satchiuk.com" style={{color: '#464646'}}>
+      <i className="fa fa-envelope me-3" />
+      info@satchiuk.com
+    </a>
+  </small>
+</div>
+
           </div>
         </div>
       </div>

@@ -24,6 +24,10 @@ function Blog() {
   }, [blogId]);
   console.log(blogData);
 
+  const replaceNewlinesWithBreaks= (text) =>{
+    return { __html: text.replace(/(?:\r\n|\r|\n)/g, '<br>') };
+  }
+
   return (
     <>
       <Header />
@@ -79,7 +83,10 @@ function Blog() {
                     alt={blogData.attributes.Title}
                   />
                 </div> */}
-                <p className="no-galle-road">{blogData.attributes.Body}</p>
+                
+  <div className="no-galle-road" dangerouslySetInnerHTML={replaceNewlinesWithBreaks(blogData.attributes.Body)}></div>
+ 
+             
                 <br></br>
               </div>
             

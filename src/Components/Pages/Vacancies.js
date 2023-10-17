@@ -29,8 +29,8 @@ function Vacancies() {
   }, []);
 
   const filterResults = () => {
-    const minSalary = searchCriteria.minSalary; // No need to convert to lowercase
-
+    const minSalary = parseInt(searchCriteria.minSalary, 10); // Convert minSalary to an integer
+  
     const filteredData = vacancyData.filter((item) => {
       const searchQuery = searchCriteria.searchQuery.toLowerCase();
       const jobType = searchCriteria.jobType.toLowerCase();
@@ -41,11 +41,13 @@ function Vacancies() {
       const jobRoleMatch = item.attributes.Job_Role.toLowerCase().includes(searchQuery);
       const typeOfJobsMatch = item.attributes.Type_Of_Jobs.toLowerCase().includes(jobType);
       const experienceLevelsMatch = item.attributes.Experience_Levels.toLowerCase().includes(experienceLevel);
-      const minSalaryMatch = item.attributes.Min_Salary >= minSalary; // Numeric comparison
       const locationMatch = item.attributes.Location.toLowerCase().includes(location);
       const timingsMatch = item.attributes.Timings.toLowerCase().includes(timing);
   
-      return jobRoleMatch && typeOfJobsMatch && experienceLevelsMatch && minSalaryMatch && locationMatch && timingsMatch;
+      // Check if minSalary is a valid number and if it's higher than or equal to item's Min_Salary
+      const minSalaryMatch = !isNaN(minSalary) && item.attributes.Min_Salary >= minSalary;
+  
+      return jobRoleMatch && typeOfJobsMatch && experienceLevelsMatch && locationMatch && timingsMatch && (isNaN(minSalary) || minSalaryMatch);
     });
 
     setFilteredVacancyData(filteredData);
@@ -124,11 +126,11 @@ function Vacancies() {
                   name="salaryEstimate"
                   className="search"
                   placeholder="SalaryRange"
-                  value={searchCriteria.salaryEstimate}
+                  value={searchCriteria.minSalary}
                   onChange={(e) =>
                     setSearchCriteria({
                       ...searchCriteria,
-                      salaryEstimate: e.target.value,
+                      minSalary: e.target.value,
                     })
                   }
                 />

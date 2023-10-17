@@ -72,6 +72,8 @@ function Apply() {
 
     if (!formData.Notice_Period) {
       errors.Notice_Period = 'Notice Period is required';
+    }else if (parseFloat(formData.Notice_Period) < 0) {
+      errors.Notice_Period = 'Notice Period cannot be negative';
     }
 
     setFormErrors(errors);

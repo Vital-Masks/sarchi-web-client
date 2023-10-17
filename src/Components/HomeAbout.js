@@ -80,17 +80,17 @@ function HomeAbout() {
           <div className="row">
             <div className="col-md-4 py-3">
               <span className="info-box text-center">
-                50 + EMPLOYEES WORLDWIDE
+              Discover New Opportunities
               </span>
             </div>
             <div className="col-md-4 py-3">
               <span className="info-box text-center">
-                12 + YEARS OF EXPERIENCE
+              Get Invited to Apply to jobs
               </span>
             </div>
             <div className="col-md-4 py-3">
               <span className="info-box text-center">
-                98% SATISFIED CLIENTS
+              Save time with 1-click apply
               </span>
             </div>
           </div>

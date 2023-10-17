@@ -778,6 +778,14 @@ input[type='file'] {
   height: 50px;
 }
 
+.input-group input{
+  height: 58px;
+}
+
+.input-group select{
+  height: 60px;
+}
+
 input[type='file']::-webkit-file-upload-button {
   height: 50px;
 }

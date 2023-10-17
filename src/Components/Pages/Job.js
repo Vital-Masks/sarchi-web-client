@@ -20,6 +20,10 @@ function Job() {
       });
   }, [jobId]);
 
+  const replaceNewlinesWithBreaks= (text) =>{
+    return { __html: text.replace(/(?:\r\n|\r|\n)/g, '<br>') };
+  }
+
   return (
     <>
       <Header />
@@ -106,16 +110,7 @@ function Job() {
                     {jobData.attributes.Type_Of_Jobs}
                   </p>
                 </div>
-                <div className="col-12 text-center">
-                  <a
-                    href={`/apply/${jobData.id}`} 
-                    className="btn py-2 rounded-pill text-black px-3"
-                    type="submit"
-                    style={{ background: 'white', fontWeight: 'bold' }}
-                  >
-                    Apply for Job
-                  </a>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -125,18 +120,30 @@ function Job() {
     <div className="custom-container py-5">
   
         <div className="col-12 wow fadeInUp" data-wow-delay="0.1s">
-        <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight: 400}}>JOB DESCRIPTION</p>
-          <p className="no-galle-road"> 
-          {jobData.attributes.Job_Description}
-        </p><br></br>
-        <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight: 400}}>KEY RESPONSIBILITIES</p>
-          <p className="no-galle-road"> 
-          {jobData.attributes.Key_Responsibilities}
-        </p><br></br>
-        <p style={{color: '#1e1e1e',fontFamily: '"Alatsi-Regular", Helvetica',fontSize: '30px',fontWeight: 400}}>SKILLS AND EXPERIENCE</p>
-          <p className="no-galle-road">
-          {jobData.attributes.Skills_And_Experience}
-        </p><br></br>
+        <div>
+  <p style={{ color: '#1e1e1e', fontFamily: 'Alatsi-Regular, Helvetica', fontSize: '30px', fontWeight: 400 }}>Job Description</p>
+  <div className="no-galle-road" dangerouslySetInnerHTML={replaceNewlinesWithBreaks(jobData.attributes.Job_Description)}></div>
+  <br></br>
+
+  <p style={{ color: '#1e1e1e', fontFamily: 'Alatsi-Regular, Helvetica', fontSize: '30px', fontWeight: 400 }}>KEY RESPONSIBILITIES</p>
+  <div className="no-galle-road" dangerouslySetInnerHTML={replaceNewlinesWithBreaks(jobData.attributes.Key_Responsibilities)}></div>
+  <br></br>
+  <p style={{ color: '#1e1e1e', fontFamily: 'Alatsi-Regular, Helvetica', fontSize: '30px', fontWeight: 400 }}>Benefits</p>
+  <div className="no-galle-road" dangerouslySetInnerHTML={replaceNewlinesWithBreaks(jobData.attributes.Skills_And_Experience)}></div>
+</div>
+
+
+        <br></br>
+        <div className="col-12 text-center">
+                  <a
+                    href={`/apply/${jobData.id}`} 
+                    className="btn py-2 rounded-pill text-white px-3"
+                    type="submit"
+                    style={{ background: 'black', fontWeight: 'bold' }}
+                  >
+                    Apply for Job
+                  </a>
+                </div>
         </div>
         
             </div>

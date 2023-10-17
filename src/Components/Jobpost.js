@@ -15,6 +15,13 @@ function Jobpost() {
   });
   const [searchResultsVisible, setSearchResultsVisible] = useState(false);
 
+  const currencySymbols = {
+    USD: '$',
+    EUR: '€',
+    GBP: '£',
+  };
+  
+
   useEffect(() => {
     axios
       .get(URL.BASE_URL + '/api/post-job-vaccancies')
@@ -26,25 +33,35 @@ function Jobpost() {
       });
   }, []);
 
+  const limitWords = (text, wordLimit) => {
+    const words = text.split(' ');
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(' ') + '...';
+    }
+    return text;
+  }
+
   const filterResults = () => {
-    const minSalary = searchCriteria.minSalary; // No need to convert to lowercase
-
-  const filteredData = vacancyData.filter((item) => {
-    const searchQuery = searchCriteria.searchQuery.toLowerCase();
-    const jobType = searchCriteria.jobType.toLowerCase();
-    const experienceLevel = searchCriteria.experienceLevel.toLowerCase();
-    const location = searchCriteria.location.toLowerCase();
-    const timing = searchCriteria.timing.toLowerCase();
-
-    const jobRoleMatch = item.attributes.Job_Role.toLowerCase().includes(searchQuery);
-    const typeOfJobsMatch = item.attributes.Type_Of_Jobs.toLowerCase().includes(jobType);
-    const experienceLevelsMatch = item.attributes.Experience_Levels.toLowerCase().includes(experienceLevel);
-    const minSalaryMatch = item.attributes.Min_Salary >= minSalary; // Numeric comparison
-    const locationMatch = item.attributes.Location.toLowerCase().includes(location);
-    const timingsMatch = item.attributes.Timings.toLowerCase().includes(timing);
-
-    return jobRoleMatch && typeOfJobsMatch && experienceLevelsMatch && minSalaryMatch && locationMatch && timingsMatch;
-  });
+    const minSalary = parseInt(searchCriteria.minSalary, 10); // Convert minSalary to an integer
+  
+    const filteredData = vacancyData.filter((item) => {
+      const searchQuery = searchCriteria.searchQuery.toLowerCase();
+      const jobType = searchCriteria.jobType.toLowerCase();
+      const experienceLevel = searchCriteria.experienceLevel.toLowerCase();
+      const location = searchCriteria.location.toLowerCase();
+      const timing = searchCriteria.timing.toLowerCase();
+  
+      const jobRoleMatch = item.attributes.Job_Role.toLowerCase().includes(searchQuery);
+      const typeOfJobsMatch = item.attributes.Type_Of_Jobs.toLowerCase().includes(jobType);
+      const experienceLevelsMatch = item.attributes.Experience_Levels.toLowerCase().includes(experienceLevel);
+      const locationMatch = item.attributes.Location.toLowerCase().includes(location);
+      const timingsMatch = item.attributes.Timings.toLowerCase().includes(timing);
+  
+      // Check if minSalary is a valid number and if it's higher than or equal to item's Min_Salary
+      const minSalaryMatch = !isNaN(minSalary) && item.attributes.Min_Salary >= minSalary;
+  
+      return jobRoleMatch && typeOfJobsMatch && experienceLevelsMatch && locationMatch && timingsMatch && (isNaN(minSalary) || minSalaryMatch);
+    });
     
 
     setFilteredVacancyData(filteredData);
@@ -108,11 +125,11 @@ function Jobpost() {
                   name="salaryEstimate"
                   className="search"
                   placeholder="SalaryRange"
-                  value={searchCriteria.salaryEstimate}
+                  value={searchCriteria.minSalary}
                   onChange={(e) =>
                     setSearchCriteria({
                       ...searchCriteria,
-                      salaryEstimate: e.target.value,
+                      minSalary: e.target.value,
                     })
                   }
                 />
@@ -217,8 +234,8 @@ function Jobpost() {
                                   }}
                                   name="salaryRange"
                                 >
-                                  {item.attributes.Min_Salary}K$-
-                                  {item.attributes.Max_Salary}K$
+                                  {(item.attributes.Min_Salary)/1000}K{currencySymbols[item.attributes.Currency]}-
+                                  {(item.attributes.Max_Salary)/1000}K{currencySymbols[item.attributes.Currency]}
                                 </p>
                                 <p
                                   className="search rounded-pill text-black mr-2 mb-2 py-1"
@@ -261,17 +278,17 @@ function Jobpost() {
                                 </p>
                               </div>
                               <p
-                                className="text-black"
-                                style={{
-                                  marginLeft: '10px',
-                                  fontSize: '18px',
-                                  textAlign: 'left',
-                                  fontWeight: '400',
-                                  lineHeight: '30px',
-                                }}
-                              >
-                                {item.attributes.Job_Description}
-                              </p>
+      className="text-black"
+      style={{
+        marginLeft: '10px',
+        fontSize: '18px',
+        textAlign: 'left',
+        fontWeight: '400',
+        lineHeight: '30px',
+      }}
+    >
+      {limitWords(item.attributes.Job_Description, 50)}
+    </p>
                               <div
                                 className="col-12 mb-5 text-left"
                                 style={{ marginLeft: '10px' }}

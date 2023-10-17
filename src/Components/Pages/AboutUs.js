@@ -37,7 +37,9 @@ function AboutUs() {
       </div>
       <div className="about-us py-5">
         <div className="custom-container" data-wow-delay="0.1s">
-          <p className="no-galle-road">{aboutContent}</p>
+          <p className="no-galle-road">{aboutContent.split('\n\n').map((paragraph, index) => (
+      <p key={index}>{paragraph}</p>
+    ))}</p>
         </div>
       </div>
       <div className="about-header py-3 wow fadeIn">

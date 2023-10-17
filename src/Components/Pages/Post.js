@@ -8,10 +8,14 @@ import { useNavigate } from 'react-router-dom';
 function Post() {
   const [errors, setErrors] = useState({});
   const history = useNavigate();
+  const [selectedCurrency, setSelectedCurrency] = useState('USD');
+
+  const handleCurrencyChange = (e) => {
+    setSelectedCurrency(e.target.value); // Update the selectedCurrency state when the user changes the selection
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formErrors = validateForm(e.target);
 
     if (Object.keys(formErrors).length > 0) {
@@ -20,18 +24,14 @@ function Post() {
     }
 
     const formData = new FormData(e.target);
-    var object = {};
-    formData.forEach((value, key) => (object[key] = value));
-    var finalData = {};
-    finalData.data = object;
-    finalData = JSON.stringify(finalData);
+    formData.append('Currency', selectedCurrency);
 
     const apiUrl = URL.BASE_URL + '/api/job-posts';
 
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
-        body: finalData,
+        body: JSON.stringify({ data: Object.fromEntries(formData) }),
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
@@ -98,8 +98,7 @@ function Post() {
     if (!mobileNumber) {
       errors.Mobile_No = 'Mobile Number is required';
     } else if (!mobileNumberRegex.test(mobileNumber)) {
-      errors.Mobile_No =
-        'Invalid mobile number format. Please enter a 10-digit number.';
+      errors.Mobile_No = 'Invalid mobile number format. Please enter a 10-digit number.';
     }
 
     if (!form.Company_Name.value) {
@@ -116,6 +115,8 @@ function Post() {
 
     if (!form.Salary.value) {
       errors.Salary = 'Salary is required';
+    } else if (parseFloat(form.Salary.value) < 0) {
+      errors.Salary = 'Salary cannot be negative';
     }
 
     if (!form.Job_Description.value) {
@@ -141,15 +142,9 @@ function Post() {
   return (
     <>
       <Header />
-      <div
-        className="container-fluid page-header py-5 mb-5 wow fadeIn"
-        data-wow-delay="0.1s"
-      >
+      <div className="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div className="container text-center py-5">
-          <h1
-            className="display-2 py-5 text-white"
-            style={{ fontFamily: 'Alatsi' }}
-          >
+          <h1 className="display-2 py-5 text-white" style={{ fontFamily: 'Alatsi' }}>
             SUBMIT A JOB POST
           </h1>
         </div>
@@ -209,9 +204,7 @@ function Post() {
                     />
                     <label htmlFor="First_Name">First Name</label>
                     {errors.First_Name && (
-                      <div className="invalid-feedback">
-                        {errors.First_Name}
-                      </div>
+                      <div className="invalid-feedback">{errors.First_Name}</div>
                     )}
                   </div>
                 </div>
@@ -263,9 +256,7 @@ function Post() {
                       placeholder="Mobile Number with Country Code"
                       style={{ border: '1px solid' }}
                     />
-                    <label htmlFor="Mobile_No">
-                      Mobile Number (With Country Code)
-                    </label>
+                    <label htmlFor="Mobile_No">Mobile Number (With Country Code)</label>
                     {errors.Mobile_No && (
                       <div className="invalid-feedback">{errors.Mobile_No}</div>
                     )}
@@ -285,9 +276,7 @@ function Post() {
                     />
                     <label htmlFor="Company_Name">Company Name</label>
                     {errors.Company_Name && (
-                      <div className="invalid-feedback">
-                        {errors.Company_Name}
-                      </div>
+                      <div className="invalid-feedback">{errors.Company_Name}</div>
                     )}
                   </div>
                 </div>
@@ -305,9 +294,7 @@ function Post() {
                     />
                     <label htmlFor="Company_Website">Company Website</label>
                     {errors.Company_Website && (
-                      <div className="invalid-feedback">
-                        {errors.Company_Website}
-                      </div>
+                      <div className="invalid-feedback">{errors.Company_Website}</div>
                     )}
                   </div>
                 </div>
@@ -325,14 +312,13 @@ function Post() {
                     />
                     <label htmlFor="Job_Location">Location</label>
                     {errors.Job_Location && (
-                      <div className="invalid-feedback">
-                        {errors.Job_Location}
-                      </div>
+                      <div className="invalid-feedback">{errors.Job_Location}</div>
                     )}
                   </div>
                 </div>
+
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div className="input-group">
                     <input
                       type="number"
                       className={`form-control ${
@@ -341,14 +327,29 @@ function Post() {
                       id="Salary"
                       name="Salary"
                       placeholder="Salary"
-                      style={{ border: '1px solid' }}
+                      style={{ border: '1px solid', width: '75%' }}
                     />
-                    <label htmlFor="Salary">Salary</label>
-                    {errors.Salary && (
-                      <div className="invalid-feedback">{errors.Salary}</div>
-                    )}
+                    <div className="input-group-append" style={{ width: '25%' }}>
+                      <select
+                        className="form-select border-dark"
+                        id="Currency"
+                        name="Currency"
+                        style={{ height: '58px' }}
+                        onChange={handleCurrencyChange}
+                        value={selectedCurrency} // Set the value based on the selectedCurrency state
+                      >
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                      </select>
+                    </div>
                   </div>
+                  {errors.Salary && (
+                    <div className="invalid-feedback">{errors.Salary}</div>
+                  )}
                 </div>
+                
+                
                 <div className="col-12">
                   <div className="form-floating">
                     <textarea
@@ -358,13 +359,11 @@ function Post() {
                       placeholder="Job Description"
                       id="Job_Description"
                       name="Job_Description"
-                      style={{ height: 130 + 'px', border: '1px solid' }}
+                      style={{ height: '130px', border: '1px solid' }}
                     ></textarea>
                     <label htmlFor="Job_Description">Job Description</label>
                     {errors.Job_Description && (
-                      <div className="invalid-feedback">
-                        {errors.Job_Description}
-                      </div>
+                      <div className="invalid-feedback">{errors.Job_Description}</div>
                     )}
                   </div>
                 </div>
@@ -377,13 +376,11 @@ function Post() {
                       placeholder="Responsibilities"
                       id="Responsibilities"
                       name="Responsibilities"
-                      style={{ height: 130 + 'px', border: '1px solid' }}
+                      style={{ height: '130px', border: '1px solid' }}
                     ></textarea>
                     <label htmlFor="Responsibilities">Responsibilities</label>
                     {errors.Responsibilities && (
-                      <div className="invalid-feedback">
-                        {errors.Responsibilities}
-                      </div>
+                      <div className="invalid-feedback">{errors.Responsibilities}</div>
                     )}
                   </div>
                 </div>
@@ -396,7 +393,7 @@ function Post() {
                       placeholder="Beneifts"
                       id="Beneifts"
                       name="Beneifts"
-                      style={{ height: 130 + 'px', border: '1px solid' }}
+                      style={{ height: '130px', border: '1px solid' }}
                     ></textarea>
                     <label htmlFor="Beneifts">Beneifts</label>
                     {errors.Beneifts && (
