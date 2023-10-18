@@ -117,8 +117,8 @@ function Jobpost() {
                 >
                   <option value="">Experience Level</option>
                   <option value="Senior">Senior</option>
-                  <option value="Associate">Associate</option>
-                  <option value="Intern">Intern</option>
+                  <option value="Mid-level">Mid Level</option>
+                  <option value="Junior">Junior</option>
                 </select>
                 <input
                   type="text"
