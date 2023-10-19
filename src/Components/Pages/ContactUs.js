@@ -108,7 +108,7 @@ function ContactUs() {
                               fontWeight: '300',
                             }}
                           >
-                            Email : info@satchiuk.com / consultant@satchiuk.com
+                            Email : <a href="mailto:info@satchiuk.com" style={{color:'#555555'}}>info@satchiuk.com</a> / <a href="mailto:consultant@satchiuk.com" style={{color:'#555555'}}>consultant@satchiuk.com</a>
                           </span>
                         </div>
                         <div className="col-md-6 py-2">
@@ -120,7 +120,7 @@ function ContactUs() {
                               fontWeight: '300',
                             }}
                           >
-                            Phone : +44 02037 325 1388 / +44 07596 519 6045
+                            Phone : <a href="tel:+447596519605" style={{color:'#555555'}}>+44 7596 519 605 </a>/ <a href="tel:+442033251388" style={{color:'#555555'}}>+44 203 325 1388</a>
                           </span>
                         </div>
                       </div>

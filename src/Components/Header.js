@@ -17,9 +17,9 @@ function Header() {
             </div>
             <div className="ms-auto d-flex align-items-center">
   <small className="ms-4">
-    <a href="tel:+44203251388" style={{color: '#464646'}}>
+    <a href="tel:+442033251388" style={{color: '#464646'}}>
       <i className="fa fa-phone-alt me-3" />
-      +44 0203 325 1388
+      +44 203 325 1388
     </a>
   </small>
   <div className="rectangle-22" />
