@@ -45,13 +45,7 @@ function Enroll() {
       errors.Visa_Status = 'Visa Status is required';
     }
 
-    if (!formData.Github_URL) {
-      errors.Github_URL = 'Github URL is required';
-    }
-
-    if (!formData.LinkedIn_URL) {
-      errors.LinkedIn_URL = 'LinkedIn URL is required';
-    }
+    
 
     if (!formData.Notice_Period) {
       errors.Notice_Period = 'Notice Period is required';
@@ -187,25 +181,29 @@ function Enroll() {
                   </div>
                 </div>
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.Job_Type ? 'has-error' : ''
-                    }`}
-                  >
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="Job_Type"
-                      name="Job_Type"
-                      placeholder="Expected Job Type"
-                      style={{ border: '1px solid' }}
-                    ></input>
-                    <label htmlFor="Job_Type">Expected Job Type</label>
-                    {formErrors.Job_Type && (
-                      <div className="error-message">{formErrors.Job_Type}</div>
-                    )}
-                  </div>
-                </div>
+  <div
+    className={`form-floating ${
+      formErrors.Job_Type ? 'has-error' : ''
+    }`}
+  >
+    <select
+      className="form-select"
+      id="Job_Type"
+      name="Job_Type"
+      style={{ border: '1px solid' }}
+    >
+      <option value="">Select Expected Job Type</option>
+      <option value="Permanent">Permanent</option>
+      <option value="Contract">Contract</option>
+    </select>
+
+    <label htmlFor="Job_Type">Expected Job Type</label>
+    {formErrors.Job_Type && (
+      <div className="error-message">{formErrors.Job_Type}</div>
+    )}
+  </div>
+</div>
+
                 <div className="col-sm-6">
                   <div
                     className={`form-floating ${
@@ -285,7 +283,7 @@ function Enroll() {
                       style={{ border: '1px solid' }}
                     ></input>
                     <label htmlFor="Mobile_No">
-                      Mobile Number (With Country Code)
+                      Mobile Number (With Country Code - +44712345678)
                     </label>
                     {formErrors.Mobile_No && (
                       <div className="error-message">
@@ -318,9 +316,7 @@ function Enroll() {
                 </div>
                 <div className="col-sm-6">
                   <div
-                    className={`form-floating ${
-                      formErrors.Github_URL ? 'has-error' : ''
-                    }`}
+                    className='form-floating'
                   >
                     <input
                       type="text"
@@ -331,18 +327,12 @@ function Enroll() {
                       style={{ border: '1px solid' }}
                     ></input>
                     <label htmlFor="Github_URL">Portfolio/Github URL</label>
-                    {formErrors.Github_URL && (
-                      <div className="error-message">
-                        {formErrors.Github_URL}
-                      </div>
-                    )}
+                    
                   </div>
                 </div>
                 <div className="col-sm-6">
                   <div
-                    className={`form-floating ${
-                      formErrors.LinkedIn_URL ? 'has-error' : ''
-                    }`}
+                    className='form-floating'
                   >
                     <input
                       type="text"
@@ -353,37 +343,33 @@ function Enroll() {
                       style={{ border: '1px solid' }}
                     ></input>
                     <label htmlFor="LinkedIn_URL">LinkedIn URL</label>
-                    {formErrors.LinkedIn_URL && (
-                      <div className="error-message">
-                        {formErrors.LinkedIn_URL}
-                      </div>
-                    )}
+                    
                   </div>
                 </div>
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.Notice_Period ? 'has-error' : ''
-                    }`}
-                  >
-                    <input
-                      type="number"
-                      className="form-control"
-                      id="Notice_Period"
-                      name="Notice_Period"
-                      placeholder="Notice Period"
-                      style={{ border: '1px solid' }}
-                    ></input>
-                    <label htmlFor="Notice_Period">
-                      Notice Period (In Months)
-                    </label>
-                    {formErrors.Notice_Period && (
-                      <div className="error-message">
-                        {formErrors.Notice_Period}
-                      </div>
-                    )}
+                    <div
+                      className={`form-floating ${
+                        formErrors.Notice_Period ? 'has-error' : ''
+                      }`}
+                    >
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="Notice_Period"
+                        name="Notice_Period"
+                        placeholder="Notice Period (In Months)"
+                        style={{ border: '1px solid' }}
+                      ></input>
+                      <label htmlFor="Notice_Period">
+                        Notice Period (In Months)
+                      </label>
+                      {formErrors.Notice_Period && (
+                        <div className="error-message">
+                          {formErrors.Notice_Period}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
 
                 <div className="col-sm-6">
                   <label className="mb-3" htmlFor="Cover_Letter">

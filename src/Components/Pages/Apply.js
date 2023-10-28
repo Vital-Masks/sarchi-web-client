@@ -62,13 +62,7 @@ function Apply() {
       errors.Visa_Status = 'Visa Status is required';
     }
 
-    if (!formData.Github_URL) {
-      errors.Github_URL = 'Github URL is required';
-    }
-
-    if (!formData.LinkedIn_URL) {
-      errors.LinkedIn_URL = 'LinkedIn URL is required';
-    }
+   
 
     if (!formData.Notice_Period) {
       errors.Notice_Period = 'Notice Period is required';
@@ -310,7 +304,7 @@ function Apply() {
                         style={{ border: '1px solid' }}
                       ></input>
                       <label htmlFor="Mobile_No">
-                        Mobile Number (With Country Code)
+                        Mobile Number (With Country Code - +44712345678)
                       </label>
                       {formErrors.Mobile_No && (
                         <div className="error-message">
@@ -343,9 +337,7 @@ function Apply() {
                   </div>
                   <div className="col-sm-6">
                     <div
-                      className={`form-floating ${
-                        formErrors.Github_URL ? 'has-error' : ''
-                      }`}
+                      className='form-floating'
                     >
                       <input
                         type="text"
@@ -356,18 +348,12 @@ function Apply() {
                         style={{ border: '1px solid' }}
                       ></input>
                       <label htmlFor="Github_URL">Portfolio/Github URL</label>
-                      {formErrors.Github_URL && (
-                        <div className="error-message">
-                          {formErrors.Github_URL}
-                        </div>
-                      )}
+                      
                     </div>
                   </div>
                   <div className="col-sm-6">
                     <div
-                      className={`form-floating ${
-                        formErrors.LinkedIn_URL ? 'has-error' : ''
-                      }`}
+                      className='form-floating'
                     >
                       <input
                         type="text"
@@ -378,11 +364,7 @@ function Apply() {
                         style={{ border: '1px solid' }}
                       ></input>
                       <label htmlFor="LinkedIn_URL">LinkedIn URL</label>
-                      {formErrors.LinkedIn_URL && (
-                        <div className="error-message">
-                          {formErrors.LinkedIn_URL}
-                        </div>
-                      )}
+                     
                     </div>
                   </div>
                   <div className="col-sm-6">
