@@ -215,9 +215,8 @@ function Jobpost() {
                                     marginLeft: '10px',
                                     fontSize: '15px',
                                     marginTop: '05px',
-                                    background: '#ebff9d',
                                     width: '100px',
-                                    textAlign: 'center',
+                                    textAlign: 'left',
                                   }}
                                 >
                                   {item.attributes.Location}
@@ -228,14 +227,13 @@ function Jobpost() {
                                     marginLeft: '10px',
                                     fontSize: '15px',
                                     marginTop: '05px',
-                                    background: '#9effe2',
                                     width: '100px',
-                                    textAlign: 'center',
+                                    textAlign: 'left',
                                   }}
                                   name="salaryRange"
                                 >
-                                  {(item.attributes.Min_Salary)/1000}K{currencySymbols[item.attributes.Currency]}-
-                                  {(item.attributes.Max_Salary)/1000}K{currencySymbols[item.attributes.Currency]}
+                                  {currencySymbols[item.attributes.Currency]}{item.attributes.Min_Salary}-
+                                  {currencySymbols[item.attributes.Currency]}{item.attributes.Max_Salary}
                                 </p>
                                 <p
                                   className="search rounded-pill text-black mr-2 mb-2 py-1"
@@ -243,9 +241,8 @@ function Jobpost() {
                                     marginLeft: '10px',
                                     fontSize: '15px',
                                     marginTop: '05px',
-                                    background: '#ffb0b0',
                                     width: '100px',
-                                    textAlign: 'center',
+                                    textAlign: 'left',
                                   }}
                                 >
                                   {item.attributes.Timings}
@@ -256,9 +253,8 @@ function Jobpost() {
                                     marginLeft: '10px',
                                     fontSize: '15px',
                                     marginTop: '05px',
-                                    background: '#f098ff',
                                     width: '100px',
-                                    textAlign: 'center',
+                                    textAlign: 'left',
                                   }}
                                 >
                                   {item.attributes.Experience_Levels}
@@ -269,9 +265,8 @@ function Jobpost() {
                                     marginLeft: '10px',
                                     fontSize: '15px',
                                     marginTop: '05px',
-                                    background: '#67b6ff',
                                     width: '100px',
-                                    textAlign: 'center',
+                                    textAlign: 'left',
                                   }}
                                 >
                                   {item.attributes.Type_Of_Jobs}

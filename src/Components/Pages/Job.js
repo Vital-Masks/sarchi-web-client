@@ -45,13 +45,12 @@ function Job() {
               <div className="col-lg-12">
                 <div className="d-flex flex-wrap mb-4" style={{fontFamily:'Poppins'}}>
                   <p
-                    className="search rounded-pill text-black mr-2 mb-2 py-2"
+                    className="search rounded-pill text-white mr-2 mb-2 py-2"
                     style={{
                       marginLeft: '10px',
                       fontSize: '15px',
                       marginTop: '05px',
                       height:'40px',
-                      background: '#ebff9d',
                       width: '100px',
                       textAlign: 'center',
                     }}
@@ -59,29 +58,27 @@ function Job() {
                     {jobData.attributes.Location}
                   </p>
                   <p
-                    className="search rounded-pill text-black mr-2 mb-2 py-2"
+                    className="search rounded-pill text-white mr-2 mb-2 py-2"
                     style={{
                       marginLeft: '10px',
                       fontSize: '15px',
                       
                       height:'40px',
                       marginTop: '05px',
-                      background: '#9effe2',
                       width: '100px',
                       textAlign: 'center',
                     }}
                   >
-                    {(jobData.attributes.Min_Salary)/1000}K{currencySymbols[jobData.attributes.Currency]}-
-                                  {(jobData.attributes.Max_Salary)/1000}K{currencySymbols[jobData.attributes.Currency]}
+                    {currencySymbols[jobData.attributes.Currency]}{jobData.attributes.Min_Salary}-
+                    {currencySymbols[jobData.attributes.Currency]}{jobData.attributes.Max_Salary}
                   </p>
                   <p
-                    className="search rounded-pill text-black mr-2 mb-2 py-2"
+                    className="search rounded-pill text-white mr-2 mb-2 py-2"
                     style={{
                       marginLeft: '10px',
                       fontSize: '15px',
                       marginTop: '05px',
                       height:'40px',
-                      background: '#ffb0b0',
                       width: '100px',
                       textAlign: 'center',
                     }}
@@ -89,13 +86,12 @@ function Job() {
                     {jobData.attributes.Timings}
                   </p>
                   <p
-                    className="search rounded-pill text-black mr-2 mb-2 py-2"
+                    className="search rounded-pill text-white mr-2 mb-2 py-2"
                     style={{
                       marginLeft: '10px',
                       fontSize: '15px',
                       marginTop: '05px',
                       height:'40px',
-                      background: '#f098ff',
                       width: '100px',
                       textAlign: 'center',
                     }}
@@ -103,13 +99,12 @@ function Job() {
                     {jobData.attributes.Experience_Levels}
                   </p>
                   <p
-                    className="search rounded-pill text-black mr-2 mb-2 py-2"
+                    className="search rounded-pill text-white mr-2 mb-2 py-2"
                     style={{
                       marginLeft: '10px',
                       fontSize: '15px',
                       marginTop: '05px',
                       height:'40px',
-                      background: '#67b6ff',
                       width: '100px',
                       textAlign: 'center',
                     }}
