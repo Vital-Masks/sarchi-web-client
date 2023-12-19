@@ -354,7 +354,7 @@ function Enroll() {
                 <div className="col-sm-6">
                   <div className="form-floating">
                     <input
-                      type="number"
+                      type="text"
                       className="form-control"
                       id="Emergency_Contact"
                       name="Emergency_Contact"
