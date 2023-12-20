@@ -169,7 +169,7 @@ function Enroll() {
           showConfirmButton: false,
           timer: 1500,
         });
-        // history("/");
+        history("/");
         setFormErrors({});
       } catch (error) {
         handleError(error);
