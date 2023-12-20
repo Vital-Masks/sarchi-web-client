@@ -11,16 +11,53 @@ function Enroll() {
   const history = useNavigate();
 
   const validateForm = (formData) => {
+    console.log(formData, "validat");
     const errors = {};
+    if (!formData.Title) {
+      errors.Title = "*Required";
+    }
     if (!formData.First_Name) {
-      errors.First_Name = "First Name is required";
+      errors.First_Name = "*Required";
     }
     if (!formData.Surname) {
-      errors.Surname = "Surname is required";
+      errors.Surname = "*Required";
     }
+    if (!formData.Home_Tel_No) {
+      errors.Home_Tel_No = "*Required";
+    }
+    if (!formData.Mobile_Tel_No) {
+      errors.Mobile_Tel_No = "*Required";
+    }
+    if (!formData.Email) {
+      errors.Email = "*Required";
+    }
+    if (!formData.Insurance_No) {
+      errors.Insurance_No = "*Required";
+    }
+    if (!formData.Postcode) {
+      errors.Postcode = "*Required";
+    }
+    if (!formData.DOB) {
+      errors.DOB = "*Required";
+    }
+
+    if (!formData.Address) {
+      errors.Address = "*Required";
+    }
+
+    if (
+      !formData.Free_to_Takeup_Employment ||
+      formData.Free_to_Takeup_Employment === false
+    ) {
+      errors.Free_to_Takeup_Employment = "*Required";
+      if (!formData.No_comments) {
+        errors.No_comments = "*Required";
+      }
+    }
+    console.log(formData.Free_to_Takeup_Employment, "tick");
     // Add more validation as needed
     // ...
-
+    console.log(errors, "error");
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -122,9 +159,9 @@ function Enroll() {
           Name: object.Name,
           Job_Title: object.Job_Title,
           Company: object.Company,
-          Address: object.Address,
+          Address: object.Address1,
           Telephone_Number: object.Telephone_Number,
-          Email: object.Email,
+          Email: object.Email1,
           Consent_to_Contact: object.Consent_to_Contact === "on" ? true : false,
         };
         var refObj2 = {
@@ -214,7 +251,18 @@ function Enroll() {
       showConfirmButton: true,
     });
   };
-
+  const handleChance = (e) => {
+    let error = { ...formErrors };
+    let name = e.target.name;
+    let value = e.target.value;
+    if (value != "") {
+      error[name] = null;
+    } else {
+      error[name] = "*Requred";
+    }
+    setFormErrors({ ...error });
+    console.log(error, "testing");
+  };
   return (
     <>
       <Header />
@@ -244,8 +292,14 @@ function Enroll() {
                 </h1>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Title ? "has-error" : ""
+                    }`}
+                  >
+                    {JSON.stringify(formErrors)}
                     <input
+                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Title"
@@ -254,6 +308,9 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="Title">Title</label>
+                    {formErrors.Title && (
+                      <div className="error-message">{formErrors.Title}</div>
+                    )}
                   </div>
                 </div>
 
@@ -264,6 +321,7 @@ function Enroll() {
                     }`}
                   >
                     <input
+                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="First_Name"
@@ -286,6 +344,7 @@ function Enroll() {
                     }`}
                   >
                     <input
+                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Surname"
@@ -306,6 +365,7 @@ function Enroll() {
                     }`}
                   >
                     <input
+                      onChange={handleChance}
                       type="number"
                       className="form-control"
                       id="Home_Tel_No"
@@ -331,6 +391,7 @@ function Enroll() {
                     }`}
                   >
                     <input
+                      onChange={handleChance}
                       type="number"
                       className="form-control"
                       id="Mobile_Tel_No"
@@ -356,6 +417,7 @@ function Enroll() {
                     }`}
                   >
                     <input
+                      onChange={handleChance}
                       type="email"
                       className="form-control"
                       id="Email"
@@ -371,8 +433,13 @@ function Enroll() {
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Insurance_No ? "has-error" : ""
+                    }`}
+                  >
                     <input
+                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Insurance_No"
@@ -383,12 +450,22 @@ function Enroll() {
                     <label htmlFor="Insurance_No">
                       National Insurance Number
                     </label>
+                    {formErrors.Insurance_No && (
+                      <div className="error-message">
+                        {formErrors.Insurance_No}
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Postcode ? "has-error" : ""
+                    }`}
+                  >
                     <input
+                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Postcode"
@@ -397,12 +474,21 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="Postcode">Postcode</label>
+
+                    {formErrors.Postcode && (
+                      <div className="error-message">{formErrors.Postcode}</div>
+                    )}
                   </div>
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.DOB ? "has-error" : ""
+                    }`}
+                  >
                     <input
+                      onChange={handleChance}
                       type="date"
                       className="form-control"
                       id="DOB"
@@ -411,6 +497,9 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="DOB">Date of Birth</label>
+                    {formErrors.DOB && (
+                      <div className="error-message">{formErrors.DOB}</div>
+                    )}
                   </div>
                 </div>
 
@@ -469,8 +558,13 @@ function Enroll() {
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Address ? "has-error" : ""
+                    }`}
+                  >
                     <input
+                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Address"
@@ -479,6 +573,9 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="Address">Address</label>
+                    {formErrors.Address && (
+                      <div className="error-message">{formErrors.Address}</div>
+                    )}{" "}
                   </div>
                 </div>
 
@@ -534,6 +631,7 @@ function Enroll() {
                       type="checkbox"
                       id="Free_to_Takeup_Employment"
                       name="Free_to_Takeup_Employment"
+                      onChange={handleChance}
                     />
                     <label
                       className="form-check-label"
@@ -541,6 +639,11 @@ function Enroll() {
                     >
                       Free To Takeup Employment?
                     </label>
+                    {formErrors.Free_to_Takeup_Employment && (
+                      <div className="error-message">
+                        {formErrors.Free_to_Takeup_Employment}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -552,7 +655,11 @@ function Enroll() {
                 </h6>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.No_comments ? "has-error" : ""
+                    }`}
+                  >
                     <input
                       type="text"
                       className="form-control"
@@ -560,11 +667,26 @@ function Enroll() {
                       name="No_comments"
                       placeholder="No_comments"
                       style={{ border: "1px solid" }}
+                      onChange={handleChance}
                     ></input>
                     <label htmlFor="No_comments">Reason</label>
+
+                    {formErrors.No_comments && (
+                      <div className="error-message">
+                        {formErrors.No_comments}
+                      </div>
+                    )}
                   </div>
                 </div>
-
+                <div className="col-12 text-center py-5">
+                  <button
+                    className="btn py-2 rounded-pill text-white"
+                    type="submit"
+                    style={{ background: "#111727", height: "50px" }}
+                  >
+                    Apply for Job
+                  </button>
+                </div>
                 <h1
                   className="display py-3 text-black"
                   style={{ fontFamily: "Alatsi" }}
@@ -1112,12 +1234,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Address"
-                      name="Address"
+                      id="Address1"
+                      name="Address1"
                       placeholder="Address"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Address">Address</label>
+                    <label htmlFor="Address1">Address</label>
                   </div>
                 </div>
 
@@ -1140,12 +1262,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Email"
-                      name="Email"
+                      id="Email1"
+                      name="Email1"
                       placeholder="Email"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Email">Email</label>
+                    <label htmlFor="Email1">Email</label>
                   </div>
                 </div>
 

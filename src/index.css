@@ -1,0 +1,6 @@
+.error-message{
+    color:#dc3545 ;
+}
+.has-error > input{
+    color:#dc3545 ;
+}
