@@ -54,6 +54,104 @@ function Enroll() {
     if (validateForm(object)) {
       const apiUrl = URL.BASE_URL + "/api/seeking-jobs";
       try {
+        const FORM_ID = "";
+        const FILE = e.target.Signature_Image.files[0];
+        if (FILE) {
+          const formData2 = new FormData();
+          formData2.append("ref", "api::applied-job.applied-job");
+          formData2.append("refId", FORM_ID);
+          formData2.append("files", FILE);
+
+          await axios.post(URL.BASE_URL + "/api/upload", formData2, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+        }
+
+        console.log(object, FORM_ID, "000000001");
+        let obj1 = {
+          Date: object.date,
+          Organisation: object.Organisation,
+          Membership_level_and_No: object.Membership_level_and_No,
+        };
+        let obj2 = {
+          Date: object.date2,
+          Organisation: object.Organisation2,
+          Membership_level_and_No: object.Membership_level_and_No2,
+        };
+        let obj3 = {
+          Date: object.date3,
+          Organisation: object.Organisation3,
+          Membership_level_and_No: object.Membership_level_and_No3,
+        };
+        let obj4 = {
+          Date: object.date4,
+          Organisation: object.Organisation4,
+          Membership_level_and_No: object.Membership_level_and_No4,
+        };
+
+        var bodyMemberId1 = await submitAdditionalData(
+          obj1,
+          FORM_ID,
+          "professional-body-memberships"
+        );
+        var bodyMemberId2 = await submitAdditionalData(
+          obj2,
+          FORM_ID,
+          "professional-body-memberships"
+        );
+        var bodyMemberId3 = await submitAdditionalData(
+          obj3,
+          FORM_ID,
+          "professional-body-memberships"
+        );
+        var bodyMemberId4 = await submitAdditionalData(
+          obj4,
+          FORM_ID,
+          "professional-body-memberships"
+        );
+        var professional_body_memberships = [
+          bodyMemberId1,
+          bodyMemberId2,
+          bodyMemberId3,
+          bodyMemberId4,
+        ];
+
+        var refObj = {
+          Name: object.name,
+          Job_Title: object.Job_Title,
+          Company: object.Company,
+          Address: object.Address,
+          Telephone_Number: object.Telephone_Number,
+          Email: object.Email,
+          Consent_to_Contact: object.Consent_to_Contact === "on" ? true : false,
+        };
+        var refObj2 = {
+          Name: object.name2,
+          Job_Title: object.Job_Title2,
+          Company: object.Company2,
+          Address: object.Address2,
+          Telephone_Number: object.Telephone_Number2,
+          Email: object.Email2,
+          Consent_to_Contact:
+            object.Consent_to_Contact2 === "on" ? true : false,
+        };
+        // await submitAdditionalData(object, FORM_ID, "reference-details");
+        var refId1 = await submitAdditionalData(
+          refObj,
+          FORM_ID,
+          "reference-details"
+        );
+        var refId2 = await submitAdditionalData(
+          refObj2,
+          FORM_ID,
+          "reference-details"
+        );
+        console.log(refId1, refId2, "0000002");
+        var reference_details = [refId1, refId2];
+        object["professional_body_memberships"] = professional_body_memberships;
+        object["reference_details"] = reference_details;
         const response = await axios.post(
           apiUrl,
           JSON.stringify({ data: object }),
@@ -64,43 +162,15 @@ function Enroll() {
             },
           }
         );
-
-        if (response.status === 200) {
-
-          const FORM_ID = response.data.data.id;
-          const FILE = e.target.Signature_Image.files[0];
-          if (FILE) {
-            const formData2 = new FormData();
-            formData2.append("ref", "api::applied-job.applied-job");
-            formData2.append("refId", FORM_ID);
-            formData2.append("files", FILE);
-
-            await axios.post(URL.BASE_URL + "/api/upload", formData2, {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            });
-          }
-
-          await submitAdditionalData(
-            object,
-            FORM_ID,
-            "professional-body-memberships"
-          );
-          await submitAdditionalData(object, FORM_ID, "reference-details");
-
-          Swal.fire({
-            icon: "success",
-            title: "Applied!",
-            text: "Applied Successfully.",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          history("/");
-          setFormErrors({});
-        } else {
-          throw new Error("Form Submission Failed");
-        }
+        Swal.fire({
+          icon: "success",
+          title: "Applied!",
+          text: "Applied Successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // history("/");
+        setFormErrors({});
       } catch (error) {
         handleError(error);
       }
@@ -109,23 +179,30 @@ function Enroll() {
 
   const submitAdditionalData = async (formData, formId, endpoint) => {
     const additionalData = formData[endpoint];
-    if (additionalData) {
-      await axios.post(
-        URL.BASE_URL + `/api/${endpoint}`,
-        {
-          data: {
-            ...additionalData,
-            appliedJob: formId,
+    var id = "";
+    if (formData) {
+      await axios
+        .post(
+          URL.BASE_URL + `/api/${endpoint}`,
+          {
+            data: {
+              ...formData,
+            },
           },
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          id = res.data.data.id;
+          console.log(res.data.data.id, "00000res");
+          return res.data.data.id;
+        });
     }
+    return id;
   };
 
   const handleError = (error) => {
@@ -689,12 +766,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Organisation"
-                      name="Organisation"
+                      id="Organisation2"
+                      name="Organisation2"
                       placeholder="Organisation"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Organisation">Body / Organization</label>
+                    <label htmlFor="Organisation2">Body / Organization</label>
                   </div>
                 </div>
 
@@ -703,12 +780,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Membership_level_and_No"
-                      name="Membership_level_and_No"
+                      id="Membership_level_and_No2"
+                      name="Membership_level_and_No2"
                       placeholder="Membership_level_and_No"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Membership_level_and_No">
+                    <label htmlFor="Membership_level_and_No2">
                       Membership Level and Number{" "}
                     </label>
                   </div>
@@ -719,12 +796,12 @@ function Enroll() {
                     <input
                       type="date"
                       className="form-control"
-                      id="Date"
-                      name="Date"
+                      id="Date2"
+                      name="Date2"
                       placeholder="Date"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Date">Date Joined</label>
+                    <label htmlFor="Date2">Date Joined</label>
                   </div>
                 </div>
 
@@ -733,12 +810,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Organisation"
-                      name="Organisation"
+                      id="Organisation3"
+                      name="Organisation3"
                       placeholder="Organisation"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Organisation">Body / Organization</label>
+                    <label htmlFor="Organisation3">Body / Organization</label>
                   </div>
                 </div>
 
@@ -747,12 +824,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Membership_level_and_No"
-                      name="Membership_level_and_No"
+                      id="Membership_level_and_No3"
+                      name="Membership_level_and_No3"
                       placeholder="Membership_level_and_No"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Membership_level_and_No">
+                    <label htmlFor="Membership_level_and_No3">
                       Membership Level and Number{" "}
                     </label>
                   </div>
@@ -763,12 +840,12 @@ function Enroll() {
                     <input
                       type="date"
                       className="form-control"
-                      id="Date"
-                      name="Date"
+                      id="Date3"
+                      name="Date3"
                       placeholder="Date"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Date">Date Joined</label>
+                    <label htmlFor="Date3">Date Joined</label>
                   </div>
                 </div>
 
@@ -777,12 +854,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Organisation"
-                      name="Organisation"
+                      id="Organisation4"
+                      name="Organisation4"
                       placeholder="Organisation"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Organisation">Body / Organization</label>
+                    <label htmlFor="Organisation4">Body / Organization</label>
                   </div>
                 </div>
 
@@ -791,12 +868,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Membership_level_and_No"
-                      name="Membership_level_and_No"
+                      id="Membership_level_and_No4"
+                      name="Membership_level_and_No4"
                       placeholder="Membership_level_and_No"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Membership_level_and_No">
+                    <label htmlFor="Membership_level_and_No4">
                       Membership Level and Number{" "}
                     </label>
                   </div>
@@ -807,12 +884,12 @@ function Enroll() {
                     <input
                       type="date"
                       className="form-control"
-                      id="Date"
-                      name="Date"
+                      id="Date4"
+                      name="Date4"
                       placeholder="Date"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Date">Date Joined</label>
+                    <label htmlFor="Date4">Date Joined</label>
                   </div>
                 </div>
 
@@ -1102,12 +1179,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Name"
-                      name="Name"
+                      id="Name2"
+                      name="Name2"
                       placeholder="Name"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Name">Name</label>
+                    <label htmlFor="Name2">Name</label>
                   </div>
                 </div>
 
@@ -1116,12 +1193,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Job_Title"
-                      name="Job_Title"
-                      placeholder="Job_Title"
+                      id="Job_Title2"
+                      name="Job_Title2"
+                      placeholder="Job Title"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Job_Title">Job Title</label>
+                    <label htmlFor="Job_Title2">Job Title</label>
                   </div>
                 </div>
 
@@ -1130,12 +1207,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Company"
-                      name="Company"
+                      id="Company2"
+                      name="Company2"
                       placeholder="Company"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Company">Company</label>
+                    <label htmlFor="Company2">Company</label>
                   </div>
                 </div>
 
@@ -1144,12 +1221,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Address"
-                      name="Address"
+                      id="Address2"
+                      name="Address2"
                       placeholder="Address"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Address">Address</label>
+                    <label htmlFor="Address2">Address</label>
                   </div>
                 </div>
 
@@ -1158,12 +1235,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Telephone_Number"
-                      name="Telephone_Number"
+                      id="Telephone_Number2"
+                      name="Telephone_Number2"
                       placeholder="Telephone_Number"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Telephone_Number">Telephone Number</label>
+                    <label htmlFor="Telephone_Number2">Telephone Number</label>
                   </div>
                 </div>
 
@@ -1172,12 +1249,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Email"
-                      name="Email"
+                      id="Email2"
+                      name="Email2"
                       placeholder="Email"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Email">Email</label>
+                    <label htmlFor="Email2">Email</label>
                   </div>
                 </div>
 
@@ -1186,12 +1263,12 @@ function Enroll() {
                     <input
                       className="form-check-input"
                       type="checkbox"
-                      id="Consent_to_Contact"
-                      name="Consent_to_Contact"
+                      id="Consent_to_Contact2"
+                      name="Consent_to_Contact2"
                     />
                     <label
                       className="form-check-label"
-                      htmlFor="Consent_to_Contact"
+                      htmlFor="Consent_to_Contact2"
                     >
                       Consent to Contact
                     </label>
