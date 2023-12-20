@@ -71,22 +71,22 @@ function Enroll() {
 
         console.log(object, FORM_ID, "000000001");
         let obj1 = {
-          Date: object.date,
+          Date: object.Date,
           Organisation: object.Organisation,
           Membership_level_and_No: object.Membership_level_and_No,
         };
         let obj2 = {
-          Date: object.date2,
+          Date: object.Date2,
           Organisation: object.Organisation2,
           Membership_level_and_No: object.Membership_level_and_No2,
         };
         let obj3 = {
-          Date: object.date3,
+          Date: object.Date3,
           Organisation: object.Organisation3,
           Membership_level_and_No: object.Membership_level_and_No3,
         };
         let obj4 = {
-          Date: object.date4,
+          Date: object.Date4,
           Organisation: object.Organisation4,
           Membership_level_and_No: object.Membership_level_and_No4,
         };
@@ -119,7 +119,7 @@ function Enroll() {
         ];
 
         var refObj = {
-          Name: object.name,
+          Name: object.Name,
           Job_Title: object.Job_Title,
           Company: object.Company,
           Address: object.Address,
@@ -128,7 +128,7 @@ function Enroll() {
           Consent_to_Contact: object.Consent_to_Contact === "on" ? true : false,
         };
         var refObj2 = {
-          Name: object.name2,
+          Name: object.Name2,
           Job_Title: object.Job_Title2,
           Company: object.Company2,
           Address: object.Address2,
