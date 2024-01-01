@@ -69,11 +69,37 @@ function Enroll() {
 
           const FORM_ID = response.data.data.id;
           const FILE = e.target.Signature_Image.files[0];
+          const FILE2 = e.target.Cover_Letter.files[0];
+          const FILE3 = e.target.Resume.files[0];
           if (FILE) {
             const formData2 = new FormData();
             formData2.append("ref", "api::applied-job.applied-job");
             formData2.append("refId", FORM_ID);
             formData2.append("files", FILE);
+
+            await axios.post(URL.BASE_URL + "/api/upload", formData2, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            });
+          }
+          if (FILE2) {
+            const formData2 = new FormData();
+            formData2.append("ref", "api::applied-job.applied-job");
+            formData2.append("refId", FORM_ID);
+            formData2.append("files", FILE2);
+
+            await axios.post(URL.BASE_URL + "/api/upload", formData2, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            });
+          }
+          if (FILE3) {
+            const formData2 = new FormData();
+            formData2.append("ref", "api::applied-job.applied-job");
+            formData2.append("refId", FORM_ID);
+            formData2.append("files", FILE3);
 
             await axios.post(URL.BASE_URL + "/api/upload", formData2, {
               headers: {
@@ -175,6 +201,7 @@ function Enroll() {
                       name="Title"
                       placeholder="Title"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Title">Title</label>
                   </div>
@@ -260,6 +287,7 @@ function Enroll() {
                       name="Mobile_Tel_No"
                       placeholder="Your mobile number with country code"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Mobile_Tel_No">
                       Your Mobile Number (With Country Code - +44712345678)
@@ -285,6 +313,7 @@ function Enroll() {
                       name="Email"
                       placeholder="Your Email"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Email">Email Address</label>
                     {formErrors.Email && (
@@ -302,6 +331,7 @@ function Enroll() {
                       name="Insurance_No"
                       placeholder="Insurance_No"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Insurance_No">
                       National Insurance Number
@@ -318,6 +348,7 @@ function Enroll() {
                       name="Postcode"
                       placeholder="Postcode"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Postcode">Postcode</label>
                   </div>
@@ -332,8 +363,37 @@ function Enroll() {
                       name="DOB"
                       placeholder="DOB"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="DOB">Date of Birth</label>
+                  </div>
+                </div>
+
+                <div className="col-sm-6">
+                  <div className="form-floating">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="Visa_Status"
+                      name="Visa_Status"
+                      placeholder="Visa_Status"
+                      style={{ border: "1px solid" }}
+                    ></input>
+                    <label htmlFor="Visa_Status">Visa Status</label>
+                  </div>
+                </div>
+
+                <div className="col-sm-6">
+                  <div className="form-floating">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="LinkedIn_URL"
+                      name="LinkedIn_URL"
+                      placeholder="LinkedIn_URL"
+                      style={{ border: "1px solid" }}
+                    ></input>
+                    <label htmlFor="LinkedIn_URL">LinkedIn URL</label>
                   </div>
                 </div>
 
@@ -360,6 +420,7 @@ function Enroll() {
                       name="Emergency_Contact"
                       placeholder="Emergency_Contact"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Emergency_Contact">Emergency Contact</label>
                   </div>
@@ -378,6 +439,7 @@ function Enroll() {
                       name="Emergency_Contact_No"
                       placeholder="Your mobile number with country code"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Emergency_Contact_No">
                       Emergency Contact Number (With Country Code -
@@ -457,6 +519,7 @@ function Enroll() {
                       type="checkbox"
                       id="Free_to_Takeup_Employment"
                       name="Free_to_Takeup_Employment"
+                      
                     />
                     <label
                       className="form-check-label"
@@ -507,6 +570,7 @@ function Enroll() {
                       name="Current_Emp_Status"
                       placeholder="Visa Status"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Current_Emp_Status">
                       Current Employment Status
@@ -532,6 +596,7 @@ function Enroll() {
                       name="Notice_Period"
                       placeholder="Notice Period (In Months)"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Notice_Period">
                       Notice Period (In Months)
@@ -553,6 +618,7 @@ function Enroll() {
                       name="Job_Titles"
                       placeholder="Job_Titles"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Job_Titles">Specify Job Titles</label>
                   </div>
@@ -626,6 +692,7 @@ function Enroll() {
                       name="Hourly_Rate"
                       placeholder="Hourly_Rate"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Hourly_Rate">
                       Annual Salary / Hourly Rate Expected
@@ -1252,6 +1319,7 @@ function Enroll() {
                       type="checkbox"
                       id="Data_Protection_Statement"
                       name="Data_Protection_Statement"
+                      
                     />
                     <label
                       className="form-check-label"
@@ -1309,6 +1377,50 @@ function Enroll() {
                     <input
                       type="file"
                       className={`form-control ${
+                        formErrors.Cover_Letter ? "has-error" : ""
+                      }`}
+                      id="Cover_Letter"
+                      name="Cover_Letter"
+                      style={{ border: "1px solid" }}
+                    ></input>
+                    {formErrors.Cover_Letter && (
+                      <div className="error-message">
+                        {formErrors.Cover_Letter}
+                      </div>
+                    )}
+                  </div>
+                  <label className="mb-3" htmlFor="Cover_Letter">
+                    Upload your Cover Letter (Max: 2mb)
+                  </label>
+                </div>
+
+                <div className="col-sm-6">
+                  <div className="form">
+                    <input
+                      type="file"
+                      className={`form-control ${
+                        formErrors.Resume ? "has-error" : ""
+                      }`}
+                      id="Resume"
+                      name="Resume"
+                      style={{ border: "1px solid" }}
+                    ></input>
+                    {formErrors.Resume && (
+                      <div className="error-message">
+                        {formErrors.Resume}
+                      </div>
+                    )}
+                  </div>
+                  <label className="mb-3" htmlFor="Resume">
+                    Upload your Resume (Max: 2mb)
+                  </label>
+                </div>
+
+                <div className="col-sm-6">
+                  <div className="form">
+                    <input
+                      type="file"
+                      className={`form-control ${
                         formErrors.Signature_Image ? "has-error" : ""
                       }`}
                       id="Signature_Image"
@@ -1347,6 +1459,7 @@ function Enroll() {
                       type="checkbox"
                       id="Agree_Ploicy"
                       name="Agree_Ploicy"
+                      required
                     />
                     <label className="form-check-label" htmlFor="Agree_Ploicy">
                       I Agree to the Privacy Policy
