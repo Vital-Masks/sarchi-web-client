@@ -11,59 +11,16 @@ function Enroll() {
   const history = useNavigate();
 
   const validateForm = (formData) => {
-    console.log(formData, "validat");
     const errors = {};
-    if (!formData.Title) {
-      errors.Title = "*Required";
-    }
     if (!formData.First_Name) {
-      errors.First_Name = "*Required";
+      errors.First_Name = "First Name is required";
     }
     if (!formData.Surname) {
-      errors.Surname = "*Required";
+      errors.Surname = "Surname is required";
     }
-    if (!formData.Home_Tel_No) {
-      errors.Home_Tel_No = "*Required";
-    }
-    if (!formData.Mobile_Tel_No) {
-      errors.Mobile_Tel_No = "*Required";
-    }
-    if (!formData.Email) {
-      errors.Email = "*Required";
-    }
-    if (!formData.Insurance_No) {
-      errors.Insurance_No = "*Required";
-    }
-    if (!formData.Postcode) {
-      errors.Postcode = "*Required";
-    }
-    if (!formData.DOB) {
-      errors.DOB = "*Required";
-    }
-
-    if (!formData.Address) {
-      errors.Address = "*Required";
-    }
-    // if (!formData.Visa_Status) {
-    //   errors.Visa_Status = "*Required";
-    // }
-    // if (!formData.LinkedIn_URL) {
-    //   errors.LinkedIn_URL = "*Required";
-    // }
-
-    if (
-      !formData.Free_to_Takeup_Employment ||
-      formData.Free_to_Takeup_Employment === false
-    ) {
-      errors.Free_to_Takeup_Employment = "*Required";
-      if (!formData.No_comments) {
-        errors.No_comments = "*Required";
-      }
-    }
-    console.log(formData.Free_to_Takeup_Employment, "tick");
     // Add more validation as needed
     // ...
-    console.log(errors, "error");
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -97,104 +54,6 @@ function Enroll() {
     if (validateForm(object)) {
       const apiUrl = URL.BASE_URL + "/api/seeking-jobs";
       try {
-        const FORM_ID = "";
-        const FILE = e.target.Signature_Image.files[0];
-        if (FILE) {
-          const formData2 = new FormData();
-          formData2.append("ref", "api::applied-job.applied-job");
-          formData2.append("refId", FORM_ID);
-          formData2.append("files", FILE);
-
-          await axios.post(URL.BASE_URL + "/api/upload", formData2, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-        }
-
-        console.log(object, FORM_ID, "000000001");
-        let obj1 = {
-          Date: object.Date,
-          Organisation: object.Organisation,
-          Membership_level_and_No: object.Membership_level_and_No,
-        };
-        let obj2 = {
-          Date: object.Date2,
-          Organisation: object.Organisation2,
-          Membership_level_and_No: object.Membership_level_and_No2,
-        };
-        let obj3 = {
-          Date: object.Date3,
-          Organisation: object.Organisation3,
-          Membership_level_and_No: object.Membership_level_and_No3,
-        };
-        let obj4 = {
-          Date: object.Date4,
-          Organisation: object.Organisation4,
-          Membership_level_and_No: object.Membership_level_and_No4,
-        };
-
-        var bodyMemberId1 = await submitAdditionalData(
-          obj1,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var bodyMemberId2 = await submitAdditionalData(
-          obj2,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var bodyMemberId3 = await submitAdditionalData(
-          obj3,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var bodyMemberId4 = await submitAdditionalData(
-          obj4,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var professional_body_memberships = [
-          bodyMemberId1,
-          bodyMemberId2,
-          bodyMemberId3,
-          bodyMemberId4,
-        ];
-
-        var refObj = {
-          Name: object.Name,
-          Job_Title: object.Job_Title,
-          Company: object.Company,
-          Address: object.Address1,
-          Telephone_Number: object.Telephone_Number,
-          Email: object.Email1,
-          Consent_to_Contact: object.Consent_to_Contact === "on" ? true : false,
-        };
-        var refObj2 = {
-          Name: object.Name2,
-          Job_Title: object.Job_Title2,
-          Company: object.Company2,
-          Address: object.Address2,
-          Telephone_Number: object.Telephone_Number2,
-          Email: object.Email2,
-          Consent_to_Contact:
-            object.Consent_to_Contact2 === "on" ? true : false,
-        };
-        // await submitAdditionalData(object, FORM_ID, "reference-details");
-        var refId1 = await submitAdditionalData(
-          refObj,
-          FORM_ID,
-          "reference-details"
-        );
-        var refId2 = await submitAdditionalData(
-          refObj2,
-          FORM_ID,
-          "reference-details"
-        );
-        console.log(refId1, refId2, "0000002");
-        var reference_details = [refId1, refId2];
-        object["professional_body_memberships"] = professional_body_memberships;
-        object["reference_details"] = reference_details;
         const response = await axios.post(
           apiUrl,
           JSON.stringify({ data: object }),
@@ -204,11 +63,14 @@ function Enroll() {
               Accept: "application/json",
             },
           }
-        ).then(async(res)=>{
-          let FORM_ID = res.data.data.id;
-          let FILE = e.target.Signature_Image.files[0];
-          let FILE2 = e.target.Cover_Letter.files[0];
-          let FILE3 = e.target.Resume.files[0];
+        );
+
+        if (response.status === 200) {
+
+          const FORM_ID = response.data.data.id;
+          const FILE = e.target.Signature_Image.files[0];
+          const FILE2 = e.target.Cover_Letter.files[0];
+          const FILE3 = e.target.Resume.files[0];
           if (FILE) {
             const formData2 = new FormData();
             formData2.append("ref", "api::applied-job.applied-job");
@@ -246,16 +108,25 @@ function Enroll() {
             });
           }
 
-        })
-        Swal.fire({
-          icon: "success",
-          title: "Applied!",
-          text: "Applied Successfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        history("/");
-        setFormErrors({});
+          await submitAdditionalData(
+            object,
+            FORM_ID,
+            "professional-body-memberships"
+          );
+          await submitAdditionalData(object, FORM_ID, "reference-details");
+
+          Swal.fire({
+            icon: "success",
+            title: "Applied!",
+            text: "Applied Successfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          history("/");
+          setFormErrors({});
+        } else {
+          throw new Error("Form Submission Failed");
+        }
       } catch (error) {
         handleError(error);
       }
@@ -264,30 +135,23 @@ function Enroll() {
 
   const submitAdditionalData = async (formData, formId, endpoint) => {
     const additionalData = formData[endpoint];
-    var id = "";
-    if (formData) {
-      await axios
-        .post(
-          URL.BASE_URL + `/api/${endpoint}`,
-          {
-            data: {
-              ...formData,
-            },
+    if (additionalData) {
+      await axios.post(
+        URL.BASE_URL + `/api/${endpoint}`,
+        {
+          data: {
+            ...additionalData,
+            appliedJob: formId,
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          id = res.data.data.id;
-          console.log(res.data.data.id, "00000res");
-          return res.data.data.id;
-        });
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
     }
-    return id;
   };
 
   const handleError = (error) => {
@@ -299,18 +163,7 @@ function Enroll() {
       showConfirmButton: true,
     });
   };
-  const handleChance = (e) => {
-    let error = { ...formErrors };
-    let name = e.target.name;
-    let value = e.target.value;
-    if (value != "") {
-      error[name] = null;
-    } else {
-      error[name] = "*Requred";
-    }
-    setFormErrors({ ...error });
-    console.log(error, "testing");
-  };
+
   return (
     <>
       <Header />
@@ -340,24 +193,17 @@ function Enroll() {
                 </h1>
 
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.Title ? "has-error" : ""
-                    }`}
-                  >
+                  <div className="form-floating">
                     <input
-                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Title"
                       name="Title"
                       placeholder="Title"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Title">Title</label>
-                    {formErrors.Title && (
-                      <div className="error-message">{formErrors.Title}</div>
-                    )}
                   </div>
                 </div>
 
@@ -368,7 +214,6 @@ function Enroll() {
                     }`}
                   >
                     <input
-                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="First_Name"
@@ -391,7 +236,6 @@ function Enroll() {
                     }`}
                   >
                     <input
-                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Surname"
@@ -412,7 +256,6 @@ function Enroll() {
                     }`}
                   >
                     <input
-                      onChange={handleChance}
                       type="number"
                       className="form-control"
                       id="Home_Tel_No"
@@ -438,13 +281,13 @@ function Enroll() {
                     }`}
                   >
                     <input
-                      onChange={handleChance}
                       type="number"
                       className="form-control"
                       id="Mobile_Tel_No"
                       name="Mobile_Tel_No"
                       placeholder="Your mobile number with country code"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Mobile_Tel_No">
                       Your Mobile Number (With Country Code - +44712345678)
@@ -464,13 +307,13 @@ function Enroll() {
                     }`}
                   >
                     <input
-                      onChange={handleChance}
                       type="email"
                       className="form-control"
                       id="Email"
                       name="Email"
                       placeholder="Your Email"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Email">Email Address</label>
                     {formErrors.Email && (
@@ -480,75 +323,52 @@ function Enroll() {
                 </div>
 
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.Insurance_No ? "has-error" : ""
-                    }`}
-                  >
+                  <div className="form-floating">
                     <input
-                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Insurance_No"
                       name="Insurance_No"
                       placeholder="Insurance_No"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Insurance_No">
                       National Insurance Number
                     </label>
-                    {formErrors.Insurance_No && (
-                      <div className="error-message">
-                        {formErrors.Insurance_No}
-                      </div>
-                    )}
                   </div>
                 </div>
 
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.Postcode ? "has-error" : ""
-                    }`}
-                  >
+                  <div className="form-floating">
                     <input
-                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Postcode"
                       name="Postcode"
                       placeholder="Postcode"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Postcode">Postcode</label>
-
-                    {formErrors.Postcode && (
-                      <div className="error-message">{formErrors.Postcode}</div>
-                    )}
                   </div>
                 </div>
 
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.DOB ? "has-error" : ""
-                    }`}
-                  >
+                  <div className="form-floating">
                     <input
-                      onChange={handleChance}
                       type="date"
                       className="form-control"
                       id="DOB"
                       name="DOB"
                       placeholder="DOB"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="DOB">Date of Birth</label>
-                    {formErrors.DOB && (
-                      <div className="error-message">{formErrors.DOB}</div>
-                    )}
                   </div>
                 </div>
+
                 <div className="col-sm-6">
                   <div className="form-floating">
                     <input
@@ -560,9 +380,6 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="Visa_Status">Visa Status</label>
-                    {formErrors.Visa_Status && (
-                      <div className="error-message">{formErrors.Visa_Status}</div>
-                    )}
                   </div>
                 </div>
 
@@ -577,9 +394,6 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="LinkedIn_URL">LinkedIn URL</label>
-                    {formErrors.LinkedIn_URL && (
-                      <div className="error-message">{formErrors.LinkedIn_URL}</div>
-                    )}
                   </div>
                 </div>
 
@@ -606,6 +420,7 @@ function Enroll() {
                       name="Emergency_Contact"
                       placeholder="Emergency_Contact"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Emergency_Contact">Emergency Contact</label>
                   </div>
@@ -624,6 +439,7 @@ function Enroll() {
                       name="Emergency_Contact_No"
                       placeholder="Your mobile number with country code"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Emergency_Contact_No">
                       Emergency Contact Number (With Country Code -
@@ -638,13 +454,8 @@ function Enroll() {
                 </div>
 
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.Address ? "has-error" : ""
-                    }`}
-                  >
+                  <div className="form-floating">
                     <input
-                      onChange={handleChance}
                       type="text"
                       className="form-control"
                       id="Address"
@@ -653,9 +464,6 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="Address">Address</label>
-                    {formErrors.Address && (
-                      <div className="error-message">{formErrors.Address}</div>
-                    )}{" "}
                   </div>
                 </div>
 
@@ -711,7 +519,7 @@ function Enroll() {
                       type="checkbox"
                       id="Free_to_Takeup_Employment"
                       name="Free_to_Takeup_Employment"
-                      onChange={handleChance}
+                      
                     />
                     <label
                       className="form-check-label"
@@ -719,11 +527,6 @@ function Enroll() {
                     >
                       Free To Takeup Employment?
                     </label>
-                    {formErrors.Free_to_Takeup_Employment && (
-                      <div className="error-message">
-                        {formErrors.Free_to_Takeup_Employment}
-                      </div>
-                    )}
                   </div>
                 </div>
 
@@ -735,11 +538,7 @@ function Enroll() {
                 </h6>
 
                 <div className="col-sm-6">
-                  <div
-                    className={`form-floating ${
-                      formErrors.No_comments ? "has-error" : ""
-                    }`}
-                  >
+                  <div className="form-floating">
                     <input
                       type="text"
                       className="form-control"
@@ -747,26 +546,11 @@ function Enroll() {
                       name="No_comments"
                       placeholder="No_comments"
                       style={{ border: "1px solid" }}
-                      onChange={handleChance}
                     ></input>
                     <label htmlFor="No_comments">Reason</label>
-
-                    {formErrors.No_comments && (
-                      <div className="error-message">
-                        {formErrors.No_comments}
-                      </div>
-                    )}
                   </div>
                 </div>
-                <div className="col-12 text-center py-5">
-                  <button
-                    className="btn py-2 rounded-pill text-white"
-                    type="submit"
-                    style={{ background: "#111727", height: "50px" }}
-                  >
-                    Apply for Job
-                  </button>
-                </div>
+
                 <h1
                   className="display py-3 text-black"
                   style={{ fontFamily: "Alatsi" }}
@@ -786,6 +570,7 @@ function Enroll() {
                       name="Current_Emp_Status"
                       placeholder="Visa Status"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Current_Emp_Status">
                       Current Employment Status
@@ -811,6 +596,7 @@ function Enroll() {
                       name="Notice_Period"
                       placeholder="Notice Period (In Months)"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Notice_Period">
                       Notice Period (In Months)
@@ -832,6 +618,7 @@ function Enroll() {
                       name="Job_Titles"
                       placeholder="Job_Titles"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Job_Titles">Specify Job Titles</label>
                   </div>
@@ -905,6 +692,7 @@ function Enroll() {
                       name="Hourly_Rate"
                       placeholder="Hourly_Rate"
                       style={{ border: "1px solid" }}
+                      required
                     ></input>
                     <label htmlFor="Hourly_Rate">
                       Annual Salary / Hourly Rate Expected
@@ -968,12 +756,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Organisation2"
-                      name="Organisation2"
+                      id="Organisation"
+                      name="Organisation"
                       placeholder="Organisation"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Organisation2">Body / Organization</label>
+                    <label htmlFor="Organisation">Body / Organization</label>
                   </div>
                 </div>
 
@@ -982,12 +770,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Membership_level_and_No2"
-                      name="Membership_level_and_No2"
+                      id="Membership_level_and_No"
+                      name="Membership_level_and_No"
                       placeholder="Membership_level_and_No"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Membership_level_and_No2">
+                    <label htmlFor="Membership_level_and_No">
                       Membership Level and Number{" "}
                     </label>
                   </div>
@@ -998,12 +786,12 @@ function Enroll() {
                     <input
                       type="date"
                       className="form-control"
-                      id="Date2"
-                      name="Date2"
+                      id="Date"
+                      name="Date"
                       placeholder="Date"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Date2">Date Joined</label>
+                    <label htmlFor="Date">Date Joined</label>
                   </div>
                 </div>
 
@@ -1012,12 +800,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Organisation3"
-                      name="Organisation3"
+                      id="Organisation"
+                      name="Organisation"
                       placeholder="Organisation"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Organisation3">Body / Organization</label>
+                    <label htmlFor="Organisation">Body / Organization</label>
                   </div>
                 </div>
 
@@ -1026,12 +814,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Membership_level_and_No3"
-                      name="Membership_level_and_No3"
+                      id="Membership_level_and_No"
+                      name="Membership_level_and_No"
                       placeholder="Membership_level_and_No"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Membership_level_and_No3">
+                    <label htmlFor="Membership_level_and_No">
                       Membership Level and Number{" "}
                     </label>
                   </div>
@@ -1042,12 +830,12 @@ function Enroll() {
                     <input
                       type="date"
                       className="form-control"
-                      id="Date3"
-                      name="Date3"
+                      id="Date"
+                      name="Date"
                       placeholder="Date"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Date3">Date Joined</label>
+                    <label htmlFor="Date">Date Joined</label>
                   </div>
                 </div>
 
@@ -1056,12 +844,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Organisation4"
-                      name="Organisation4"
+                      id="Organisation"
+                      name="Organisation"
                       placeholder="Organisation"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Organisation4">Body / Organization</label>
+                    <label htmlFor="Organisation">Body / Organization</label>
                   </div>
                 </div>
 
@@ -1070,12 +858,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Membership_level_and_No4"
-                      name="Membership_level_and_No4"
+                      id="Membership_level_and_No"
+                      name="Membership_level_and_No"
                       placeholder="Membership_level_and_No"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Membership_level_and_No4">
+                    <label htmlFor="Membership_level_and_No">
                       Membership Level and Number{" "}
                     </label>
                   </div>
@@ -1086,12 +874,12 @@ function Enroll() {
                     <input
                       type="date"
                       className="form-control"
-                      id="Date4"
-                      name="Date4"
+                      id="Date"
+                      name="Date"
                       placeholder="Date"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Date4">Date Joined</label>
+                    <label htmlFor="Date">Date Joined</label>
                   </div>
                 </div>
 
@@ -1314,12 +1102,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Address1"
-                      name="Address1"
+                      id="Address"
+                      name="Address"
                       placeholder="Address"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Address1">Address</label>
+                    <label htmlFor="Address">Address</label>
                   </div>
                 </div>
 
@@ -1342,12 +1130,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Email1"
-                      name="Email1"
+                      id="Email"
+                      name="Email"
                       placeholder="Email"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Email1">Email</label>
+                    <label htmlFor="Email">Email</label>
                   </div>
                 </div>
 
@@ -1381,12 +1169,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Name2"
-                      name="Name2"
+                      id="Name"
+                      name="Name"
                       placeholder="Name"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Name2">Name</label>
+                    <label htmlFor="Name">Name</label>
                   </div>
                 </div>
 
@@ -1395,12 +1183,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Job_Title2"
-                      name="Job_Title2"
-                      placeholder="Job Title"
+                      id="Job_Title"
+                      name="Job_Title"
+                      placeholder="Job_Title"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Job_Title2">Job Title</label>
+                    <label htmlFor="Job_Title">Job Title</label>
                   </div>
                 </div>
 
@@ -1409,12 +1197,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Company2"
-                      name="Company2"
+                      id="Company"
+                      name="Company"
                       placeholder="Company"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Company2">Company</label>
+                    <label htmlFor="Company">Company</label>
                   </div>
                 </div>
 
@@ -1423,12 +1211,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Address2"
-                      name="Address2"
+                      id="Address"
+                      name="Address"
                       placeholder="Address"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Address2">Address</label>
+                    <label htmlFor="Address">Address</label>
                   </div>
                 </div>
 
@@ -1437,12 +1225,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Telephone_Number2"
-                      name="Telephone_Number2"
+                      id="Telephone_Number"
+                      name="Telephone_Number"
                       placeholder="Telephone_Number"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Telephone_Number2">Telephone Number</label>
+                    <label htmlFor="Telephone_Number">Telephone Number</label>
                   </div>
                 </div>
 
@@ -1451,12 +1239,12 @@ function Enroll() {
                     <input
                       type="text"
                       className="form-control"
-                      id="Email2"
-                      name="Email2"
+                      id="Email"
+                      name="Email"
                       placeholder="Email"
                       style={{ border: "1px solid" }}
                     ></input>
-                    <label htmlFor="Email2">Email</label>
+                    <label htmlFor="Email">Email</label>
                   </div>
                 </div>
 
@@ -1465,12 +1253,12 @@ function Enroll() {
                     <input
                       className="form-check-input"
                       type="checkbox"
-                      id="Consent_to_Contact2"
-                      name="Consent_to_Contact2"
+                      id="Consent_to_Contact"
+                      name="Consent_to_Contact"
                     />
                     <label
                       className="form-check-label"
-                      htmlFor="Consent_to_Contact2"
+                      htmlFor="Consent_to_Contact"
                     >
                       Consent to Contact
                     </label>
@@ -1531,6 +1319,7 @@ function Enroll() {
                       type="checkbox"
                       id="Data_Protection_Statement"
                       name="Data_Protection_Statement"
+                      
                     />
                     <label
                       className="form-check-label"
@@ -1582,6 +1371,7 @@ function Enroll() {
                     terminated immediately.
                   </p>
                 </h6>
+
                 <div className="col-sm-6">
                   <div className="form">
                     <input
@@ -1669,6 +1459,7 @@ function Enroll() {
                       type="checkbox"
                       id="Agree_Ploicy"
                       name="Agree_Ploicy"
+                      required
                     />
                     <label className="form-check-label" htmlFor="Agree_Ploicy">
                       I Agree to the Privacy Policy
