@@ -566,6 +566,8 @@ function Enroll() {
                   </div>
                 </div>
 
+                
+
                 <div className="col-sm-6">
                   <div className="form-floating">
                     <input
@@ -595,6 +597,50 @@ function Enroll() {
                     ></input>
                     <label htmlFor="Endorsements">Endorsements</label>
                   </div>
+                </div>
+
+                <div className="col-sm-6">
+                  <div className="form">
+                    <input
+                      type="file"
+                      className={`form-control ${
+                        formErrors.Cover_Letter ? "has-error" : ""
+                      }`}
+                      id="Cover_Letter"
+                      name="Cover_Letter"
+                      style={{ border: "1px solid" }}
+                    ></input>
+                    {formErrors.Cover_Letter && (
+                      <div className="error-message">
+                        {formErrors.Cover_Letter}
+                      </div>
+                    )}
+                  </div>
+                  <label className="mb-3" htmlFor="Cover_Letter">
+                    Upload your Cover Letter (Max: 2mb)
+                  </label>
+                </div>
+
+                <div className="col-sm-6">
+                  <div className="form">
+                    <input
+                      type="file"
+                      className={`form-control ${
+                        formErrors.Resume ? "has-error" : ""
+                      }`}
+                      id="Resume"
+                      name="Resume"
+                      style={{ border: "1px solid" }}
+                    ></input>
+                    {formErrors.Resume && (
+                      <div className="error-message">
+                        {formErrors.Resume}
+                      </div>
+                    )}
+                  </div>
+                  <label className="mb-3" htmlFor="Resume">
+                    Upload your Resume (Max: 2mb)
+                  </label>
                 </div>
 
                 <div className="col-sm-6">
@@ -1574,49 +1620,7 @@ function Enroll() {
                     terminated immediately.
                   </p>
                 </h6>
-                <div className="col-sm-6">
-                  <div className="form">
-                    <input
-                      type="file"
-                      className={`form-control ${
-                        formErrors.Cover_Letter ? "has-error" : ""
-                      }`}
-                      id="Cover_Letter"
-                      name="Cover_Letter"
-                      style={{ border: "1px solid" }}
-                    ></input>
-                    {formErrors.Cover_Letter && (
-                      <div className="error-message">
-                        {formErrors.Cover_Letter}
-                      </div>
-                    )}
-                  </div>
-                  <label className="mb-3" htmlFor="Cover_Letter">
-                    Upload your Cover Letter (Max: 2mb)
-                  </label>
-                </div>
-
-                <div className="col-sm-6">
-                  <div className="form">
-                    <input
-                      type="file"
-                      className={`form-control ${
-                        formErrors.Resume ? "has-error" : ""
-                      }`}
-                      id="Resume"
-                      name="Resume"
-                      style={{ border: "1px solid" }}
-                    ></input>
-                    {formErrors.Resume && (
-                      <div className="error-message">
-                        {formErrors.Resume}
-                      </div>
-                    )}
-                  </div>
-                  <label className="mb-3" htmlFor="Resume">
-                    Upload your Resume (Max: 2mb)
-                  </label>
-                </div>
+                
 
                 <div className="col-sm-6">
                   <div className="form">
