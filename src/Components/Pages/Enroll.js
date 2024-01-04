@@ -758,15 +758,7 @@ function Enroll() {
                     )}
                   </div>
                 </div>
-                <div className="col-12 text-center py-5">
-                  <button
-                    className="btn py-2 rounded-pill text-white"
-                    type="submit"
-                    style={{ background: "#111727", height: "50px" }}
-                  >
-                    Apply for Job
-                  </button>
-                </div>
+                
                 <h1
                   className="display py-3 text-black"
                   style={{ fontFamily: "Alatsi" }}
