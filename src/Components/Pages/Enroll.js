@@ -99,18 +99,18 @@ function Enroll() {
       try {
         const FORM_ID = "";
         const FILE = e.target.Signature_Image.files[0];
-        if (FILE) {
-          const formData2 = new FormData();
-          formData2.append("ref", "api::applied-job.applied-job");
-          formData2.append("refId", FORM_ID);
-          formData2.append("files", FILE);
+        // if (FILE) {
+        //   const formData2 = new FormData();
+        //   formData2.append("ref", "api::applied-job.applied-job");
+        //   formData2.append("refId", FORM_ID);
+        //   formData2.append("files", FILE);
 
-          await axios.post(URL.BASE_URL + "/api/upload", formData2, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-        }
+        //   await axios.post(URL.BASE_URL + "/api/upload", formData2, {
+        //     headers: {
+        //       "Content-Type": "multipart/form-data",
+        //     },
+        //   });
+        // }
 
         console.log(object, FORM_ID, "000000001");
         let obj1 = {
@@ -254,7 +254,7 @@ function Enroll() {
           showConfirmButton: false,
           timer: 1500,
         });
-        history("/");
+        // history("/");
         setFormErrors({});
       } catch (error) {
         handleError(error);
@@ -1378,7 +1378,7 @@ function Enroll() {
                 <div className="col-sm-6">
                   <div className="form-floating">
                     <input
-                      type="text"
+                      type="email"
                       className="form-control"
                       id="Email1"
                       name="Email1"
@@ -1487,7 +1487,7 @@ function Enroll() {
                 <div className="col-sm-6">
                   <div className="form-floating">
                     <input
-                      type="text"
+                      type="email"
                       className="form-control"
                       id="Email2"
                       name="Email2"
