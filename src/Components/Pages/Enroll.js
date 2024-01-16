@@ -22,12 +22,7 @@ function Enroll() {
     if (!formData.Surname) {
       errors.Surname = "*Required";
     }
-    if (!formData.Home_Tel_No) {
-      errors.Home_Tel_No = "*Required";
-    }
-    if (!formData.Mobile_Tel_No) {
-      errors.Mobile_Tel_No = "*Required";
-    }
+   
     if (!formData.Email) {
       errors.Email = "*Required";
     }
@@ -61,14 +56,38 @@ function Enroll() {
     if (!formData.Job_Titles) {
       errors.Job_Titles = "*Required";
     }
+    
     if (!formData.Hourly_Rate) {
       errors.Hourly_Rate = "*Required";
     }
+    if (!formData.Home_Tel_No) {
+      errors.Home_Tel_No = "*Required";
+    }else{
+      if(  !(formData.Home_Tel_No.length  > 9 && formData.Home_Tel_No.length  < 14) ){
+        errors.Home_Tel_No = "minmum 9 numbers maximum 13 numbers";
+      }
+    }
+    if (!formData.Mobile_Tel_No) {
+      errors.Mobile_Tel_No = "*Required";
+      
+    }else{
+      if(  !(formData.Mobile_Tel_No.length  > 9 && formData.Mobile_Tel_No.length  < 14) ){
+        errors.Mobile_Tel_No = "minmum 9 numbers maximum 13 numbers";
+      }
+    }
     if (!formData.Emergency_Contact_No) {
       errors.Emergency_Contact_No = "*Required";
+    }else{
+      if(  !(formData.Emergency_Contact_No.length  > 9 && formData.Emergency_Contact_No.length  < 14) ){
+        errors.Emergency_Contact_No = "minmum 9 numbers maximum 13 numbers";
+      }
     }
     if (!formData.Emergency_Contact) {
       errors.Emergency_Contact = "*Required";
+    }else{
+      if(  !(formData.Emergency_Contact.length  > 9 && formData.Emergency_Contact.length  < 14) ){
+        errors.Emergency_Contact = "minmum 9 numbers maximum 13 numbers";
+      }
     }
 
     // if (!formData.Crimincal_Conviction) {
