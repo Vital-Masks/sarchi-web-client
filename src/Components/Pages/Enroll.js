@@ -741,7 +741,7 @@ function Enroll() {
                     )}
                   </div>
                   <label className="mb-3" htmlFor="Cover_Letter">
-                    Upload your Cover Letter (Max: 2mb)
+                    Upload your Cover Letter (Max: 1mb)
                   </label>
                 </div>
 
@@ -762,7 +762,7 @@ function Enroll() {
                     )}
                   </div>
                   <label className="mb-3" htmlFor="Resume">
-                    Upload your Resume (Max: 2mb)
+                    Upload your Resume (Max: 1mb)
                   </label>
                 </div>
 
@@ -1843,7 +1843,7 @@ function Enroll() {
                     )}
                   </div>
                   <label className="mb-3" htmlFor="Signature_Image">
-                    Upload your Signature (Max: 2mb)
+                    Upload your Signature (Max: 1mb)
                   </label>
                 </div>
 
