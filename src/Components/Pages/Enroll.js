@@ -44,13 +44,55 @@ function Enroll() {
     if (!formData.Address) {
       errors.Address = "*Required";
     }
-    // if (!formData.Visa_Status) {
-    //   errors.Visa_Status = "*Required";
+
+    if (!formData.Visa_Status) {
+      errors.Visa_Status = "*Required";
+    }
+
+    if (!formData.Resume.files) {
+      errors.Resume = "*Required";
+    }
+    if (!formData.Cover_Letter.files) {
+      errors.Cover_Letter = "*Required";
+    }
+    if (!formData.Current_Emp_Status) {
+      errors.Current_Emp_Status = "*Required";
+    }
+    if (!formData.Job_Titles) {
+      errors.Job_Titles = "*Required";
+    }
+    if (!formData.Hourly_Rate) {
+      errors.Hourly_Rate = "*Required";
+    }
+    if (!formData.Emergency_Contact_No) {
+      errors.Emergency_Contact_No = "*Required";
+    }
+    if (!formData.Emergency_Contact) {
+      errors.Emergency_Contact = "*Required";
+    }
+
+    // if (!formData.Crimincal_Conviction) {
+    //   errors.Crimincal_Conviction = "*Required";
     // }
     // if (!formData.LinkedIn_URL) {
     //   errors.LinkedIn_URL = "*Required";
     // }
 
+    if (formData.Crimincal_Conviction === true) {
+      if (!formData.Convicition_Description) {
+        errors.Convicition_Description = "*Required";
+      }
+    }
+
+    // Health_Issue
+    if (formData.Health_Issue === true) {
+      if (!formData.Name_of_Health_Issue) {
+        errors.Name_of_Health_Issue = "*Required";
+      }
+      if (!formData.Required_Adjustment) {
+        errors.Required_Adjustment = "*Required";
+      }
+    }
     if (formData.Free_to_Takeup_Employment === true) {
       console.log(formData.Free_to_Takeup_Employment, "tick");
       // errors.Free_to_Takeup_Employment = "*Required";
@@ -60,9 +102,29 @@ function Enroll() {
       }
     }
 
+    // Data_Protection_Statement
+    if (formData.Data_Protection_Statement !== true) {
+      // console.log(formData.Free_to_Takeup_Employment, "tick");
+      errors.Data_Protection_Statement = "*Required";
+    }
+
+    // Agree_Ploicy
+    if (formData.Agree_Ploicy !== true) {
+      // console.log(formData.Free_to_Takeup_Employment, "tick");
+      errors.Agree_Ploicy = "*Required";
+    }
+
     // Add more validation as needed
     // ...
     console.log(errors, "error");
+
+    const firstErrorField = Object.keys(errors)[0];
+    const firstErrorFieldElement = document.getElementById(firstErrorField);
+
+    if (firstErrorFieldElement) {
+      firstErrorFieldElement.focus();
+    }
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -133,32 +195,69 @@ function Enroll() {
           Membership_level_and_No: object.Membership_level_and_No4,
         };
 
-        var bodyMemberId1 = await submitAdditionalData(
-          obj1,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var bodyMemberId2 = await submitAdditionalData(
-          obj2,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var bodyMemberId3 = await submitAdditionalData(
-          obj3,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var bodyMemberId4 = await submitAdditionalData(
-          obj4,
-          FORM_ID,
-          "professional-body-memberships"
-        );
-        var professional_body_memberships = [
-          bodyMemberId1,
-          bodyMemberId2,
-          bodyMemberId3,
-          bodyMemberId4,
-        ];
+        var bodyMemberId1 = "";
+        var bodyMemberId2 = "";
+        var bodyMemberId3 = "";
+        var bodyMemberId4 = "";
+
+        if (
+          obj1.Date !== "" &&
+          obj1.Membership_level_and_No !== "" &&
+          obj1.Organisation !== ""
+        ) {
+          bodyMemberId1 = await submitAdditionalData(
+            obj1,
+            FORM_ID,
+            "professional-body-memberships"
+          );
+        }
+        if (
+          obj2.Date !== "" &&
+          obj2.Membership_level_and_No !== "" &&
+          obj2.Organisation !== ""
+        ) {
+          bodyMemberId2 = await submitAdditionalData(
+            obj2,
+            FORM_ID,
+            "professional-body-memberships"
+          );
+        }
+        if (
+          obj3.Date !== "" &&
+          obj3.Membership_level_and_No !== "" &&
+          obj3.Organisation !== ""
+        ) {
+          console.log(obj3, "obj3");
+          bodyMemberId3 = await submitAdditionalData(
+            obj3,
+            FORM_ID,
+            "professional-body-memberships"
+          );
+        }
+        if (
+          obj4.Date !== "" &&
+          obj4.Membership_level_and_No !== "" &&
+          obj4.Organisation !== ""
+        ) {
+          bodyMemberId4 = await submitAdditionalData(
+            obj4,
+            FORM_ID,
+            "professional-body-memberships"
+          );
+        }
+        var professional_body_memberships = [];
+        if (bodyMemberId1 != "") {
+          professional_body_memberships.push(bodyMemberId1);
+        }
+        if (bodyMemberId2 != "") {
+          professional_body_memberships.push(bodyMemberId2);
+        }
+        if (bodyMemberId3 != "") {
+          professional_body_memberships.push(bodyMemberId3);
+        }
+        if (bodyMemberId4 != "") {
+          professional_body_memberships.push(bodyMemberId4);
+        }
 
         var refObj = {
           Name: object.Name,
@@ -191,6 +290,7 @@ function Enroll() {
           "reference-details"
         );
         console.log(refId1, refId2, "0000002");
+
         var reference_details = [refId1, refId2];
         object["professional_body_memberships"] = professional_body_memberships;
         object["reference_details"] = reference_details;
@@ -349,6 +449,7 @@ function Enroll() {
                       name="Title"
                       placeholder="Title"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Title ? true : false}
                     ></input>
                     <label htmlFor="Title">Title</label>
                     {formErrors.Title && (
@@ -371,6 +472,7 @@ function Enroll() {
                       name="First_Name"
                       placeholder="First Name"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.First_Name ? true : false}
                     ></input>
                     <label htmlFor="First_Name">First Name</label>
                     {formErrors.First_Name && (
@@ -394,6 +496,7 @@ function Enroll() {
                       name="Surname"
                       placeholder="Last Name"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Surname ? true : false}
                     ></input>
                     <label htmlFor="Surname">Last Name</label>
                     {formErrors.Surname && (
@@ -415,6 +518,7 @@ function Enroll() {
                       name="Home_Tel_No"
                       placeholder="Your home telephone number with country code"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Home_Tel_No ? true : false}
                     ></input>
                     <label htmlFor="Home_Tel_No">
                       Home Telephone Number (With Country Code - +44712345678)
@@ -441,6 +545,7 @@ function Enroll() {
                       name="Mobile_Tel_No"
                       placeholder="Your mobile number with country code"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Mobile_Tel_No ? true : false}
                     ></input>
                     <label htmlFor="Mobile_Tel_No">
                       Your Mobile Number (With Country Code - +44712345678)
@@ -467,6 +572,7 @@ function Enroll() {
                       name="Email"
                       placeholder="Your Email"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Email ? true : false}
                     ></input>
                     <label htmlFor="Email">Email Address</label>
                     {formErrors.Email && (
@@ -489,6 +595,7 @@ function Enroll() {
                       name="Insurance_No"
                       placeholder="Insurance_No"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Insurance_No ? true : false}
                     ></input>
                     <label htmlFor="Insurance_No">
                       National Insurance Number
@@ -515,6 +622,7 @@ function Enroll() {
                       name="Postcode"
                       placeholder="Postcode"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Postcode ? true : false}
                     ></input>
                     <label htmlFor="Postcode">Postcode</label>
 
@@ -538,6 +646,7 @@ function Enroll() {
                       name="DOB"
                       placeholder="DOB"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.DOB ? true : false}
                     ></input>
                     <label htmlFor="DOB">Date of Birth</label>
                     {formErrors.DOB && (
@@ -600,6 +709,7 @@ function Enroll() {
                 <div className="col-sm-6">
                   <div className="form">
                     <input
+                      onChange={handleChance}
                       type="file"
                       className={`form-control ${
                         formErrors.Cover_Letter ? "has-error" : ""
@@ -607,6 +717,7 @@ function Enroll() {
                       id="Cover_Letter"
                       name="Cover_Letter"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Cover_Letter ? true : false}
                     ></input>
                     {formErrors.Cover_Letter && (
                       <div className="error-message">
@@ -629,6 +740,7 @@ function Enroll() {
                       id="Resume"
                       name="Resume"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Resume ? true : false}
                     ></input>
                     {formErrors.Resume && (
                       <div className="error-message">{formErrors.Resume}</div>
@@ -640,9 +752,13 @@ function Enroll() {
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                <div
+                    className={`form-floating ${
+                      formErrors.Emergency_Contact ? "has-error" : ""
+                    }`}
+                  >
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="Emergency_Contact"
                       name="Emergency_Contact"
@@ -650,7 +766,11 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="Emergency_Contact">Emergency Contact</label>
-                  </div>
+                    {formErrors.Emergency_Contact && (
+                      <div className="error-message">
+                        {formErrors.Emergency_Contact}
+                      </div>
+                    )} </div>
                 </div>
 
                 <div className="col-sm-6">
@@ -666,6 +786,7 @@ function Enroll() {
                       name="Emergency_Contact_No"
                       placeholder="Your mobile number with country code"
                       style={{ border: "1px solid" }}
+                      onChange={handleChance}
                     ></input>
                     <label htmlFor="Emergency_Contact_No">
                       Emergency Contact Number (With Country Code -
@@ -693,6 +814,7 @@ function Enroll() {
                       name="Address"
                       placeholder="Address"
                       style={{ border: "1px solid" }}
+                      autoFocus={formErrors.Address ? true : false}
                     ></input>
                     <label htmlFor="Address">Address</label>
                     {formErrors.Address && (
@@ -754,6 +876,9 @@ function Enroll() {
                       id="Free_to_Takeup_Employment"
                       name="Free_to_Takeup_Employment"
                       onChange={handleChance}
+                      autoFocus={
+                        formErrors.Free_to_Takeup_Employment ? true : false
+                      }
                     />
                     <label
                       className="form-check-label"
@@ -790,6 +915,7 @@ function Enroll() {
                       placeholder="No_comments"
                       style={{ border: "1px solid" }}
                       onChange={handleChance}
+                      autoFocus={formErrors.No_comments ? true : false}
                     ></input>
                     <label htmlFor="No_comments">Reason</label>
 
@@ -858,7 +984,11 @@ function Enroll() {
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Job_Titles ? "has-error" : ""
+                    }`}
+                  >
                     <input
                       type="text"
                       className="form-control"
@@ -868,6 +998,11 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     <label htmlFor="Job_Titles">Specify Job Titles</label>
+                    {formErrors.Job_Titles && (
+                      <div className="error-message">
+                        {formErrors.Job_Titles}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -931,9 +1066,13 @@ function Enroll() {
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Hourly_Rate ? "has-error" : ""
+                    }`}
+                  >
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="Hourly_Rate"
                       name="Hourly_Rate"
@@ -943,6 +1082,11 @@ function Enroll() {
                     <label htmlFor="Hourly_Rate">
                       Annual Salary / Hourly Rate Expected
                     </label>
+                    {formErrors.Hourly_Rate && (
+                      <div className="error-message">
+                        {formErrors.Hourly_Rate}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -1150,6 +1294,8 @@ function Enroll() {
                       type="checkbox"
                       id="Crimincal_Conviction"
                       name="Crimincal_Conviction"
+                      onChange={handleChance}
+                      autoFocus={formErrors.Crimincal_Conviction ? true : false}
                     />
                     <label
                       className="form-check-label"
@@ -1157,6 +1303,11 @@ function Enroll() {
                     >
                       Criminal Convictions?
                     </label>
+                    {formErrors.Crimincal_Conviction && (
+                      <div className="error-message">
+                        {formErrors.Crimincal_Conviction}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -1168,7 +1319,11 @@ function Enroll() {
                 </h6>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Convicition_Description ? "has-error" : ""
+                    }`}
+                  >
                     <input
                       type="text"
                       className="form-control"
@@ -1176,10 +1331,19 @@ function Enroll() {
                       name="Convicition_Description"
                       placeholder="Convicition_Description"
                       style={{ border: "1px solid" }}
+                      onChange={handleChance}
+                      autoFocus={
+                        formErrors.Convicition_Description ? true : false
+                      }
                     ></input>
                     <label htmlFor="Convicition_Description">
                       Convicition Description
                     </label>
+                    {formErrors.Convicition_Description && (
+                      <div className="error-message">
+                        {formErrors.Convicition_Description}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -1206,6 +1370,8 @@ function Enroll() {
                       type="checkbox"
                       id="Health_Issue"
                       name="Health_Issue"
+                      onChange={handleChance}
+                      autoFocus={formErrors.Health_Issue ? true : false}
                     />
                     <label className="form-check-label" htmlFor="Health_Issue">
                       Health Issues / Disability?
@@ -1224,7 +1390,11 @@ function Enroll() {
                 </h6>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Name_of_Health_Issue ? "has-error" : ""
+                    }`}
+                  >
                     <input
                       type="text"
                       className="form-control"
@@ -1236,11 +1406,20 @@ function Enroll() {
                     <label htmlFor="Name_of_Health_Issue">
                       Health Issues / Disability
                     </label>
+                    {formErrors.Name_of_Health_Issue && (
+                      <div className="error-message">
+                        {formErrors.Name_of_Health_Issue}
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <div className="col-sm-6">
-                  <div className="form-floating">
+                  <div
+                    className={`form-floating ${
+                      formErrors.Required_Adjustment ? "has-error" : ""
+                    }`}
+                  >
                     <input
                       type="text"
                       className="form-control"
@@ -1252,6 +1431,11 @@ function Enroll() {
                     <label htmlFor="Required_Adjustment">
                       Reasonable Adjustments Required
                     </label>
+                    {formErrors.Required_Adjustment && (
+                      <div className="error-message">
+                        {formErrors.Required_Adjustment}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -1565,6 +1749,10 @@ function Enroll() {
                       type="checkbox"
                       id="Data_Protection_Statement"
                       name="Data_Protection_Statement"
+                      onChange={handleChance}
+                      autoFocus={
+                        formErrors.Data_Protection_Statement ? true : false
+                      }
                     />
                     <label
                       className="form-check-label"
@@ -1572,6 +1760,11 @@ function Enroll() {
                     >
                       Data Protection & Permission
                     </label>
+                    {formErrors.Data_Protection_Statement && (
+                      <div className="error-message">
+                        {formErrors.Data_Protection_Statement}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -1660,10 +1853,17 @@ function Enroll() {
                       type="checkbox"
                       id="Agree_Ploicy"
                       name="Agree_Ploicy"
+                      onChange={handleChance}
+                      autoFocus={formErrors.Agree_Ploicy ? true : false}
                     />
                     <label className="form-check-label" htmlFor="Agree_Ploicy">
                       I Agree to the Privacy Policy
                     </label>
+                    {formErrors.Agree_Ploicy && (
+                      <div className="error-message">
+                        {formErrors.Agree_Ploicy}
+                      </div>
+                    )}
                   </div>
                 </div>
 
