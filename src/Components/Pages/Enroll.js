@@ -51,16 +51,15 @@ function Enroll() {
     //   errors.LinkedIn_URL = "*Required";
     // }
 
-    if (
-      !formData.Free_to_Takeup_Employment ||
-      formData.Free_to_Takeup_Employment === false
-    ) {
-      errors.Free_to_Takeup_Employment = "*Required";
+    if (formData.Free_to_Takeup_Employment === true) {
+      console.log(formData.Free_to_Takeup_Employment, "tick");
+      // errors.Free_to_Takeup_Employment = "*Required";
+    } else {
       if (!formData.No_comments) {
         errors.No_comments = "*Required";
       }
     }
-    console.log(formData.Free_to_Takeup_Employment, "tick");
+
     // Add more validation as needed
     // ...
     console.log(errors, "error");
@@ -195,58 +194,55 @@ function Enroll() {
         var reference_details = [refId1, refId2];
         object["professional_body_memberships"] = professional_body_memberships;
         object["reference_details"] = reference_details;
-        const response = await axios.post(
-          apiUrl,
-          JSON.stringify({ data: object }),
-          {
+        const response = await axios
+          .post(apiUrl, JSON.stringify({ data: object }), {
             headers: {
               "Content-Type": "application/json",
               Accept: "application/json",
             },
-          }
-        ).then(async(res)=>{
-          let FORM_ID = res.data.data.id;
-          let FILE = e.target.Signature_Image.files[0];
-          let FILE2 = e.target.Cover_Letter.files[0];
-          let FILE3 = e.target.Resume.files[0];
-          if (FILE) {
-            const formData2 = new FormData();
-            formData2.append("ref", "api::applied-job.applied-job");
-            formData2.append("refId", FORM_ID);
-            formData2.append("files", FILE);
+          })
+          .then(async (res) => {
+            let FORM_ID = res.data.data.id;
+            let FILE = e.target.Signature_Image.files[0];
+            let FILE2 = e.target.Cover_Letter.files[0];
+            let FILE3 = e.target.Resume.files[0];
+            if (FILE) {
+              const formData2 = new FormData();
+              formData2.append("ref", "api::applied-job.applied-job");
+              formData2.append("refId", FORM_ID);
+              formData2.append("files", FILE);
 
-            await axios.post(URL.BASE_URL + "/api/upload", formData2, {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            });
-          }
-          if (FILE2) {
-            const formData2 = new FormData();
-            formData2.append("ref", "api::applied-job.applied-job");
-            formData2.append("refId", FORM_ID);
-            formData2.append("files", FILE2);
+              await axios.post(URL.BASE_URL + "/api/upload", formData2, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              });
+            }
+            if (FILE2) {
+              const formData2 = new FormData();
+              formData2.append("ref", "api::applied-job.applied-job");
+              formData2.append("refId", FORM_ID);
+              formData2.append("files", FILE2);
 
-            await axios.post(URL.BASE_URL + "/api/upload", formData2, {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            });
-          }
-          if (FILE3) {
-            const formData2 = new FormData();
-            formData2.append("ref", "api::applied-job.applied-job");
-            formData2.append("refId", FORM_ID);
-            formData2.append("files", FILE3);
+              await axios.post(URL.BASE_URL + "/api/upload", formData2, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              });
+            }
+            if (FILE3) {
+              const formData2 = new FormData();
+              formData2.append("ref", "api::applied-job.applied-job");
+              formData2.append("refId", FORM_ID);
+              formData2.append("files", FILE3);
 
-            await axios.post(URL.BASE_URL + "/api/upload", formData2, {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            });
-          }
-
-        })
+              await axios.post(URL.BASE_URL + "/api/upload", formData2, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              });
+            }
+          });
         Swal.fire({
           icon: "success",
           title: "Applied!",
@@ -254,7 +250,7 @@ function Enroll() {
           showConfirmButton: false,
           timer: 1500,
         });
-        history("/");
+        // history("/");
         setFormErrors({});
       } catch (error) {
         handleError(error);
@@ -561,12 +557,12 @@ function Enroll() {
                     ></input>
                     <label htmlFor="Visa_Status">Visa Status</label>
                     {formErrors.Visa_Status && (
-                      <div className="error-message">{formErrors.Visa_Status}</div>
+                      <div className="error-message">
+                        {formErrors.Visa_Status}
+                      </div>
                     )}
                   </div>
                 </div>
-
-                
 
                 <div className="col-sm-6">
                   <div className="form-floating">
@@ -580,7 +576,9 @@ function Enroll() {
                     ></input>
                     <label htmlFor="LinkedIn_URL">LinkedIn URL</label>
                     {formErrors.LinkedIn_URL && (
-                      <div className="error-message">{formErrors.LinkedIn_URL}</div>
+                      <div className="error-message">
+                        {formErrors.LinkedIn_URL}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -633,9 +631,7 @@ function Enroll() {
                       style={{ border: "1px solid" }}
                     ></input>
                     {formErrors.Resume && (
-                      <div className="error-message">
-                        {formErrors.Resume}
-                      </div>
+                      <div className="error-message">{formErrors.Resume}</div>
                     )}
                   </div>
                   <label className="mb-3" htmlFor="Resume">
@@ -804,7 +800,7 @@ function Enroll() {
                     )}
                   </div>
                 </div>
-                
+
                 <h1
                   className="display py-3 text-black"
                   style={{ fontFamily: "Alatsi" }}
@@ -1620,7 +1616,6 @@ function Enroll() {
                     terminated immediately.
                   </p>
                 </h6>
-                
 
                 <div className="col-sm-6">
                   <div className="form">
