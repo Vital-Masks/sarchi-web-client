@@ -44,12 +44,12 @@ function Enroll() {
       errors.Visa_Status = "*Required";
     }
 
-    if (!formData.Resume.files) {
-      errors.Resume = "*Required";
-    }
-    if (!formData.Cover_Letter.files) {
-      errors.Cover_Letter = "*Required";
-    }
+    // if (!formData.Resume.files) {
+    //   errors.Resume = "*Required";
+    // }
+    // if (!formData.Cover_Letter.files) {
+    //   errors.Cover_Letter = "*Required";
+    // }
     if (!formData.Current_Emp_Status) {
       errors.Current_Emp_Status = "*Required";
     }
@@ -84,10 +84,6 @@ function Enroll() {
     }
     if (!formData.Emergency_Contact) {
       errors.Emergency_Contact = "*Required";
-    }else{
-      if(  !(formData.Emergency_Contact.length  > 9 && formData.Emergency_Contact.length  < 14) ){
-        errors.Emergency_Contact = "minmum 9 numbers maximum 13 numbers";
-      }
     }
 
     // if (!formData.Crimincal_Conviction) {
@@ -777,7 +773,7 @@ function Enroll() {
                     }`}
                   >
                     <input
-                      type="number"
+                      type="text"
                       className="form-control"
                       id="Emergency_Contact"
                       name="Emergency_Contact"
